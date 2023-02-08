@@ -3,11 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/app.js',
-  // mode: "production",
+  // mode values: "development", "production",
   mode: "development",
   devtool: 'inline-source-map',
   devServer: {
     static: './dist',
+    // hotswap, false to force page refresh on changes
+    hot: true,
   },
   optimization: {
     runtimeChunk: 'single',
