@@ -1,5 +1,9 @@
 import "./style.css";
+import { fetchWeather } from "./modules/fetch";
 
-import { test } from "./test.js";
+async function test(){
+  const weather = await fetchWeather("london");
+  console.log(weather);
+}
 
 test();
