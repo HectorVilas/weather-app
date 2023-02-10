@@ -6,6 +6,11 @@ On my previous practice, a [ToDo List](https://github.com/HectorVilas/todo-list)
 
 For this project I'm going to use Webpack again. I've been setting everything up, with live server so the development goes smooth. I'm still having trouble setting things up with Webpack, but I think I'm getting a better grasp of it, I like it.
 
+# follow my progress
+as I always used the README.md file for documenting my progress, adding unnecesary commits to the projects, I'll start writing that on the Discussions section. It will be updated once I have something to show about new changes and thoughts.
+
+https://github.com/HectorVilas/weather-app/discussions/1
+
 <!-- ❌ ✔️ ⭕ ❓ -->
 
 ## requisites
@@ -88,4 +93,3 @@ all the modules will be isolated from the others, the necessary data will be pas
 - ❌ line chart updater
 - - parameters: an array with objects, each with hour, weather icon and predicted temp
 - - action: update vectors position on Y axis from the line chart, replace weather icons, update hours and move 0:00hs line if necessary
-
