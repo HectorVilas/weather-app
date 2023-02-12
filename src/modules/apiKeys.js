@@ -7,16 +7,17 @@ export const apiKey = (() => {
     return apiKey;
   }
 
+  function decipher(string){
+    let stringToArray = string.split("");
+    let unscrambled;
+  
+    stringToArray.forEach(char => {
+      unscrambled = unscrambled ? char + unscrambled : char;
+    });
+    
+    return unscrambled;
+  }
+  
   return { openWeatherMap }
 })();
 
-function decipher(string){
-  let stringToArray = string.split("");
-  let unscrambled;
-
-  stringToArray.forEach(char => {
-    unscrambled = unscrambled ? char + unscrambled : char;
-  });
-  
-  return unscrambled;
-}
