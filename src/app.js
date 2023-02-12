@@ -1,9 +1,6 @@
 import "./style.css";
+import { apiKey } from "./modules/apiKeys";
 import { fetchWeather } from "./modules/fetch";
 
-async function test(){
-  const weather = await fetchWeather("london");
-  console.log(weather);
-}
-
-test();
+fetchWeather(apiKey.openWeatherMap(), "london")
+.then(weather => console.log(weather));
