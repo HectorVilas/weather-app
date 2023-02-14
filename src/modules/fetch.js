@@ -1,3 +1,5 @@
+import { getApiKey } from "./apiKeys";
+
 export async function fetchWeather(latitude, longitude, timezone = "auto"){
   try {
     /**
@@ -14,8 +16,9 @@ export async function fetchWeather(latitude, longitude, timezone = "auto"){
   }
 }
 
-export async function fetchGeocoding(apiKey, locationsLimit, location){
+export async function fetchGeocoding(locationsLimit, location){
   try {
+    const apiKey = getApiKey.openWeatherMap();
     const apiResponse = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=${locationsLimit}&appid=${apiKey}`);
     const responseJson = await apiResponse.json();
   
