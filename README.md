@@ -17,7 +17,7 @@ https://github.com/HectorVilas/weather-app/discussions/1
 - ❌ a way to search for a specific location
 - ❌ allow Fahrenheit/Celsius toggle
 - ❌ change the look of the page based on the data (by changing colors or by adding images that describe the weather)
-- ❌ Write the functions that hit the API. You’re going to want functions that can take a location and return the weather data for that location. For now, just console.log() the information.
+- ✔️ Write the functions that hit the API. You’re going to want functions that can take a location and return the weather data for that location. For now, just console.log() the information.
 - ❌ write the functions that process the JSON data you’re getting from the API and return an object with only the data you require for your app
 - ❌ set up a simple form that will let users input their location and will fetch the weather info
 - ❌ display the information on your webpage
@@ -30,7 +30,9 @@ https://github.com/HectorVilas/weather-app/discussions/1
 - - ❌ the mobile version will
 - ❌ the user on first visit will be received by a simple page with an input and a search button next to it
 - - ❌ a \<form> will be used here, with a listener on "submit"
-- ❌ to prevent errors, locations will be listed, maybe from another API or a library, so the user can't input an invalid location name, or maybe use it as autocomplete to be less restrictive
+- ❌ to prevent errors, locations will be listed, ~~maybe~~ from another API ~~or a library~~, so the user can't input an invalid location name, ~~or maybe use it as autocomplete to be less restrictive~~
+- - ❌ a list of locations will be generated (city - estate/province - country, maybe it's coordinates too), clicking on one will fetch the forecast for this location
+- - - ❌ the list may be generated while the user writes, only updating the list when the user stops writing for more than 1-1.5-2 seconds to prevent too many calls
 - ❌ the city will be stored on `localStorage`
 - ❌ a loading icon or message will show while the weather forecast is fetched
 - - ❌ if it fails, the error message from the API will be shown on the page, suggesting trying again or checking the location name
@@ -67,14 +69,18 @@ https://github.com/HectorVilas/weather-app/discussions/1
 
 ## the code
 - all the modules will be isolated from the others, the necessary data will be passed as parameter and/or callback
-- ❌ a module to fetch the weather data from the server
-- - parameters: location
+- ✔️ a module to fetch the weather data from the server
+- - parameters: ~~location~~ latitude, longitude, GMT (optional)
 - - returns: all the data as a promise
-- ❌ a module to convert the promise from the previous module on a readable object
-- - parameters: api response
-- - only use the neccesary info
-- - keys will be renamed to something easier to interprete
-- - returns: an object
+- ~~a module to convert the promise from the previous module on a readable object
+- - parameters: api response~~
+- - ~~only use the neccesary info~~
+- - ~~keys will be renamed to something easier to interprete~~
+- - ~~returns: an object~~
+- ✔️ a module to get a list of locations from the search bar
+- - parameters: apiKey, locationsLimit, location
+- ❌ a module to place a DOM element listing the locations
+- - parameters: an array of objects with: city, estate/province, country, latitude, longitude
 - ❌ a module to manipulate `localStorage`
 - - parameters: location, weather forecast as object, expiration date
 - ❌ the `date-fns` library will be used for converting the shown data on the page to something more readable
