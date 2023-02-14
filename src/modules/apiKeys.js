@@ -1,4 +1,4 @@
-export const apiKey = (() => {
+export const getApiKey = (() => {
   // openweathermap.org
   function openWeatherMap(){
     const scrambled = "64865b2ad14523a6cedd21bd516bf7b2";
