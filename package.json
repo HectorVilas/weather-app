@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "country-code-emoji": "^2.3.0",
+    "country-list": "^2.3.0",
     "date-fns": "^2.29.3"
   }
 }
