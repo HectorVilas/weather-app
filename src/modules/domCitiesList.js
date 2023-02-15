@@ -4,7 +4,7 @@ import { getName } from "country-list";
 
 export async function domCitiesList(search){
   const list = document.createElement("div");
-  const locations = await fetchGeocoding(10, search);
+  const locations = await fetchGeocoding(search);
   console.log(locations);
   locations.forEach(location => {
     const searchResult = document.createElement("div");
