@@ -1,4 +1,5 @@
 # weather-app
+# live: https://hectorvilas.github.io/weather-app/dist/
 
 Welcome to my new project! This is [another practice from The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-weather-app). There are only a few requirements for this practice, just let the user input a location and fetch the weather forecast from an API and display any useful data from it on the page in no specific way.
 
@@ -9,7 +10,7 @@ For this project I'm going to use Webpack again. I've been setting everything up
 # follow my progress
 as I always used the README.md file for documenting my progress, adding unnecesary commits to the projects, I'll start writing that on the Discussions section. It will be updated once I have something to show about new changes and thoughts.
 
-https://github.com/HectorVilas/weather-app/discussions/1
+## [Click here to check the progress](https://github.com/HectorVilas/weather-app/discussions/1)
 
 <!-- ❌ ✔️ ⭕ ❓ -->
 
