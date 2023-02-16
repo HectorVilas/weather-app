@@ -7,7 +7,7 @@ export function loadUi(){
   body.append(domSearch());
   
   const searchForm = document.querySelector(".search-form");
-  const searchInput = document.querySelector(".location-search input");
+  const searchInput = document.querySelector(".search-input");
   const cityList = document.querySelector(".search-results");
   
   searchForm.addEventListener("submit", async (e) => {

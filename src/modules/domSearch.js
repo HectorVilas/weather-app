@@ -8,6 +8,7 @@ export function domSearch(){
   search.classList.add("location-search");
   form.classList.add("search-form");
   cityList.classList.add("search-results");
+  input.classList.add("search-input");
   input.type = "search";
   button.type = "submit";
   button.innerText = "🔎";
