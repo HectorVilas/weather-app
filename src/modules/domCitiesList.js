@@ -12,6 +12,8 @@ export async function domCitiesList(search){
     const place = document.createElement("p");
 
     searchResult.classList.add("search-result");
+    searchResult.dataset.latitude = location.lat;
+    searchResult.dataset.longitude = location.lon;
     flag.classList.add("country-flag");
     flag.innerText = countryCodeEmoji(location.country);
     place.innerText = `${location.name}, ${location.state ? location.state + ", " : ""} ${getName(location.country)}`;
