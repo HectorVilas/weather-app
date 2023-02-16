@@ -10,9 +10,9 @@ export function domSearch(){
   cityList.classList.add("search-results");
   input.classList.add("search-input");
   input.type = "search";
+  input.placeholder = "Write a location name";
   button.type = "submit";
   button.innerText = "🔎";
-  cityList.innerText = "Write a location name.";
   
   form.append(input, button);
   search.append(form, cityList);
