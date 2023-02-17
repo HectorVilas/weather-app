@@ -1,5 +1,5 @@
 :root {
-  --radious: 10px;
+  --radious: 8px;
 }
 
 .location-search {
@@ -17,23 +17,20 @@
 }
 
 .search-input {
+  box-sizing: border-box;
   font-size: 1.75rem;
-  padding: .25rem .75rem;
+  padding: .25rem .75rem calc(.25rem + var(--radious));
   text-align: center;
   border: none;
-  background-color: #eee;
-  border-radius: var(--radious) var(--radious) 0 0;
-}
-.search-input + .search-results:empty {
-  background-color: red;
+  border-radius: var(--radious);
 }
 .search-input:focus {
   outline: none;
-  background-color: white;
 }
 
 .search-results {
   position: absolute;
+  transform: translateY(calc(var(--radious) * -1));
   width: 100%;
   font-size: 1.5rem;
 }
@@ -56,5 +53,5 @@
 }
 
 .country-flag {
-  font-size: 2rem;
+  font-size: 3rem;
 }
