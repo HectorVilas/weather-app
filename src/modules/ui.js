@@ -13,9 +13,9 @@ export function loadUi(){
   searchForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const search = searchInput.value;
-    
+    const list = await domCitiesList(search);
     cityList.replaceChildren();
-    cityList.append(await domCitiesList(search));
+    cityList.append(list);
 
     const domList = document.querySelectorAll(".search-result");
     domList.forEach(city => {
