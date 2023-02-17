@@ -1,30 +1,3 @@
 body {
   background-color: darkslateblue;
 }
-.location-search {
-  max-width: 375px;
-}
-
-.location-search form {
-  display: grid;
-  grid-template-columns: 1fr auto;
-}
-
-.search-result {
-  background-color: aliceblue;
-  display: grid;
-  grid-template-columns: 2rem 1fr;
-  grid-template-rows: 1fr;
-  gap: 0 5px;
-  text-align: right;
-}
-.search-result:not(:last-child) {
-  border-bottom: 1px solid #ccc;
-}
-.search-result p {
-  margin: 5px;
-}
-
-.country-flag {
-  font-size: 1.25rem;
-}
