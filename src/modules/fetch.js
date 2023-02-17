@@ -17,6 +17,8 @@ export async function fetchWeather(latitude, longitude, timezone = "auto"){
 }
 
 export async function fetchGeocoding(location){
+  if(!location.length) return [];
+  
   try {
     const locationsLimit = 10;
     const apiKey = getApiKey.openWeatherMap();
