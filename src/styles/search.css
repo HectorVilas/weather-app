@@ -6,11 +6,21 @@
 .location-search {
   position: absolute;
   left: 50%;
-  top: 25%;
-  transform: translateX(-50%);
+  top: 30%;
+  transform: translate(-50%, 0%);
   width: 400px;
   border-radius: 1rem;
+  animation: search-reveal 1s cubic-bezier(.22,.61,.36,1);
 }
+
+@keyframes search-reveal {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 150%);
+  }
+}
+
+/* input */
 
 .search-form {
   display: grid;
@@ -40,6 +50,8 @@
   background-position: top right;
 }
 
+/* locations list */
+
 .search-results {
   position: absolute;
   transform: translateY(calc(var(--radious) * -1));
@@ -47,19 +59,19 @@
   font-size: 1.5rem;
 }
 
-
 .search-result {
-  background-color: aliceblue;
   display: grid;
+  background-color: white;
   grid-template-columns: calc(var(--max-flag-size) * 1.25) 1fr;
   height: 65px;
   align-items: center;
-  color: #444;
+  color: #555;
   cursor: pointer;
   user-select: none;
 }
 .search-result:hover {
   color: black;
+  box-shadow: inset calc(var(--max-flag-size) * 1.25) 0 5px #eee;
 }
 .search-result:not(:last-child) {
   border-bottom: 1px solid white;
