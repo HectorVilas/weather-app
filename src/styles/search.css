@@ -5,6 +5,7 @@
 
 .location-search {
   position: absolute;
+  isolation: isolate;
   left: 50%;
   top: 30%;
   transform: translate(-50%, 0%);
@@ -25,6 +26,7 @@
 .search-form {
   display: grid;
   grid-template-columns: 1fr auto;
+  align-items: center;
 }
 
 .search-input {
@@ -48,6 +50,9 @@
   outline: none;
   background-size: 2.5rem;
   background-position: top right;
+}
+.search-input.loading {
+  background-image: none;
 }
 
 /* locations list */
@@ -89,4 +94,49 @@
 }
 .search-result:hover .country-flag {
   font-size: var(--max-flag-size);
+}
+
+/* loading icon */
+
+.search-loading {
+  position: absolute;
+  z-index: 1;
+  box-sizing: border-box;
+  right: 2px;
+  width: 35px;
+  height: 35px;
+}
+
+.search-loading > div {
+  position: absolute;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.search-loading > :nth-child(1) {
+  border: 4px solid #555;
+  border-top: 4px solid transparent;
+  animation: loading-icon 1s linear infinite;
+}
+.search-loading > :nth-child(2) {
+  border: 6px solid #777;
+  border-left: 6px solid transparent;
+  animation: loading-icon 1s ease-in reverse infinite;
+  scale: 83%;
+}
+.search-loading > :nth-child(3) {
+  border: 8px solid #999;
+  border-right: 8px solid transparent;
+  animation: loading-icon 1s ease-in-out infinite;
+  scale: 62%;
+}
+
+@keyframes loading-icon {
+  to {
+    transform: rotate(360deg);
+  }
 }
