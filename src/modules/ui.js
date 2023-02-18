@@ -1,11 +1,17 @@
 import { domSearch } from "./domSearch";
 import { domCitiesList } from "./domCitiesList";
 
+let previousSearch;
 export function loadUi(){
   const body = document.querySelector("body");
   let keydownTimeout;
 
   body.append(domSearch());
+
+  const form = document.querySelector(".search-form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+  });
 
   const searchInput = document.querySelector(".search-input");
   searchInput.addEventListener("keypress", () => {
@@ -22,10 +28,17 @@ export function loadUi(){
 };
 
 async function searchCity(search){
-  console.log("fetching");
   const searchInput = document.querySelector(".search-input");
   const cityList = document.querySelector(".search-results");
   const loadingIcon = document.querySelector(".search-loading");
+  
+  if(search == previousSearch) {
+    searchInput.classList.remove("loading");
+    loadingIcon.classList.add("hidden");
+    return;
+  };
+  
+  previousSearch = search;
   const list = await domCitiesList(search);
   searchInput.classList.remove("loading");
   loadingIcon.classList.add("hidden");
