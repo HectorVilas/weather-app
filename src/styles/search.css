@@ -18,6 +18,7 @@
 }
 
 .search-input {
+  --magnifier-focus-size: 2.5rem;
   box-sizing: border-box;
   background-image: url(../media/images/icons/search-magnifier.svg);
   background-size: 2rem;
@@ -25,7 +26,10 @@
   background-position: center right;
   color: #444;
   font-size: 1.6rem;
-  padding: .25rem .75rem calc(.25rem + var(--radious));
+  padding-top: .25rem;
+  padding-right: calc(var(--magnifier-focus-size) + 3px);
+  padding-bottom: calc(.25rem + var(--radious));
+  padding-left: .75rem;
   border: none;
   border-radius: var(--radious);
   transition: background-size 300ms, background-position 300ms;
