@@ -1,4 +1,4 @@
-import { fetchGeocoding } from "./fetch";
+import { fetchGeocoding } from "../fetch";
 import { countryCodeEmoji } from "country-code-emoji";
 import { getName } from "country-list";
 

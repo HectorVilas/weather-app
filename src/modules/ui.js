@@ -1,4 +1,4 @@
-import { domSearch } from "./domSearch";
+import { domSearch } from "./dom/search";
 import { searchCity } from "./functions/searchCity";
 
 export function loadUi(){

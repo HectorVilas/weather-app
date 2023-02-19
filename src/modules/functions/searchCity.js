@@ -1,4 +1,4 @@
-import { domCitiesList } from "../domCitiesList";
+import { domCitiesList } from "../dom/citiesList";
 
 let previousSearch;
 
