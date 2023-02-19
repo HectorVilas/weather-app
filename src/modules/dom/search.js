@@ -1,4 +1,9 @@
+import { searchCity } from "../functions/searchCity";
+
 export function search(){
+  let keydownTimeout;
+  const timeoutDelay = 500;
+
   const search = document.createElement("section");
   const form = document.createElement("form");
   const input = document.createElement("input");
@@ -15,10 +20,22 @@ export function search(){
   input.classList.add("search-input");
   input.type = "search";
   input.placeholder = "Write a location name";
-  
-  loadingAnimDiv.append(loadingAnim1, loadingAnim2, loadingAnim3)
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+  });
+  input.addEventListener("keypress", () => {
+    input.classList.add("loading");
+    loadingAnimDiv.classList.remove("hidden");
+    clearTimeout(keydownTimeout);
+    keydownTimeout = setTimeout(() => {
+      searchCity(input.value);
+    }, timeoutDelay);
+  });
+
+  loadingAnimDiv.append(loadingAnim1, loadingAnim2, loadingAnim3);
   form.append(input, loadingAnimDiv);
   search.append(form, cityList);
 
   return search;
-}
+};
