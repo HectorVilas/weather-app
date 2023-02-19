@@ -2,9 +2,11 @@ import { domSearch } from "./domSearch";
 import { domCitiesList } from "./domCitiesList";
 
 let previousSearch;
+
 export function loadUi(){
   const body = document.querySelector("body");
   let keydownTimeout;
+  const timeoutDelay = 500;
 
   body.append(domSearch());
 
@@ -23,11 +25,12 @@ export function loadUi(){
     clearTimeout(keydownTimeout);
     keydownTimeout = setTimeout(() => {
       searchCity(searchInput.value);
-    }, 750);
+    }, timeoutDelay);
   });
 };
 
 async function searchCity(search){
+  console.log(1);
   const searchInput = document.querySelector(".search-input");
   const cityList = document.querySelector(".search-results");
   const loadingIcon = document.querySelector(".search-loading");
