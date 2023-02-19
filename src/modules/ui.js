@@ -1,4 +1,4 @@
-import { domSearch } from "./dom/search";
+import { search } from "./dom/search";
 import { searchCity } from "./functions/searchCity";
 
 export function loadUi(){
@@ -6,7 +6,7 @@ export function loadUi(){
   let keydownTimeout;
   const timeoutDelay = 500;
 
-  body.append(domSearch());
+  body.append(search());
 
   const form = document.querySelector(".search-form");
   form.addEventListener("submit", (e) => {

@@ -1,4 +1,4 @@
-export function domSearch(){
+export function search(){
   const search = document.createElement("section");
   const form = document.createElement("form");
   const input = document.createElement("input");
