@@ -3,7 +3,7 @@
   --max-flag-size: 2.75rem;
 }
 
-.location-search {
+.city-search {
   position: absolute;
   isolation: isolate;
   left: 50%;

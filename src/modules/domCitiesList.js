@@ -4,24 +4,24 @@ import { getName } from "country-list";
 
 export async function domCitiesList(search){
   const list = document.createElement("div");
-  const locations = await fetchGeocoding(search);
+  const cities = await fetchGeocoding(search);
   
-  if(locations.length == 0) {
+  if(cities.length == 0) {
     const empty = document.createElement("div");
     return empty;
   };
   
-  locations.forEach(location => {
+  cities.forEach(city => {
     const searchResult = document.createElement("div");
     const flag = document.createElement("p");
     const place = document.createElement("p");
 
     searchResult.classList.add("search-result");
-    searchResult.dataset.latitude = location.lat;
-    searchResult.dataset.longitude = location.lon;
+    searchResult.dataset.latitude = city.lat;
+    searchResult.dataset.longitude = city.lon;
     flag.classList.add("country-flag");
-    flag.innerText = countryCodeEmoji(location.country);
-    place.innerText = `${location.name}, ${location.state ? location.state + ", " : ""} ${getName(location.country)}`;
+    flag.innerText = countryCodeEmoji(city.country);
+    place.innerText = `${city.name}, ${city.state ? city.state + ", " : ""} ${getName(city.country)}`;
 
     searchResult.append(flag, place);
     list.append(searchResult);

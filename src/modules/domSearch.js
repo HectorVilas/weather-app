@@ -8,7 +8,7 @@ export function domSearch(){
   const loadingAnim2 = document.createElement("div");
   const loadingAnim3 = document.createElement("div");
   
-  search.classList.add("location-search");
+  search.classList.add("city-search");
   form.classList.add("search-form");
   cityList.classList.add("search-results");
   loadingAnimDiv.classList.add("search-loading", "hidden");
