@@ -1,4 +1,5 @@
 import { domCitiesList } from "../dom/citiesList";
+import { fetchWeather } from "../fetch";
 
 let previousSearch;
 
@@ -22,8 +23,24 @@ export async function searchCity(search){
 
   const domList = document.querySelectorAll(".search-result");
   domList.forEach(city => {
-    city.addEventListener("click", () => {
-      console.log(city.dataset.latitude, city.dataset.longitude);
+    city.addEventListener("click", async () => {
+      cityList.replaceChildren();
+      const latitude = city.dataset.latitude;
+      const longitude = city.dataset.longitude;
+      const weather = await fetchWeather(latitude, longitude);
+      const hour = new Date().getHours();
+      console.log(
+        "\ntime: " + weather.hourly.time[hour],
+        "\ntemperature_2m: " + weather.hourly.temperature_2m[hour],
+        "\nrelativehumidity_2m: " + weather.hourly.relativehumidity_2m[hour],
+        "\napparent_temperature: " + weather.hourly.apparent_temperature[hour],
+        "\nprecipitation: " + weather.hourly.precipitation[hour],
+        "\nweathercode: " + weather.hourly.weathercode[hour],
+        "\ncloudcover: " + weather.hourly.cloudcover[hour],
+        "\nvisibility: " + weather.hourly.visibility[hour],
+        "\nwindspeed_10m: " + weather.hourly.windspeed_10m[hour],
+        "\nwinddirection_10m: " + weather.hourly.winddirection_10m[hour],
+        );
     });
   });
 };
