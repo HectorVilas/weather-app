@@ -28,19 +28,12 @@ export default async function searchCity(search) {
       const { latitude } = city.dataset;
       const { longitude } = city.dataset;
       const weather = await fetchWeather(latitude, longitude);
-      const hour = new Date().getHours();
       // eslint-disable-next-line no-console
       console.log(
-        `\ntime: ${weather.hourly.time[hour]}`,
-        `\ntemperature_2m: ${weather.hourly.temperature_2m[hour]}`,
-        `\nrelativehumidity_2m: ${weather.hourly.relativehumidity_2m[hour]}`,
-        `\napparent_temperature: ${weather.hourly.apparent_temperature[hour]}`,
-        `\nprecipitation: ${weather.hourly.precipitation[hour]}`,
-        `\nweathercode: ${weather.hourly.weathercode[hour]}`,
-        `\ncloudcover: ${weather.hourly.cloudcover[hour]}`,
-        `\nvisibility: ${weather.hourly.visibility[hour]}`,
-        `\nwindspeed_10m: ${weather.hourly.windspeed_10m[hour]}`,
-        `\nwinddirection_10m: ${weather.hourly.winddirection_10m[hour]}`,
+        `\ntemperature: ${weather.current_weather.temperature}`,
+        `\nwindspeed: ${weather.current_weather.windspeed}`,
+        `\nwinddirection: ${weather.current_weather.winddirection}`,
+        `\nweathercode: ${weather.current_weather.weathercode}`,
       );
     });
   });
