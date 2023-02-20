@@ -44,7 +44,7 @@
   padding-bottom: calc(.25rem + var(--radious));
   padding-left: .75rem;
   border: none;
-  border-radius: var(--radious);
+  border-radius: 0 var(--radious) 0 var(--radious);
   transition: background-size 300ms, background-position 300ms;
 }
 .search-input:focus {
@@ -65,7 +65,6 @@
   max-height: 550px;
   overflow-y: auto;
   font-size: 1.5rem;
-  border-radius: 0 0 var(--radious) var(--radious);
   scrollbar-width: thin;
 }
 
@@ -88,7 +87,7 @@
   border-bottom: 1px solid white;
 }
 .search-result:last-child {
-  border-radius: 0 0 var(--radious) var(--radious);
+  border-radius: 0 0 0 var(--radious);
 }
 .search-result p {
   margin: 5px;
