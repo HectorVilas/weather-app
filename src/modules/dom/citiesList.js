@@ -1,12 +1,12 @@
 import { countryCodeEmoji } from 'country-code-emoji';
-import { getName } from 'country-list';
 import { fetchGeocoding } from '../fetch';
 
 export default async function domCitiesList(search) {
   const list = document.createElement('div');
-  const cities = await fetchGeocoding(search);
+  const response = await fetchGeocoding(search);
+  const cities = response.results;
 
-  if (cities.length === 0) {
+  if (!cities) {
     const empty = document.createElement('div');
     return empty;
   }
@@ -20,8 +20,8 @@ export default async function domCitiesList(search) {
     searchResult.dataset.latitude = city.lat;
     searchResult.dataset.longitude = city.lon;
     flag.classList.add('country-flag');
-    flag.innerText = countryCodeEmoji(city.country);
-    place.innerText = `${city.name}, ${city.state ? `${city.state}, ` : ''} ${getName(city.country)}`;
+    flag.innerText = countryCodeEmoji(city.country_code);
+    place.innerText = `${city.name}, ${city.admin3 ? `${city.admin3}, ` : ''}${city.admin2 ? `${city.admin2}, ` : ''}${city.admin1 ? `${city.admin1}, ` : ''} ${city.country}`;
 
     searchResult.append(flag, place);
     list.append(searchResult);
