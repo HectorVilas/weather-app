@@ -1,27 +1,27 @@
-import { getApiKey } from "./apiKeys";
+import getApiKey from './apiKeys';
 
-export async function fetchWeather(latitude, longitude, timezone = "auto"){
+export async function fetchWeather(latitude, longitude, timezone = 'auto') {
+  let responseJson;
   try {
     const apiResponse = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation,weathercode,cloudcover,visibility,windspeed_10m,winddirection_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_sum,precipitation_hours,windspeed_10m_max,winddirection_10m_dominant&timezone=${timezone}&current_weather=true`);
-    const responseJson = await apiResponse.json();
-    
-    return responseJson;
-  } catch(err) {
-    console.warn("Something went wrong: \n" + err)
+    responseJson = await apiResponse.json();
+  } catch (err) {
+    responseJson = `Something went wrong: \n${err}`;
   }
+  return responseJson;
 }
 
-export async function fetchGeocoding(location){
-  if(!location.length) return [];
-  
+export async function fetchGeocoding(location) {
+  if (!location.length) return [];
+  let responseJson;
+
   try {
     const locationsLimit = 10;
     const apiKey = getApiKey.openWeatherMap();
     const apiResponse = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=${locationsLimit}&appid=${apiKey}`);
-    const responseJson = await apiResponse.json();
-  
-    return responseJson;
-  } catch(err) {
-    console.warn("Something went wrong: \n" + err);
+    responseJson = await apiResponse.json();
+  } catch (err) {
+    responseJson = `Something went wrong: \n${err}`;
   }
+  return responseJson;
 }

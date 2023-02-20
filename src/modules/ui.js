@@ -1,6 +1,6 @@
-import { search } from "./dom/search";
+import search from './dom/search';
 
-export function loadUi(){
-  const body = document.querySelector("body");
+export default function loadUi() {
+  const body = document.querySelector('body');
   body.append(search());
-};
+}
