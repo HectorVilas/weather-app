@@ -68,7 +68,8 @@
   scrollbar-width: thin;
 }
 
-.search-result {
+.search-result,
+.search-result-empty {
   display: grid;
   background-color: white;
   grid-template-columns: calc(var(--max-flag-size) * 1.25) 1fr;
@@ -76,8 +77,10 @@
   min-height: calc(var(--max-flag-size) + 20px);
   align-items: center;
   color: #555;
-  cursor: pointer;
   user-select: none;
+}
+.search-result {
+  cursor: pointer;
 }
 .search-result:hover {
   color: black;
@@ -96,6 +99,7 @@
 .country-flag {
   text-align: center;
   font-size: var(--flag-size);
+  text-align: center;
 }
 .search-result:hover .country-flag {
   font-size: var(--max-flag-size);
