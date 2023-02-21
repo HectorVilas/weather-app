@@ -11,7 +11,7 @@ export default async function domCitiesList(search) {
     const noFlagIcon = document.createElement('p');
     const para = document.createElement('p');
     noResults.classList.add('search-result-empty');
-    noFlagIcon.classList.add('country-flag');
+    noFlagIcon.classList.add('country-flag-none');
     noFlagIcon.innerText = '⚠️';
     para.innerText = 'No location found.';
 
