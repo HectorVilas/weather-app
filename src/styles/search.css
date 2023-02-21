@@ -96,10 +96,13 @@
   margin: 5px;
 }
 
+.country-flag,
+.country-flag-none {
+  text-align: center;
+  text-align: center;
+}
 .country-flag {
-  text-align: center;
   font-size: var(--flag-size);
-  text-align: center;
 }
 .search-result:hover .country-flag {
   font-size: var(--max-flag-size);
