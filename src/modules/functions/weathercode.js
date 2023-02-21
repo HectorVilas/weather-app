@@ -2,60 +2,141 @@ export default function getWeathercode(requestedCode) {
   // source: https://open-meteo.com/en/docs
   const codes = [
     {
-      codes: [0],
-      quote: 'Clear sky',
+      code: 0,
+      weather: 'clear sky',
     },
     {
-      codes: [1, 2, 3],
-      quote: 'Mainly clear, partly cloudy, and overcast',
+      code: 1,
+      weather: 'mainly clear',
     },
     {
-      codes: [45, 48],
-      quote: 'Fog and depositing rime fog',
+      code: 2,
+      weather: 'partly cloudy',
     },
     {
-      codes: [51, 53, 55],
-      quote: 'Drizzle: Light, moderate, and dense intensity',
+      code: 3,
+      weather: 'overcast',
     },
     {
-      codes: [56, 57],
-      quote: 'Freezing Drizzle: Light and dense intensity',
+      code: 45,
+      weather: 'fog',
     },
     {
-      codes: [61, 63, 65],
-      quote: 'Rain: Slight, moderate and heavy intensity',
+      code: 48,
+      weather: 'depositing rime fog',
     },
     {
-      codes: [66, 67],
-      quote: 'Freezing Rain: Light and heavy intensity',
+      code: 51,
+      weather: 'drizzle',
+      intensity: 'light',
     },
     {
-      codes: [71, 73, 75],
-      quote: 'Snow fall: Slight, moderate, and heavy intensity',
+      code: 53,
+      weather: 'drizzle',
+      intensity: 'moderate',
     },
     {
-      codes: [77],
-      quote: 'Snow grains',
+      code: 55,
+      weather: 'drizzle',
+      intensity: 'dense',
     },
     {
-      codes: [80, 81, 82],
-      quote: 'Rain showers: Slight, moderate, and violent',
+      code: 56,
+      weather: 'freezing drizzle',
+      intensity: 'light',
     },
     {
-      codes: [85, 86],
-      quote: 'Snow showers slight and heavy',
+      code: 57,
+      weather: 'freezing drizzle',
+      intensity: 'dense',
     },
     {
-      codes: [95],
-      quote: 'Thunderstorm: Slight or moderate',
+      code: 61,
+      weather: 'rain',
+      intensity: 'slight',
     },
     {
-      codes: [96, 99],
-      quote: 'Thunderstorm with slight and heavy hail',
+      code: 63,
+      weather: 'rain',
+      intensity: 'moderate',
+    },
+    {
+      code: 65,
+      weather: 'rain',
+      intensity: 'heavy',
+    },
+    {
+      code: 66,
+      weather: 'freezing rain',
+      intensity: 'light',
+    },
+    {
+      code: 67,
+      weather: 'freezing rain',
+      intensity: 'heavy',
+    },
+    {
+      code: 71,
+      weather: 'snow fall',
+      intensity: 'slight',
+    },
+    {
+      code: 73,
+      weather: 'snow fall',
+      intensity: 'moderate',
+    },
+    {
+      code: 75,
+      weather: 'snow fall',
+      intensity: 'heavy',
+    },
+    {
+      code: 77,
+      weather: 'snow grains',
+    },
+    {
+      code: 80,
+      weather: 'rain showers',
+      intensity: 'slight',
+    },
+    {
+      code: 81,
+      weather: 'rain showers',
+      intensity: 'moderate',
+    },
+    {
+      code: 82,
+      weather: 'rain showers',
+      intensity: 'violent',
+    },
+    {
+      code: 85,
+      weather: 'snow showers',
+      intensity: 'slight',
+    },
+    {
+      code: 86,
+      weather: 'snow showers',
+      intensity: 'heavy',
+    },
+    {
+      code: 95,
+      weather: 'thunderstorm',
+      intensity: 'slight or moderate',
+    },
+    {
+      code: 96,
+      weather: 'thunderstorm',
+      intensity: 'slight hail',
+    },
+    {
+      code: 99,
+      weather: 'thunderstorm',
+      intensity: 'heavy hail',
     },
   ];
 
-  const requested = codes.findIndex((item) => item.codes.includes(requestedCode));
+  const requested = codes.findIndex((item) => item.code === requestedCode);
 
   return codes[requested];
 }
