@@ -5,7 +5,7 @@ export default function weatherCurrent() {
   const tempCurrent = document.createElement('p');
   const tempUnit = document.createElement('input');
   const apparentTemp = document.createElement('p');
-  const windSpeedDiv = document.createElement('div');
+  const windDiv = document.createElement('div');
   const windSpeed = document.createElement('p');
   const windSpeedUnit = document.createElement('input');
   const windSpeedDirection = document.createElement('div');
@@ -17,15 +17,15 @@ export default function weatherCurrent() {
   tempUnit.classList.add('temp-unit');
   tempUnit.type = 'checkbox';
   apparentTemp.classList.add('temp-apparent');
-  windSpeedDiv.classList.add('wind-speed-div');
+  windDiv.classList.add('wind-div');
   windSpeed.classList.add('wind-speed');
   windSpeedUnit.classList.add('speed-unit');
   windSpeedUnit.type = 'checkbox';
   windSpeedDirection.classList.add('wind-direction');
 
   tempDiv.append(tempCurrent, tempUnit, apparentTemp);
-  windSpeedDiv.append(windSpeed, windSpeedUnit, windSpeedDirection);
-  section.append(icon, tempDiv, windSpeedDiv);
+  windDiv.append(windSpeed, windSpeedUnit, windSpeedDirection);
+  section.append(icon, tempDiv, windDiv);
 
   return section;
 }
