@@ -1,6 +1,17 @@
 export default function weatherCurrent() {
   const section = document.createElement('section');
 
+  // city
+  const cityDiv = document.createElement('div');
+  const cityPara = document.createElement('p');
+
+  cityDiv.classList.add('city-div');
+  cityPara.classList.add('city-para');
+
+  cityPara.innerText = 'City Name, Country Name';
+
+  cityDiv.append(cityPara);
+
   // icon
   const icon = document.createElement('div');
   section.classList.add('weather-current');
@@ -23,7 +34,6 @@ export default function weatherCurrent() {
   const apparentPara = document.createElement('p');
   const apparentTempSpan = document.createElement('span');
   const apparentTemp = document.createElement('span');
-  const apparentTempUnitSpan = document.createElement('span');
 
   tempDiv.classList.add('temp-div');
   tempCurrent.classList.add('temp-current');
@@ -35,9 +45,8 @@ export default function weatherCurrent() {
   tempCurrent.innerText = '000';
   apparentTempSpan.innerText = 'Feels like: ';
   apparentTemp.innerText = '000';
-  apparentTempUnitSpan.innerText = '°';
 
-  apparentPara.append(apparentTempSpan, apparentTemp, apparentTempUnitSpan);
+  apparentPara.append(apparentTempSpan, apparentTemp);
   tempDiv.append(tempCurrent, tempUnit, apparentPara);
 
   // humidity div
@@ -71,7 +80,7 @@ export default function weatherCurrent() {
   windSpeedDirection.classList.add('wind-direction');
 
   windDiv.append(windSpeed, windSpeedUnit, windSpeedDirection);
-  section.append(icon, weathercodeDiv, tempDiv, humidityDiv, windDiv);
+  section.append(cityDiv, icon, weathercodeDiv, tempDiv, humidityDiv, windDiv);
 
   return section;
 }
