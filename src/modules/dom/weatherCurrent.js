@@ -15,7 +15,7 @@ export default function weatherCurrent() {
   // icon
   const icon = document.createElement('div');
   section.classList.add('weather-current');
-  icon.classList.add('icon');
+  icon.classList.add('weather-current-icon');
 
   // weathercode div
   const weathercodeDiv = document.createElement('div');
@@ -51,35 +51,47 @@ export default function weatherCurrent() {
 
   // humidity div
   const humidityDiv = document.createElement('div');
-  const humidityPara = document.createElement('p');
-  const humidityText = document.createElement('span');
-  const humidity = document.createElement('span');
-  const humidityPercent = document.createElement('span');
+  const humidityTitle = document.createElement('p');
+  const humidityGauge = document.createElement('div');
+  const humidity = document.createElement('p');
 
   humidityDiv.classList.add('humidity-div');
-  humidityPara.classList.add('humidity-para');
+  humidityTitle.classList.add('humidity-title');
+  humidityGauge.classList.add('humidity-gauge');
   humidity.classList.add('humidity');
 
-  humidityText.innerText = 'Humidity: ';
+  humidityTitle.innerText = 'Humidity %';
   humidity.innerText = '000';
-  humidityPercent.innerText = '%';
 
-  humidityPara.append(humidityText, humidity, humidityPercent);
-  humidityDiv.append(humidityPara);
+  humidityGauge.append(humidity);
+  humidityDiv.append(humidityGauge, humidityTitle);
 
   // wind div
   const windDiv = document.createElement('div');
+  const windTitleDiv = document.createElement('div');
+  const windTitle = document.createElement('p');
+  const windGauge = document.createElement('div');
   const windSpeed = document.createElement('p');
   const windSpeedUnit = document.createElement('input');
   const windSpeedDirection = document.createElement('div');
 
   windDiv.classList.add('wind-div');
+  windTitleDiv.classList.add('wind-title-div');
+  windTitle.classList.add('wind-title');
+  windGauge.classList.add('wind-gauge');
   windSpeed.classList.add('wind-speed');
-  windSpeedUnit.classList.add('speed-unit');
+  windSpeedUnit.classList.add('wind-speed-unit');
   windSpeedUnit.type = 'checkbox';
   windSpeedDirection.classList.add('wind-direction');
 
-  windDiv.append(windSpeed, windSpeedUnit, windSpeedDirection);
+  windTitle.innerText = 'Max wind';
+  windSpeed.innerText = '00';
+
+  windTitleDiv.append(windTitle, windSpeedUnit);
+  windGauge.append(windSpeed, windSpeedDirection);
+  windDiv.append(windGauge, windTitleDiv);
+
+  // append everything
   section.append(cityDiv, icon, weathercodeDiv, tempDiv, humidityDiv, windDiv);
 
   return section;
