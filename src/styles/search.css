@@ -90,7 +90,8 @@
 .search-result:not(:last-child) {
   border-bottom: 1px solid white;
 }
-.search-result:last-child {
+.search-result:last-child,
+.search-result-empty {
   border-radius: 0 0 0 var(--radious);
 }
 .search-result p {
