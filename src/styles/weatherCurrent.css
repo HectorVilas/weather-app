@@ -72,7 +72,7 @@
   font-weight: 800;
 }
 
-.temp-unit {
+.gauge-unit {
   grid-area: unit;
   position: relative;
   align-self: center;
@@ -84,35 +84,48 @@
   overflow: hidden;
   appearance: none;
 }
-.temp-unit:hover {
+.gauge-unit:hover {
   --line-width: 4px;
   background: linear-gradient(to top, blue var(--line-width), transparent var(--line-width));
 }
-.temp-unit::before,
-.temp-unit::after {
+.gauge-unit::before,
+.gauge-unit::after {
   position: absolute;
   left: 0;
   inset: 0;
   transition: top 200ms ease-in-out;
 }
-.temp-unit::before {
+.gauge-unit::before {
   content: "°F";
   top: 100%;
 }
-.temp-unit::after {
+.gauge-unit::after {
   content: "°C";
   top: 0;
 }
-.temp-unit:checked::before {
+.gauge-unit:checked::before {
   top: 0;
 }
-.temp-unit:checked::after {
+.gauge-unit:checked::after {
   top: 100%
 }
 
-.temp-apparent-para {
+.temp-apparent-div {
   grid-area: feel;
   font-size: 1.25rem;
+  display: flex;
+}
+
+.temp-apparent {
+  padding-left: 5px;
+}
+
+.gauge-unit-apparent {
+  grid-area: unset;
+  width: 1.25rem;
+  height: 1rem;
+  font-size: 1rem;
+  justify-self: left;
 }
 
 /* humidity */
