@@ -1,4 +1,5 @@
 export default function updateCurrentWeather(data) {
+  const element = document.querySelector('.weather-current ');
   const city = document.querySelector('.city-para');
   const icon = document.querySelector('.weather-current-icon');
   const weathercode = document.querySelector('.weathercode-para');
@@ -9,11 +10,10 @@ export default function updateCurrentWeather(data) {
   const windSpeed = document.querySelector('.wind-speed');
   const windDirection = document.querySelector('.wind-direction');
 
-  // eslint-disable-next-line no-console
-  console.log(data);
+  element.classList.remove('invisible');
   city.innerText = data.city;
   // image will be defined by other module
-  icon.style.backgroundImage = 'url(#)';
+  icon.style.backgroundImage = 'url(../media/images/placeholder.png)';
   weathercode.innerText = `${data.weathercode.weather}${data.weathercode.intensity ? `, ${data.weathercode.intensity}` : ''}`;
   temp.innerText = data.temp;
   tempApparent.innerText = data.tempApparent;
