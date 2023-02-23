@@ -74,11 +74,40 @@
 
 .temp-unit {
   grid-area: unit;
-  outline: 5px solid greenyellow;
+  position: relative;
   align-self: center;
   justify-self: left;
-  width: 1rem;
-  height: 1rem;
+  width: 5rem;
+  height: 4.5rem;
+  font-size: 4rem;
+  cursor: pointer;
+  overflow: hidden;
+  appearance: none;
+}
+.temp-unit:hover {
+  --line-width: 4px;
+  background: linear-gradient(to top, blue var(--line-width), transparent var(--line-width));
+}
+.temp-unit::before,
+.temp-unit::after {
+  position: absolute;
+  left: 0;
+  inset: 0;
+  transition: top 200ms ease-in-out;
+}
+.temp-unit::before {
+  content: "°F";
+  top: 100%;
+}
+.temp-unit::after {
+  content: "°C";
+  top: 0;
+}
+.temp-unit:checked::before {
+  top: 0;
+}
+.temp-unit:checked::after {
+  top: 100%
 }
 
 .temp-apparent-para {
