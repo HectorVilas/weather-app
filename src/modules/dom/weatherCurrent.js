@@ -31,23 +31,26 @@ export default function weatherCurrent() {
   const tempDiv = document.createElement('div');
   const tempCurrent = document.createElement('p');
   const tempUnit = document.createElement('input');
-  const apparentPara = document.createElement('p');
-  const apparentTempSpan = document.createElement('span');
-  const apparentTemp = document.createElement('span');
+  const apparentParaDiv = document.createElement('div');
+  const apparentTempPara = document.createElement('p');
+  const apparentTemp = document.createElement('p');
+  const apparentUnit = document.createElement('input');
 
   tempDiv.classList.add('temp-div');
   tempCurrent.classList.add('temp-current');
-  tempUnit.classList.add('temp-unit');
+  tempUnit.classList.add('gauge-unit');
   tempUnit.type = 'checkbox';
-  apparentPara.classList.add('temp-apparent-para');
+  apparentUnit.type = 'checkbox';
+  apparentParaDiv.classList.add('temp-apparent-div');
   apparentTemp.classList.add('temp-apparent');
+  apparentUnit.classList.add('gauge-unit', 'gauge-unit-apparent');
 
   tempCurrent.innerText = '000';
-  apparentTempSpan.innerText = 'Feels like: ';
+  apparentTempPara.innerText = 'Feels like: ';
   apparentTemp.innerText = '000';
 
-  apparentPara.append(apparentTempSpan, apparentTemp);
-  tempDiv.append(tempCurrent, tempUnit, apparentPara);
+  apparentParaDiv.append(apparentTempPara, apparentTemp, apparentUnit);
+  tempDiv.append(tempCurrent, tempUnit, apparentParaDiv);
 
   // humidity div
   const humidityDiv = document.createElement('div');
