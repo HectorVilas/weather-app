@@ -14,7 +14,7 @@ export default function weatherCurrent() {
 
   // icon
   const icon = document.createElement('div');
-  section.classList.add('weather-current');
+  section.classList.add('weather-current', 'invisible');
   icon.classList.add('weather-current-icon');
 
   // weathercode div
