@@ -38,12 +38,12 @@ export default function weatherCurrent() {
 
   tempDiv.classList.add('temp-div');
   tempCurrent.classList.add('temp-current');
-  tempUnit.classList.add('gauge-unit');
+  tempUnit.classList.add('gauge-unit', 'temperature-unit');
   tempUnit.type = 'checkbox';
   apparentUnit.type = 'checkbox';
   apparentParaDiv.classList.add('temp-apparent-div');
   apparentTemp.classList.add('temp-apparent');
-  apparentUnit.classList.add('gauge-unit', 'gauge-unit-apparent');
+  apparentUnit.classList.add('gauge-unit', 'temperature-unit', 'gauge-unit-apparent');
 
   tempCurrent.innerText = '000';
   apparentTempPara.innerText = 'Feels like: ';
@@ -83,7 +83,7 @@ export default function weatherCurrent() {
   windTitle.classList.add('wind-title');
   windGauge.classList.add('wind-gauge');
   windSpeed.classList.add('wind-speed');
-  windSpeedUnit.classList.add('wind-speed-unit');
+  windSpeedUnit.classList.add('gauge-unit', 'wind-speed-unit');
   windSpeedUnit.type = 'checkbox';
   windSpeedDirection.classList.add('wind-direction');
 
