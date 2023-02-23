@@ -72,62 +72,6 @@
   font-weight: 800;
 }
 
-.gauge-unit {
-  grid-area: unit;
-  position: relative;
-  align-self: center;
-  justify-self: left;
-  width: 5rem;
-  height: 4.5rem;
-  font-size: 4rem;
-  cursor: pointer;
-  overflow: hidden;
-  appearance: none;
-}
-.gauge-unit:hover {
-  --line-width: 4px;
-  background: linear-gradient(to top, blue var(--line-width), transparent var(--line-width));
-}
-.gauge-unit::before,
-.gauge-unit::after {
-  position: absolute;
-  left: 0;
-  inset: 0;
-  transition: top 200ms ease-in-out;
-}
-.gauge-unit::before {
-  content: "°F";
-  top: 100%;
-}
-.gauge-unit::after {
-  content: "°C";
-  top: 0;
-}
-.gauge-unit:checked::before {
-  top: 0;
-}
-.gauge-unit:checked::after {
-  top: 100%
-}
-
-.temp-apparent-div {
-  grid-area: feel;
-  font-size: 1.25rem;
-  display: flex;
-}
-
-.temp-apparent {
-  padding-left: 5px;
-}
-
-.gauge-unit-apparent {
-  grid-area: unset;
-  width: 1.25rem;
-  height: 1rem;
-  font-size: 1rem;
-  justify-self: left;
-}
-
 /* humidity */
 
 .humidity-div {
@@ -186,10 +130,6 @@
   font-size: 4rem;
 }
 
-.wind-speed-unit{
-  outline: 5px solid greenyellow;
-}
-
 .wind-direction {
   position: absolute;
   z-index: -1;
@@ -210,4 +150,81 @@
 
 .wind-title {
   font-size: 1.25rem;
+}
+
+/* for units */
+
+.gauge-unit {
+  grid-area: unit;
+  position: relative;
+  align-self: center;
+  justify-self: left;
+  width: 5rem;
+  height: 4.5rem;
+  font-size: 4rem;
+  cursor: pointer;
+  overflow: hidden;
+  appearance: none;
+}
+.gauge-unit:hover {
+  --line-width: 4px;
+  background: linear-gradient(to top, blue var(--line-width), transparent var(--line-width));
+}
+.gauge-unit::before,
+.gauge-unit::after {
+  position: absolute;
+  left: 0;
+  inset: 0;
+  transition: top 200ms ease-in-out;
+}
+.gauge-unit::before {
+  /* content: "°F"; */
+  top: 100%;
+}
+.gauge-unit::after {
+  /* content: "°C"; */
+  top: 0;
+}
+.gauge-unit:checked::before {
+  top: 0;
+}
+.gauge-unit:checked::after {
+  top: 100%
+}
+
+.temp-apparent-div {
+  grid-area: feel;
+  font-size: 1.25rem;
+  display: flex;
+}
+
+.temp-apparent {
+  padding-left: 5px;
+}
+
+.gauge-unit-apparent {
+  grid-area: unset;
+  width: 1.25rem;
+  height: 1rem;
+  font-size: 1rem;
+  justify-self: left;
+}
+
+.gauge-unit.temperature-unit::before {
+  content: "°F";
+}
+.gauge-unit.temperature-unit::after {
+  content: "°C";
+}
+
+.wind-speed-unit{
+  width: 2.25rem;
+  height: 1.25rem;
+  font-size: 1rem;
+}
+.gauge-unit.wind-speed-unit::before {
+  content: "mph";
+}
+.gauge-unit.wind-speed-unit::after {
+  content: "km/h";
 }
