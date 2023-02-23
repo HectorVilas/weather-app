@@ -1,5 +1,7 @@
 import domCitiesList from '../dom/citiesList';
 import { fetchWeather } from '../fetch';
+import updateCurrentWeather from './updateCurrentWeather';
+import getWeathercode from './weathercode';
 
 let previousSearch;
 
@@ -28,13 +30,24 @@ export default async function searchCity(search) {
       const { latitude } = city.dataset;
       const { longitude } = city.dataset;
       const weather = await fetchWeather(latitude, longitude);
-      // eslint-disable-next-line no-console
-      console.log(
-        `\ntemperature: ${weather.current_weather.temperature}`,
-        `\nwindspeed: ${weather.current_weather.windspeed}`,
-        `\nwinddirection: ${weather.current_weather.winddirection}`,
-        `\nweathercode: ${weather.current_weather.weathercode}`,
-      );
+      const currentHour = new Date().getHours();
+      hideSearch();
+      updateCurrentWeather({
+        city: city.dataset.location,
+        weathercode: getWeathercode(weather.current_weather.weathercode),
+        temp: weather.current_weather.temperature,
+        tempApparent: weather.hourly.apparent_temperature[currentHour],
+        humidity: weather.hourly.relativehumidity_2m[currentHour],
+        windSpeed: weather.current_weather.windspeed,
+        windDirection: weather.current_weather.winddirection,
+      });
     });
   });
+}
+
+function hideSearch() {
+  const search = document.querySelector('.city-search');
+  search.classList.add('hidden');
+  // clear results after hiding
+  domCitiesList('');
 }
