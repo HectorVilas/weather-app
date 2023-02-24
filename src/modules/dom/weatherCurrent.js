@@ -56,17 +56,19 @@ export default function weatherCurrent() {
   const humidityDiv = document.createElement('div');
   const humidityTitle = document.createElement('p');
   const humidityGauge = document.createElement('div');
+  const humidityGaugePercent = document.createElement('div');
   const humidity = document.createElement('p');
 
   humidityDiv.classList.add('humidity-div');
   humidityTitle.classList.add('humidity-title');
   humidityGauge.classList.add('humidity-gauge');
+  humidityGaugePercent.classList.add('humidity-gauge-percent');
   humidity.classList.add('humidity');
 
   humidityTitle.innerText = 'Humidity %';
   humidity.innerText = '000';
 
-  humidityGauge.append(humidity);
+  humidityGauge.append(humidity, humidityGaugePercent);
   humidityDiv.append(humidityGauge, humidityTitle);
 
   // wind div
