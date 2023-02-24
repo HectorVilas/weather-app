@@ -1,6 +1,8 @@
 :root {
   --gauge-border-width: 10px;
   --unit-underline-width: 4px;
+  --compass-color: rgba(50, 50, 255, .10);
+
 }
 
 .weather-current {
@@ -147,6 +149,16 @@
   font-size: 4rem;
 }
 
+.wind-compass {
+  position: absolute;
+  inset: 0;
+  background:
+    url(../media/images/wind-compass.svg) no-repeat,
+    radial-gradient(transparent 60%, var(--compass-color) 61%, var(--compass-color) 69%, transparent 70%);
+  background-size: 100%;
+
+}
+
 .wind-direction {
   position: absolute;
   z-index: -1;
@@ -155,7 +167,7 @@
   width: 100%;
   height: 100%;
   rotate: 0deg;
-  background: radial-gradient(transparent 60%, blue 60%);
+  background: radial-gradient(transparent 60%, rgba(0, 0, 255, .5) 60%);
   mask-image: conic-gradient(red 5%, transparent 5%, transparent 95%, red 95%);
 }
 
