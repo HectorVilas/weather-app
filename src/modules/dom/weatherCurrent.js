@@ -76,6 +76,7 @@ export default function weatherCurrent() {
   const windTitleDiv = document.createElement('div');
   const windTitle = document.createElement('p');
   const windGauge = document.createElement('div');
+  const windCompass = document.createElement('div');
   const windSpeed = document.createElement('p');
   const windSpeedUnit = document.createElement('input');
   const windSpeedDirection = document.createElement('div');
@@ -84,6 +85,7 @@ export default function weatherCurrent() {
   windTitleDiv.classList.add('wind-title-div');
   windTitle.classList.add('wind-title');
   windGauge.classList.add('wind-gauge');
+  windCompass.classList.add('wind-compass');
   windSpeed.classList.add('wind-speed');
   windSpeedUnit.classList.add('gauge-unit', 'wind-speed-unit');
   windSpeedUnit.type = 'checkbox';
@@ -93,7 +95,7 @@ export default function weatherCurrent() {
   windSpeed.innerText = '00';
 
   windTitleDiv.append(windTitle, windSpeedUnit);
-  windGauge.append(windSpeed, windSpeedDirection);
+  windGauge.append(windSpeed, windCompass, windSpeedDirection);
   windDiv.append(windGauge, windTitleDiv);
 
   // append everything
