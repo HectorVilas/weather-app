@@ -186,7 +186,7 @@
 .gauge-unit {
   grid-area: unit;
   position: relative;
-  align-self: center;
+  align-self: baseline;
   justify-self: left;
   width: 5rem;
   height: 4.5rem;
