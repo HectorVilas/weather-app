@@ -6,7 +6,7 @@ export default function updateCurrentWeather(data) {
   const temp = document.querySelector('.temp-current');
   const tempApparent = document.querySelector('.temp-apparent');
   const humidity = document.querySelector('.humidity');
-  const humidityGauge = document.querySelector('.humidity-gauge');
+  const humidityGaugePercent = document.querySelector('.humidity-gauge-percent');
   const windSpeed = document.querySelector('.wind-speed');
   const windDirection = document.querySelector('.wind-direction');
 
@@ -18,7 +18,7 @@ export default function updateCurrentWeather(data) {
   temp.innerText = data.temp;
   tempApparent.innerText = data.tempApparent;
   humidity.innerText = data.humidity;
-  humidityGauge.style.maskImage = `radial-gradient(red 50%, transparent 50%), conic-gradient(red ${data.humidity}%, transparent ${data.humidity}%)`;
+  humidityGaugePercent.style.maskImage = `conic-gradient(red ${data.humidity}%, transparent ${data.humidity}%)`;
   windSpeed.innerText = data.windSpeed;
   windDirection.style.rotate = `${data.windDirection}deg`;
 }
