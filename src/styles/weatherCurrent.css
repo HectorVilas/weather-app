@@ -71,7 +71,7 @@
   grid-area: temp;
   display: grid;
   grid-template-columns: auto 1fr;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto auto;
   grid-template-areas:
     "curr unit"
     "feel feel";
@@ -79,7 +79,7 @@
 
 .temp-current {
   grid-area: curr;
-  font-size: 5rem;
+  font-size: 4.5rem;
   font-weight: 800;
 }
 
@@ -206,11 +206,9 @@
   transition: top 200ms ease-in-out;
 }
 .gauge-unit::before {
-  /* content: "°F"; */
   top: 100%;
 }
 .gauge-unit::after {
-  /* content: "°C"; */
   top: 0;
 }
 .gauge-unit:checked::before {
@@ -222,7 +220,7 @@
 
 .temp-apparent-div {
   grid-area: feel;
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   display: flex;
 }
 
@@ -232,9 +230,9 @@
 
 .gauge-unit-apparent {
   grid-area: unset;
-  width: 1.25rem;
-  height: 1rem;
-  font-size: 1rem;
+  width: 1.75rem;
+  height: 1.7rem;
+  font-size: 1.40rem;
   justify-self: left;
 }
 
