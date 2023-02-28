@@ -1,3 +1,5 @@
+import weatherIcon from './weatherIcon';
+
 export default function updateCurrentWeather(data) {
   const element = document.querySelector('.weather-current ');
   const city = document.querySelector('.city-para');
@@ -12,8 +14,12 @@ export default function updateCurrentWeather(data) {
 
   element.classList.remove('invisible');
   city.innerText = data.city;
-  // image will be defined by other module
-  icon.style.backgroundImage = 'url(../media/images/placeholder.png)';
+  icon.style.backgroundImage = weatherIcon(
+    data.weathercode.icon,
+    data.localHour,
+    data.sunrise[0],
+    data.sunset[0],
+  );
   weathercode.innerText = `${data.weathercode.weather}${data.weathercode.intensity ? `, ${data.weathercode.intensity}` : ''}`;
   temp.innerText = data.temp;
   tempApparent.innerText = data.tempApparent;
