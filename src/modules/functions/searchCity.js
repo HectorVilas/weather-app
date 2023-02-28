@@ -40,6 +40,9 @@ export default async function searchCity(search) {
         humidity: weather.hourly.relativehumidity_2m[currentHour],
         windSpeed: weather.current_weather.windspeed,
         windDirection: weather.current_weather.winddirection,
+        sunrise: weather.daily.sunrise,
+        sunset: weather.daily.sunset,
+        localHour: weather.current_weather.time,
       });
     });
   });
