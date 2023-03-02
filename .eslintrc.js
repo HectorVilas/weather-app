@@ -13,5 +13,6 @@ module.exports = {
   rules: {
     'linebreak-style': 0,
     'no-use-before-define': 0,
+    'no-param-reassign': 0,
   },
 };
