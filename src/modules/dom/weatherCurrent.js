@@ -45,6 +45,10 @@ export default function weatherCurrent() {
   apparentTemp.classList.add('temp-apparent');
   apparentUnit.classList.add('gauge-unit', 'temperature-unit', 'gauge-unit-apparent');
 
+  const unitsElements = [tempUnit, apparentUnit];
+  unitsElements.forEach((element) => element.addEventListener('change', changeUnits));
+  // tempUnit.addEventListener('change', changeUnits);
+
   tempCurrent.innerText = '000';
   apparentTempPara.innerText = 'Feels like: ';
   apparentTemp.innerText = '000';
@@ -94,6 +98,8 @@ export default function weatherCurrent() {
   windTitle.innerText = 'Max wind';
   windSpeed.innerText = '00';
 
+  windSpeedUnit.addEventListener('change', changeUnits);
+
   windTitleDiv.append(windTitle, windSpeedUnit);
   windGauge.append(windSpeed, windCompass, windSpeedDirection);
   windDiv.append(windGauge, windTitleDiv);
@@ -102,4 +108,14 @@ export default function weatherCurrent() {
   section.append(cityDiv, icon, weathercodeDiv, tempDiv, humidityDiv, windDiv);
 
   return section;
+}
+
+function changeUnits(e) {
+  const newValue = e.target.checked;
+  const thisClass = e.target.className.includes('temperature-unit')
+    ? '.temperature-unit' : '.wind-speed-unit';
+  const tempUnits = document.querySelectorAll(thisClass);
+  tempUnits.forEach((unit) => {
+    unit.checked = newValue;
+  });
 }
