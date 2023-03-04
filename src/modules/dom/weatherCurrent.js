@@ -37,12 +37,12 @@ export default function weatherCurrent() {
   const apparentUnit = document.createElement('input');
 
   tempDiv.classList.add('temp-div');
-  tempCurrent.classList.add('temp-current');
+  tempCurrent.classList.add('temp-current', 'temperature-number');
   tempUnit.classList.add('gauge-unit', 'temperature-unit');
   tempUnit.type = 'checkbox';
   apparentUnit.type = 'checkbox';
   apparentParaDiv.classList.add('temp-apparent-div');
-  apparentTemp.classList.add('temp-apparent');
+  apparentTemp.classList.add('temp-apparent', 'temperature-number');
   apparentUnit.classList.add('gauge-unit', 'temperature-unit', 'gauge-unit-apparent');
 
   const unitsElements = [tempUnit, apparentUnit];
@@ -90,7 +90,7 @@ export default function weatherCurrent() {
   windTitle.classList.add('wind-title');
   windGauge.classList.add('wind-gauge');
   windCompass.classList.add('wind-compass');
-  windSpeed.classList.add('wind-speed');
+  windSpeed.classList.add('wind-speed', 'speed-number');
   windSpeedUnit.classList.add('gauge-unit', 'wind-speed-unit');
   windSpeedUnit.type = 'checkbox';
   windSpeedDirection.classList.add('wind-direction');
@@ -112,10 +112,22 @@ export default function weatherCurrent() {
 
 function changeUnits(e) {
   const newValue = e.target.checked;
-  const thisClass = e.target.className.includes('temperature-unit')
+  const unitsClass = e.target.className.includes('temperature-unit')
     ? '.temperature-unit' : '.wind-speed-unit';
-  const tempUnits = document.querySelectorAll(thisClass);
-  tempUnits.forEach((unit) => {
+  const valuesClass = unitsClass === '.temperature-unit'
+    ? '.temperature-number' : '.speed-number';
+  // change the rest of the units
+  const units = document.querySelectorAll(unitsClass);
+  units.forEach((unit) => {
     unit.checked = newValue;
+  });
+  // change the related values
+  const values = document.querySelectorAll(valuesClass);
+  values.forEach((number) => {
+    if (valuesClass === '.temperature-number') {
+      number.innerText = newValue ? number.dataset.fahrenheit : number.dataset.celsius;
+    } else {
+      number.innerText = newValue ? number.dataset.miles : number.dataset.kilometers;
+    }
   });
 }
