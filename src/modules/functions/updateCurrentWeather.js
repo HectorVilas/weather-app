@@ -1,4 +1,5 @@
 import weatherIcon from './weatherIcon';
+import { celsiusToFahrenheit, kilometersToMiles } from './unitConverter';
 
 export default function updateCurrentWeather(data) {
   const element = document.querySelector('.weather-current ');
@@ -22,9 +23,15 @@ export default function updateCurrentWeather(data) {
   );
   weathercode.innerText = `${data.weathercode.weather}${data.weathercode.intensity ? `, ${data.weathercode.intensity}` : ''}`;
   temp.innerText = data.temp;
+  temp.dataset.celsius = data.temp;
+  temp.dataset.fahrenheit = celsiusToFahrenheit(data.temp);
   tempApparent.innerText = data.tempApparent;
+  tempApparent.dataset.celsius = data.tempApparent;
+  tempApparent.dataset.fahrenheit = celsiusToFahrenheit(data.tempApparent);
   humidity.innerText = data.humidity;
   humidityGaugePercent.style.maskImage = `conic-gradient(red ${data.humidity}%, transparent ${data.humidity}%)`;
   windSpeed.innerText = data.windSpeed;
+  windSpeed.dataset.kilometers = data.windSpeed;
+  windSpeed.dataset.miles = kilometersToMiles(data.windSpeed);
   windDirection.style.rotate = `${data.windDirection}deg`;
 }
