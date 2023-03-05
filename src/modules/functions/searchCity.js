@@ -26,6 +26,12 @@ export default async function searchCity(search) {
   const domList = document.querySelectorAll('.search-result');
   domList.forEach((city) => {
     city.addEventListener('click', async () => {
+      // disable and autocomplete input while fetching data
+      searchInput.setAttribute('disabled', true);
+      searchInput.value = city.dataset.location;
+      searchInput.classList.add('loading');
+      loadingIcon.classList.remove('hidden');
+
       cityList.replaceChildren();
       const { latitude } = city.dataset;
       const { longitude } = city.dataset;
