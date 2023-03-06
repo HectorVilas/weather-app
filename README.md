@@ -1,5 +1,5 @@
 # weather-app
-# live: https://hectorvilas.github.io/weather-app/dist/
+# live: https://hectorvilas.github.io/weather-app/
 
 Welcome to my new project! This is [another practice from The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-weather-app). There are only a few requirements for this practice, just let the user input a location and fetch the weather forecast from an API and display any useful data from it on the page in no specific way.
 
@@ -11,10 +11,10 @@ For this project I'm going to use Webpack again. I've been setting everything up
 
 ## requisites
 - ✔️ a way to search for a specific location
-- ⭕ allow Fahrenheit/Celsius toggle
+- ✔️ allow Fahrenheit/Celsius toggle
 - ❌ change the look of the page based on the data (by changing colors or by adding images that describe the weather)
 - ✔️ Write the functions that hit the API. You’re going to want functions that can take a location and return the weather data for that location. For now, just console.log() the information.
-- ❌ write the functions that process the JSON data you’re getting from the API and return an object with only the data you require for your app
+- ⭕ write the functions that process the JSON data you’re getting from the API and return an object with only the data you require for your app
 - ✔️ set up a simple form that will let users input their location and will fetch the weather info
 - ⭕ display the information on your webpage
 - ⭕ optional: add a "loading" component that displays from the time the form is submitted until the information comes back from the API
@@ -32,12 +32,12 @@ For this project I'm going to use Webpack again. I've been setting everything up
 - ❌ the city will be stored on `localStorage`
 - ✔️ a loading icon or message will show while the weather forecast is fetched
   - ⭕ if it fails, the error message from the API will be shown on the page, suggesting trying again or checking the location name
-- ❌ after the weather forecast is received (by search or by finding the previous location on `localStorage`):
+- ⭕ after the weather forecast is received (by search or by finding the previous location on `localStorage`):
   - ⭕ the search bar will be moved to a less distracting place so all the focus is on the weather (or maybe the location name will be clickable to search for another one)
   - ⭕ the basic data will be shown on the center of the page (current temp, humidity, wind speed, etc)
     - ❌ if there's an unit stored on `localStorage`, this unit will be used for temps and speeds
     - ✔️ an icon will represent the current weather
-    - ⭕ the temp will be shown on Celsius, clicking on it will toggle to Fahrenheit
+    - ✔️ the temp will be shown on Celsius, clicking on it will toggle to Fahrenheit
     - ⭕ the same for the wind speed and other values, toggling between km/h and mph
       - ❌ those preferences will be stored on `localStorage`
       - ❌ all the Celcius values on screen will be converted to Fahrenheit
@@ -56,7 +56,7 @@ For this project I'm going to use Webpack again. I've been setting everything up
   - ❓ add "expiration date" so instead of fetching from the API on each refresh, it will render the info from here
     - ❓ if it expired (the duration will depend on how often the weather forecast is updated), a fetch will be done, updating it's data on `localStorage`
   - ❓ if the location is changed, force fetch
-- ✔️ have the sky, clouds, ground and other parts on individual images and combine the relevant ones to form the background
+- ❓ have the sky, clouds, ground and other parts on individual images and combine the relevant ones to form the background
   - ❓ maybe animate the clouds and weather effects and set the sun height depending on the data from the weather forecast
   - ❓ try parallax effect for clouds (or everything on mouseMove)
 - ❓ a paragraph describing the weather forecast
