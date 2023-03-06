@@ -1,0 +1,8 @@
+.weather-daily {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 200px;
+  background-color: rgba(0, 0, 0, .25);
+}
