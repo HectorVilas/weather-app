@@ -4,6 +4,7 @@ export default function dailyCard() {
 
   card.append(
     weatherDiv(),
+    precipitations(),
   );
 
   return card;
@@ -49,6 +50,25 @@ function weatherDiv() {
     tempApparentDiv,
     weatherDescription,
   );
+
+  return div;
+}
+
+function precipitations() {
+  const div = document.createElement('div');
+  const icon = document.createElement('div');
+  const quantity = document.createElement('p');
+  const hours = document.createElement('p');
+
+  div.classList.add('daily-precipitations');
+  icon.classList.add('daily-precipitations-icon');
+  quantity.classList.add('daily-precipitation-quantity');
+  hours.classList.add('daily-precipitations-hours');
+
+  quantity.innerText = '000mm';
+  hours.innerText = '0:00hs';
+
+  div.append(icon, quantity, hours);
 
   return div;
 }
