@@ -6,7 +6,7 @@
   width: 100vw;
   height: 300px;
   background-color: rgba(0, 0, 0, .25);
-  padding: 3px;
+  padding: 5px;
 }
 
 .weather-daily * {
@@ -24,21 +24,22 @@
     "daily-weather  daily-weather"
     "precipitations wind-speed   "
     "sunset-sundown uv-index     ";
+  padding: 5px;
 }
 
 /* main, weathercode and temperatures */
 
 .daily-weather {
   grid-area: daily-weather;
-  /* outline: 1px solid greenyellow; */
   display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-template-rows: repeat(4, auto);
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(5, auto);
   grid-template-areas:
-    "current-day      current-day       current-day      current-day       "
-    "day-weather-icon day-weather-icon  day-weather-icon day-weather-icon  "
-    "current-temp     current-temp-unit apparent-temp    apparent-temp-unit"
-    "weather-descr    weather-descr     weather-descr    weather-descr     ";
+    "current-day     "
+    "day-weather-icon"
+    "current-temp    "
+    "apparent-temp   "
+    "weather-descr   ";
 }
 
 .daily-day {
@@ -51,41 +52,45 @@
   height: 100px;
 }
 
-.daily-temp {
+.daily-temp-div {
   grid-area: current-temp;
-  font-size: 4rem;
+  display: flex;
+  gap: 5px;
+}
+
+.daily-temp {
+  font-size: 3.5rem;
+  font-weight: 800;
 }
 
 .daily-temp-unit {
-  --font-size: 2rem;
+  --font-size: 3rem;
   grid-area: current-temp-unit;
   width: var(--font-size);
   height: var(--font-size);
   font-size: var(--font-size);
-  align-self: center;
+}
+
+.daily-temp-apparent-div {
+  grid-area: apparent-temp;
+  display: flex;
+  gap: 5px;
 }
 
 .daily-temp-apparent {
-  grid-area: apparent-temp;
   font-size: 2rem;
-  height: 50px;
-  align-self: self-end;
 }
 
 .daily-temp-apparent-unit {
-  --font-size: 1.25rem;
+  --font-size: 1.5rem;
   grid-area: apparent-temp-unit;
   width: var(--font-size);
   height: var(--font-size);
   font-size: var(--font-size);
-  align-self: center;
+  margin-top: 5px;
 }
 
 .daily-weather-description {
   grid-area: weather-descr;
   font-size: 1.5rem;
-}
-
-* {
-  /* outline: 1px solid greenyellow; */
 }
