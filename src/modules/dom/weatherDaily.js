@@ -5,7 +5,9 @@ export default function weatherDaily() {
 
   section.classList.add('weather-daily');
 
-  section.append(dailyCard());
+  for (let i = 0; i < 7; i += 1) {
+    section.append(dailyCard());
+  }
 
   return section;
 }
