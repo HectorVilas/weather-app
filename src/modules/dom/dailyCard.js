@@ -6,6 +6,8 @@ export default function dailyCard() {
     weatherDiv(),
     precipitations(),
     wind(),
+    sunriseSundown(),
+    uvIndex(),
   );
 
   return card;
@@ -89,6 +91,44 @@ function wind() {
   speed.innerText = '00';
 
   div.append(icon, speed, speedUnit);
+
+  return div;
+}
+
+function sunriseSundown() {
+  const div = document.createElement('div');
+  const icon = document.createElement('div');
+  const sunriseHour = document.createElement('p');
+  const sundownHour = document.createElement('p');
+
+  div.classList.add('daily-sunset-sundown');
+  icon.classList.add('daily-sunset-sundown-icon');
+  sunriseHour.classList.add('daily-sunset');
+  sundownHour.classList.add('daily-sundown');
+
+  sunriseHour.innerText = '00:00hs';
+  sundownHour.innerText = '00:00hs';
+
+  div.append(icon, sunriseHour, sundownHour);
+
+  return div;
+}
+
+function uvIndex() {
+  const div = document.createElement('div');
+  const icon = document.createElement('div');
+  const index = document.createElement('p');
+  const uvPara = document.createElement('p');
+
+  div.classList.add('daily-uv');
+  icon.classList.add('daily-uv-icon');
+  index.classList.add('daily-uv-index');
+  uvPara.classList.add('daily-uv-text');
+
+  index.innerText = '00';
+  uvPara.innerText = 'UV';
+
+  div.append(icon, index, uvPara);
 
   return div;
 }
