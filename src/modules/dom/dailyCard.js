@@ -5,6 +5,7 @@ export default function dailyCard() {
   card.append(
     weatherDiv(),
     precipitations(),
+    wind(),
   );
 
   return card;
@@ -69,6 +70,25 @@ function precipitations() {
   hours.innerText = '0:00hs';
 
   div.append(icon, quantity, hours);
+
+  return div;
+}
+
+function wind() {
+  const div = document.createElement('div');
+  const icon = document.createElement('div');
+  const speed = document.createElement('p');
+  const speedUnit = document.createElement('input');
+
+  div.classList.add('daily-wind');
+  icon.classList.add('daily-wind-icon');
+  speed.classList.add('daily-wind-speed', 'speed-number');
+  speedUnit.classList.add('daily-wind-speed-unit', 'gauge-unit', 'wind-speed-unit');
+  speedUnit.type = 'checkbox';
+
+  speed.innerText = '00';
+
+  div.append(icon, speed, speedUnit);
 
   return div;
 }
