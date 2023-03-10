@@ -1,5 +1,5 @@
 # weather-app
-# live: https://hectorvilas.github.io/weather-app/
+# live: https://hectorvilas.github.io/weather-app/dist/
 
 Welcome to my new project! This is [another practice from The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-weather-app). There are only a few requirements for this practice, just let the user input a location and fetch the weather forecast from an API and display any useful data from it on the page in no specific way.
 
@@ -14,7 +14,7 @@ For this project I'm going to use Webpack again. I've been setting everything up
 - ✔️ allow Fahrenheit/Celsius toggle
 - ❌ change the look of the page based on the data (by changing colors or by adding images that describe the weather)
 - ✔️ Write the functions that hit the API. You’re going to want functions that can take a location and return the weather data for that location. For now, just console.log() the information.
-- ⭕ write the functions that process the JSON data you’re getting from the API and return an object with only the data you require for your app
+- ✔️ write the functions that process the JSON data you’re getting from the API and return an object with only the data you require for your app
 - ✔️ set up a simple form that will let users input their location and will fetch the weather info
 - ⭕ display the information on your webpage
 - ⭕ optional: add a "loading" component that displays from the time the form is submitted until the information comes back from the API
@@ -24,7 +24,7 @@ For this project I'm going to use Webpack again. I've been setting everything up
 ## the page
 - ⭕ the page on desktop won't be scrollable
   - ❌ the mobile version will
-- ⭕ the user on first visit will be received by a simple page with an input and a search button next to it
+- ✔️ the user on first visit will be received by a simple page with an input and a search button next to it
   - ✔️ a \<form> will be used here, with a listener on "submit"
 - ✔️ to prevent errors, locations will be listed, ~~maybe~~ from another API ~~or a library~~, so the user can't input an invalid location name, ~~or maybe use it as autocomplete to be less restrictive~~
   - ✔️ a list of locations will be generated (city - estate/province - country, maybe it's coordinates too), clicking on one will fetch the forecast for this location
@@ -40,8 +40,8 @@ For this project I'm going to use Webpack again. I've been setting everything up
     - ✔️ the temp will be shown on Celsius, clicking on it will toggle to Fahrenheit
     - ⭕ the same for the wind speed and other values, toggling between km/h and mph
       - ❌ those preferences will be stored on `localStorage`
-      - ❌ all the Celcius values on screen will be converted to Fahrenheit
-      - ❌ same for km/h and mph values
+      - ✔️ all the Celcius values on screen will be converted to Fahrenheit
+      - ✔️ same for km/h and mph values
   - ❌ the background image or colors must change to something representing the current weather
   - ❌ at the bottom will be a line chart with the predicted temperatures
     - ❌ on each vector:
@@ -79,9 +79,9 @@ For this project I'm going to use Webpack again. I've been setting everything up
   - parameters: an array of objects with: city, estate/province, country, latitude, longitude
 - ❌ a module to manipulate `localStorage`
   - parameters: location, weather forecast as object, expiration date
-- ❌ the `date-fns` library will be used for converting the shown data on the page to something more readable
+- ✔️ the `date-fns` library will be used for converting the shown data on the page to something more readable
   - parameters: date, required format
-- ❌ a module for DOM manipulation with the next functions and respective listeners:
+- ⭕ a module for DOM manipulation with the next functions and respective listeners:
   - ⭕ a function to place all elements on DOM (search, current weather, chart...)
   - ✔️ search bar element
   - ✔️ current weather forecast elements for icons and text
