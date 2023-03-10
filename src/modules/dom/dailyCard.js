@@ -39,7 +39,6 @@ function weatherDiv() {
   weatherDescription.classList.add('daily-weather-description');
 
   day.innerText = 'day placeholder';
-  weatherIcon.style.background = 'blue';
   temp.innerText = '000.0';
   tempApparent.innerText = '000.0';
   weatherDescription.innerText = 'weather description';
