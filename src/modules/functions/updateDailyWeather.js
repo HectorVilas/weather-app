@@ -5,6 +5,7 @@ import {
   getDay,
 } from 'date-fns';
 import getWeathercode from './weathercode';
+import weatherIcon from './weatherIcon';
 
 const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -26,6 +27,10 @@ export default function updateDailyWeather(data) {
 
   days.forEach((day, i) => {
     day.innerText = dayNames[getDay(addDays(new Date(), i))];
+  });
+  icons.forEach((icon, i) => {
+    const iconParts = getWeathercode(data.weathercodes[i]).icon;
+    icon.style.backgroundImage = weatherIcon(iconParts);
   });
   temperatures.forEach((temp, i) => {
     temp.innerText = data.temps[i];
