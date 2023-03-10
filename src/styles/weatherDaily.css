@@ -27,7 +27,7 @@
   grid-template-areas:
     "daily-weather  daily-weather"
     "precipitations wind-speed   "
-    "sunset-sundown uv-index     ";
+    "sunrise-sunset uv-index     ";
   padding: 2px;
   gap: 2px;
 }
@@ -170,21 +170,21 @@
   font-size: var(--font-size);
 }
 
-/* sunrise and sundown */
+/* sunrise and sunset */
 
-.daily-sunset-sundown {
-  grid-area: sunset-sundown;
+.daily-sunrise-sunset {
+  grid-area: sunrise-sunset;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(2, 1fr);
   grid-template-areas:
-    "icon sunset "
-    "icon sundown";
+    "icon sunrise "
+    "icon sunset";
   align-items: center;
   gap: 0px 0px;
 }
 
-.daily-sunset-sundown-icon {
+.daily-sunrise-sunset-icon {
   grid-area: icon;
   width: 100%;
   height: 100%;
@@ -193,13 +193,13 @@
   background-position: center;
 }
 
-.daily-sunset {
-  grid-area: sunset;
+.daily-sunrise {
+  grid-area: sunrise;
   font-size: 1rem;
 }
 
-.daily-sundown {
-  grid-area: sundown;
+.daily-sunset {
+  grid-area: sunset;
   font-size: 1rem;
 }
 
