@@ -25,6 +25,8 @@ export default function updateDailyWeather(data) {
   const sunsets = section.querySelectorAll('.daily-sunset');
   const uvIndexes = section.querySelectorAll('.daily-uv-index');
 
+  section.classList.remove('invisible');
+
   days.forEach((day, i) => {
     day.innerText = dayNames[getDay(addDays(new Date(), i))];
   });
