@@ -34,20 +34,26 @@ import sunClearSky from '../../media/images/weather-icon-parts/sun-clear-sky.png
 import thunder from '../../media/images/weather-icon-parts/thunder.png';
 
 export default function weatherIcon(iconParts, localTime, sunrise, sunset) {
+  console.log(iconParts, localTime);
   // each image will be added here CSS format before returning it
   let images = '';
   // apply local minutes to city time as the API always returns 00
-  const cityTime = setMinutes(new Date(localTime), getMinutes(new Date()));
-  const isDay = isBefore(new Date(sunrise), new Date(cityTime))
-  && isAfter(new Date(sunset), new Date(cityTime));
-  const isClearDay = iconParts.length === 1 && iconParts[0] === 'sunMoon';
   let sunMoon;
+  if (localTime !== undefined) {
+    const cityTime = setMinutes(new Date(localTime), getMinutes(new Date()));
+    const isDay = isBefore(new Date(sunrise), new Date(cityTime))
+    && isAfter(new Date(sunset), new Date(cityTime));
+    const isClearDay = iconParts.length === 1 && iconParts[0] === 'sunMoon';
 
-  if (isDay) {
-    sunMoon = isClearDay ? sunClearSky : sun;
+    if (isDay) {
+      sunMoon = isClearDay ? sunClearSky : sun;
+    } else {
+      sunMoon = isClearDay ? moonClearSky : moon;
+    }
   } else {
-    sunMoon = isClearDay ? moonClearSky : moon;
+    sunMoon = sun;
   }
+  console.log(sunMoon);
 
   // list images so they can be called directly from a string
   const icons = {
