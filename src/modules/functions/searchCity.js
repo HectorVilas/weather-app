@@ -1,6 +1,7 @@
 import domCitiesList from '../dom/citiesList';
 import { fetchWeather } from '../fetch';
 import updateCurrentWeather from './updateCurrentWeather';
+import updateDailyWeather from './updateDailyWeather';
 import getWeathercode from './weathercode';
 
 let previousSearch;
@@ -37,6 +38,7 @@ export default async function searchCity(search) {
       const { longitude } = city.dataset;
       const weather = await fetchWeather(latitude, longitude);
       const currentHour = new Date().getHours();
+      // data for current weather, then update
       const currentWeatherData = {
         city: city.dataset.location,
         weathercode: getWeathercode(weather.current_weather.weathercode),
@@ -49,8 +51,21 @@ export default async function searchCity(search) {
         sunset: weather.daily.sunset,
         localHour: weather.current_weather.time,
       };
-      hideSearch();
       updateCurrentWeather(currentWeatherData);
+      // data for daily weather, then update
+      const dailyWeatherData = {
+        weathercodes: weather.daily.weathercode,
+        temps: weather.daily.temperature_2m_max,
+        apparents: weather.daily.temperature_2m_min,
+        precipitationQuantities: weather.daily.precipitation_sum,
+        precipitationHours: weather.daily.precipitation_hours,
+        windSpeeds: weather.daily.windspeed_10m_max,
+        sunrises: weather.daily.sunrise,
+        sunsets: weather.daily.sunset,
+        uvIndexes: weather.daily.uv_index_max,
+      };
+      updateDailyWeather(dailyWeatherData);
+      hideSearch();
     });
   });
 }
