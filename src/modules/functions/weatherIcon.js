@@ -52,7 +52,6 @@ export default function weatherIcon(iconParts, localTime, sunrise, sunset) {
   } else {
     sunMoon = sun;
   }
-  console.log(sunMoon);
 
   // list images so they can be called directly from a string
   const icons = {
