@@ -34,7 +34,6 @@ import sunClearSky from '../../media/images/weather-icon-parts/sun-clear-sky.png
 import thunder from '../../media/images/weather-icon-parts/thunder.png';
 
 export default function weatherIcon(iconParts, localTime, sunrise, sunset) {
-  console.log(iconParts, localTime);
   // each image will be added here CSS format before returning it
   let images = '';
   // apply local minutes to city time as the API always returns 00
