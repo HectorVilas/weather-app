@@ -37,8 +37,7 @@ export default async function searchCity(search) {
       const { longitude } = city.dataset;
       const weather = await fetchWeather(latitude, longitude);
       const currentHour = new Date().getHours();
-      hideSearch();
-      updateCurrentWeather({
+      const currentWeatherData = {
         city: city.dataset.location,
         weathercode: getWeathercode(weather.current_weather.weathercode),
         temp: weather.current_weather.temperature,
@@ -49,7 +48,9 @@ export default async function searchCity(search) {
         sunrise: weather.daily.sunrise,
         sunset: weather.daily.sunset,
         localHour: weather.current_weather.time,
-      });
+      };
+      hideSearch();
+      updateCurrentWeather(currentWeatherData);
     });
   });
 }
