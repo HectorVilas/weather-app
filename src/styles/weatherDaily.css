@@ -4,13 +4,13 @@
   left: 0;
   bottom: 0;
   width: 100vw;
-  /* height: 300px; */
   background-color: rgba(0, 0, 0, .25);
   padding: 5px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 5px;
   overflow-x: auto;
+  transition: opacity 2s;
 }
 
 .weather-daily * {
