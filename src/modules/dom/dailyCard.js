@@ -1,3 +1,5 @@
+import changeUnits from '../functions/changeUnits';
+
 export default function dailyCard() {
   const card = document.createElement('div');
   card.classList.add('daily-card');
@@ -42,6 +44,10 @@ function weatherDiv() {
   temp.innerText = '000.0';
   tempApparent.innerText = '000.0';
   weatherDescription.innerText = 'weather description';
+
+  [tempUnit, tempApparentUnit].forEach((element) => {
+    element.addEventListener('change', changeUnits);
+  });
 
   tempDiv.append(temp, tempUnit);
   tempApparentDiv.append(tempApparent, tempApparentUnit);
@@ -88,6 +94,8 @@ function wind() {
   speedUnit.type = 'checkbox';
 
   speed.innerText = '00';
+
+  speedUnit.addEventListener('change', changeUnits);
 
   div.append(icon, speed, speedUnit);
 
