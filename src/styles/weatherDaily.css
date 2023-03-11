@@ -163,10 +163,10 @@
 }
 
 .daily-wind-speed-unit {
-  --font-size: 1rem;
+  --font-size: .9rem;
   grid-area: unit;
   width: calc(var(--font-size) * 2.5);
-  height: var(--font-size);
+  height: calc(var(--font-size) * 1.25);
   font-size: var(--font-size);
 }
 
