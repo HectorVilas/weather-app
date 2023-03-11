@@ -57,7 +57,10 @@ export default function updateDailyWeather(data) {
     hours.innerText = `${data.precipitationHours[i]}hs`;
   });
   windSpeeds.forEach((speed, i) => {
-    speed.innerText = data.windSpeeds[i];
+    const windSpeed = data.windSpeeds[i];
+    speed.innerText = windSpeed;
+    speed.dataset.kilometers = windSpeed;
+    speed.dataset.miles = kilometersToMiles(windSpeed);
   });
   sunrises.forEach((sunrise, i) => {
     sunrise.innerText = `${getHours(new Date(data.sunrises[i]))}:${getMinutes(new Date(data.sunrises[i]))}hs`;
