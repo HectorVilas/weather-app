@@ -6,6 +6,7 @@ import {
 } from 'date-fns';
 import getWeathercode from './weathercode';
 import weatherIcon from './weatherIcon';
+import { celsiusToFahrenheit, kilometersToMiles } from './unitConverter';
 
 const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -35,10 +36,16 @@ export default function updateDailyWeather(data) {
     icon.style.backgroundImage = weatherIcon(iconParts);
   });
   temperatures.forEach((temp, i) => {
-    temp.innerText = data.temps[i];
+    const temperature = data.temps[i];
+    temp.innerText = temperature;
+    temp.dataset.celsius = temperature;
+    temp.dataset.fahrenheit = celsiusToFahrenheit(temperature);
   });
   apparents.forEach((apparent, i) => {
-    apparent.innerText = data.apparents[i];
+    const temperature = data.apparents[i];
+    apparent.innerText = temperature;
+    apparent.dataset.celsius = temperature;
+    apparent.dataset.fahrenheit = celsiusToFahrenheit(temperature);
   });
   descriptions.forEach((description, i) => {
     description.innerText = getWeathercode(data.weathercodes[i]).weather;
