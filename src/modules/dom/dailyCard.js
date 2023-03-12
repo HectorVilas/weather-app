@@ -73,6 +73,7 @@ function precipitations() {
   quantity.classList.add('daily-precipitation-quantity');
   hours.classList.add('daily-precipitations-hours');
 
+  div.title = 'quantity and total hours of precipitations';
   quantity.innerText = '000mm';
   hours.innerText = '0:00hs';
 
@@ -93,6 +94,7 @@ function wind() {
   speedUnit.classList.add('daily-wind-speed-unit', 'gauge-unit', 'wind-speed-unit');
   speedUnit.type = 'checkbox';
 
+  div.title = 'Max wind speed';
   speed.innerText = '00';
 
   speedUnit.addEventListener('change', changeUnits);
@@ -113,6 +115,7 @@ function sunriseSunset() {
   sunriseHour.classList.add('daily-sunrise');
   sunsetHour.classList.add('daily-sunset');
 
+  div.title = 'Sunrise and sunset';
   sunriseHour.innerText = '00:00hs';
   sunsetHour.innerText = '00:00hs';
 
@@ -132,6 +135,7 @@ function uvIndex() {
   index.classList.add('daily-uv-index');
   uvPara.classList.add('daily-uv-text');
 
+  div.title = 'UV index';
   index.innerText = '00';
   uvPara.innerText = 'UV';
 
