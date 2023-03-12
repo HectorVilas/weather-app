@@ -73,7 +73,7 @@ function precipitations() {
   quantity.classList.add('daily-precipitation-quantity');
   hours.classList.add('daily-precipitations-hours');
 
-  div.title = 'quantity and total hours of precipitations';
+  div.title = 'Quantity and total hours of precipitations';
   quantity.innerText = '000mm';
   hours.innerText = '0:00hs';
 
