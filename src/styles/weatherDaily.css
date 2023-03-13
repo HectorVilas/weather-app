@@ -131,11 +131,13 @@
 .daily-precipitation-quantity {
   grid-area: quantity;
   font-size: 1rem;
+  text-align: left;
 }
 
 .daily-precipitations-hours {
   grid-area: hours;
   font-size: 1rem;
+  text-align: left;
 }
 
 /* wind speed */
