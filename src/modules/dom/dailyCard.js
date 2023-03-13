@@ -19,43 +19,43 @@ function weatherDiv() {
   const div = document.createElement('div');
   const day = document.createElement('p');
   const weatherIcon = document.createElement('div');
-  const tempDiv = document.createElement('div');
-  const temp = document.createElement('p');
-  const tempUnit = document.createElement('input');
-  const tempApparentDiv = document.createElement('div');
-  const tempApparent = document.createElement('p');
-  const tempApparentUnit = document.createElement('input');
+  const tempMaxDiv = document.createElement('div');
+  const tempMax = document.createElement('p');
+  const tempMaxUnit = document.createElement('input');
+  const tempMinDiv = document.createElement('div');
+  const tempMin = document.createElement('p');
+  const tempMinUnit = document.createElement('input');
   const weatherDescription = document.createElement('p');
 
   div.classList.add('daily-weather');
   day.classList.add('daily-day');
   weatherIcon.classList.add('weather-current-icon', 'daily-weather-icon');
-  tempDiv.classList.add('daily-temp-div');
-  temp.classList.add('daily-temp', 'temperature-number');
-  tempUnit.classList.add('daily-temp-unit', 'gauge-unit', 'temperature-unit');
-  tempUnit.type = 'checkbox';
-  tempApparentDiv.classList.add('daily-temp-apparent-div');
-  tempApparent.classList.add('daily-temp-apparent', 'temperature-number');
-  tempApparentUnit.classList.add('daily-temp-apparent-unit', 'gauge-unit', 'temperature-unit');
-  tempApparentUnit.type = 'checkbox';
+  tempMaxDiv.classList.add('daily-temp-max-div');
+  tempMax.classList.add('daily-temp-max', 'temperature-number');
+  tempMaxUnit.classList.add('daily-temp-max-unit', 'gauge-unit', 'temperature-unit');
+  tempMaxUnit.type = 'checkbox';
+  tempMinDiv.classList.add('daily-temp-min-div');
+  tempMin.classList.add('daily-temp-min', 'temperature-number');
+  tempMinUnit.classList.add('daily-temp-min-unit', 'gauge-unit', 'temperature-unit');
+  tempMinUnit.type = 'checkbox';
   weatherDescription.classList.add('daily-weather-description');
 
   day.innerText = 'day placeholder';
-  temp.innerText = '000.0';
-  tempApparent.innerText = '000.0';
+  tempMax.innerText = '000.0';
+  tempMin.innerText = '000.0';
   weatherDescription.innerText = 'weather description';
 
-  [tempUnit, tempApparentUnit].forEach((element) => {
+  [tempMaxUnit, tempMinUnit].forEach((element) => {
     element.addEventListener('change', changeUnits);
   });
 
-  tempDiv.append(temp, tempUnit);
-  tempApparentDiv.append(tempApparent, tempApparentUnit);
+  tempMaxDiv.append(tempMax, tempMaxUnit);
+  tempMinDiv.append(tempMin, tempMinUnit);
   div.append(
     day,
     weatherIcon,
-    tempDiv,
-    tempApparentDiv,
+    tempMaxDiv,
+    tempMinDiv,
     weatherDescription,
   );
 

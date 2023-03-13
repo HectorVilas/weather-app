@@ -16,8 +16,8 @@ export default function updateDailyWeather(data) {
   const section = document.querySelector('.weather-daily');
   const days = section.querySelectorAll('.daily-day');
   const icons = section.querySelectorAll('.daily-weather-icon');
-  const temperatures = section.querySelectorAll('.daily-temp');
-  const apparents = section.querySelectorAll('.daily-temp-apparent');
+  const tempsMax = section.querySelectorAll('.daily-temp-max');
+  const tempsMin = section.querySelectorAll('.daily-temp-min');
   const descriptions = section.querySelectorAll('.daily-weather-description');
   // extra info
   const precipitationQuantities = section.querySelectorAll('.daily-precipitation-quantity');
@@ -36,13 +36,13 @@ export default function updateDailyWeather(data) {
     const iconParts = getWeathercode(data.weathercodes[i]).icon;
     icon.style.backgroundImage = weatherIcon(iconParts);
   });
-  temperatures.forEach((temp, i) => {
+  tempsMax.forEach((temp, i) => {
     const temperature = data.temps[i];
     temp.innerText = temperature;
     temp.dataset.celsius = temperature;
     temp.dataset.fahrenheit = celsiusToFahrenheit(temperature);
   });
-  apparents.forEach((apparent, i) => {
+  tempsMin.forEach((apparent, i) => {
     const temperature = data.apparents[i];
     apparent.innerText = temperature;
     apparent.dataset.celsius = temperature;

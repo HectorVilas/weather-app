@@ -57,18 +57,18 @@
   height: 100px;
 }
 
-.daily-temp-div {
+.daily-temp-max-div {
   grid-area: current-temp;
   display: flex;
   gap: 5px;
 }
 
-.daily-temp {
+.daily-temp-max {
   font-size: 3.5rem;
   font-weight: 800;
 }
 
-.daily-temp-unit {
+.daily-temp-max-unit {
   --font-size: 3rem;
   grid-area: current-temp-unit;
   width: var(--font-size);
@@ -76,17 +76,17 @@
   font-size: var(--font-size);
 }
 
-.daily-temp-apparent-div {
+.daily-temp-min-div {
   grid-area: apparent-temp;
   display: flex;
   gap: 5px;
 }
 
-.daily-temp-apparent {
+.daily-temp-min {
   font-size: 2rem;
 }
 
-.daily-temp-apparent-unit {
+.daily-temp-min-unit {
   --font-size: 1.5rem;
   grid-area: apparent-temp-unit;
   width: var(--font-size);
