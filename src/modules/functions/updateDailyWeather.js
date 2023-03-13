@@ -3,6 +3,7 @@ import {
   getMinutes,
   addDays,
   getDay,
+  getDate,
 } from 'date-fns';
 import getWeathercode from './weathercode';
 import weatherIcon from './weatherIcon';
@@ -29,7 +30,7 @@ export default function updateDailyWeather(data) {
   section.classList.remove('invisible');
 
   days.forEach((day, i) => {
-    day.innerText = dayNames[getDay(addDays(new Date(), i))];
+    day.innerText = i === 0 ? 'Today' : `${dayNames[getDay(addDays(new Date(), i))]} ${getDate(addDays(new Date(), i))}`;
   });
   icons.forEach((icon, i) => {
     const iconParts = getWeathercode(data.weathercodes[i]).icon;
