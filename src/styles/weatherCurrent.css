@@ -40,7 +40,7 @@
   font-size: 1.5rem;
   color: var(--txt-color-1);
   font-weight: 800;
-  padding: .25rem .5rem 0;
+  padding: 0 .25rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -65,7 +65,6 @@
 
 .weathercode-para {
   font-size: 1.15rem;
-  padding-bottom: 4px;
 }
 
 /* temperature */
