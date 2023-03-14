@@ -1,19 +1,18 @@
 :root {
-  --gauge-border-width: 10px;
-  --unit-underline-width: 4px;
+  --gauge-border-width: 7px;
+  --unit-underline-width: 3px;
   --compass-color: rgba(50, 50, 255, .10);
 }
 
 .weather-current {
   isolation: isolate;
-  overflow: hidden;
   box-sizing: border-box;
-  width: 600px;
-  height: 350px;
+  width: 430px;
+  height: 250px;
   padding: 5px;
   display: grid;
-  grid-template-rows: auto 1fr 1fr auto;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: repeat(4, auto);
+  grid-template-columns: 1fr auto auto;
   grid-template-areas:
     "city city city"
     "icon temp temp"
@@ -38,7 +37,7 @@
 }
 
 .city-para {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   color: var(--txt-color-1);
   font-weight: 800;
   padding: .25rem .5rem 0;
@@ -65,7 +64,8 @@
 }
 
 .weathercode-para {
-  font-size: 1.5rem;
+  font-size: 1.15rem;
+  padding-bottom: 4px;
 }
 
 /* temperature */
@@ -83,7 +83,7 @@
 
 .temp-current {
   grid-area: curr;
-  font-size: 4.5rem;
+  font-size: 2.5rem;
   font-weight: 800;
 }
 
@@ -118,12 +118,12 @@
 }
 
 .humidity {
-  font-size: 4rem;
+  font-size: 3rem;
   color: var(--txt-color-2);
 }
 
 .humidity-title {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   color: var(--txt-color-1);
   height: 25px;
 }
@@ -153,7 +153,7 @@
 }
 
 .wind-speed {
-  font-size: 4rem;
+  font-size: 3rem;
   color: var(--txt-color-2);
 }
 
@@ -188,7 +188,7 @@
 }
 
 .wind-title {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
 }
 
 /* for units */
@@ -198,9 +198,9 @@
   position: relative;
   align-self: baseline;
   justify-self: left;
-  width: 5rem;
-  height: 4.5rem;
-  font-size: 4rem;
+  width: 4rem;
+  height: 3.5rem;
+  font-size: 2rem;
   cursor: pointer;
   overflow: hidden;
   appearance: none;
@@ -230,7 +230,7 @@
 
 .temp-apparent-div {
   grid-area: feel;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   color: var(--txt-color-2);
   display: flex;
 }
@@ -240,10 +240,9 @@
 }
 
 .gauge-unit-apparent {
-  grid-area: unset;
-  width: 1.75rem;
-  height: 1.7rem;
-  font-size: 1.40rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1.25rem;
   justify-self: left;
 }
 
@@ -255,9 +254,9 @@
 }
 
 .wind-speed-unit{
-  width: 2.25rem;
-  height: 1.25rem;
-  font-size: 1rem;
+  width: 2.0rem;
+  height: 1.10rem;
+  font-size: .9rem;
 }
 .gauge-unit.wind-speed-unit::before {
   content: "mph";
