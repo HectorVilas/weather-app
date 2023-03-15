@@ -21,7 +21,7 @@ export default async function domCitiesList(search) {
   }
 
   cities.forEach((city) => {
-    const searchResult = document.createElement('div');
+    const searchResult = document.createElement('button');
     const flag = document.createElement('p');
     const place = document.createElement('p');
     const location = `${city.name}, ${city.admin3 ? `${city.admin3}, ` : ''}${city.admin2 ? `${city.admin2}, ` : ''}${city.admin1 ? `${city.admin1}, ` : ''}${city.country}`;
