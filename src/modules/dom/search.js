@@ -24,7 +24,7 @@ export default function search() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
   });
-  input.addEventListener('keypress', () => {
+  input.addEventListener('input', () => {
     input.classList.add('loading');
     loadingAnimDiv.classList.remove('hidden');
     clearTimeout(keydownTimeout);
