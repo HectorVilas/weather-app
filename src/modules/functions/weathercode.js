@@ -166,7 +166,7 @@ export default function getWeathercode(requestedCode) {
     {
       code: 95,
       weather: 'thunderstorm',
-      intensity: 'slight or moderate',
+      intensity: 'slight to moderate',
       icon: ['thunder', 'rainHigh', 'cloudsHigh'],
     },
     {
