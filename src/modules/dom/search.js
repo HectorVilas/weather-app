@@ -1,5 +1,7 @@
 import searchCity from '../functions/searchCity';
 
+let focusIndex = -1;
+
 export default function search() {
   let keydownTimeout;
   const timeoutDelay = 500;
@@ -36,6 +38,26 @@ export default function search() {
   loadingAnimDiv.append(loadingAnim1, loadingAnim2, loadingAnim3);
   form.append(input, loadingAnimDiv);
   searchSection.append(form, cityList);
+
+  searchSection.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (e.key === 'ArrowDown') {
+        focusIndex += 1;
+      } else {
+        focusIndex -= 1;
+      }
+
+      const results = document.querySelectorAll('.search-result');
+      results[focusIndex].focus();
+    } else {
+      if (e.key !== 'Enter') {
+        const searchInput = document.querySelector('.search-input');
+        searchInput.focus();
+      }
+      focusIndex = -1;
+    }
+  });
 
   return searchSection;
 }
