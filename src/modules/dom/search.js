@@ -40,15 +40,22 @@ export default function search() {
   searchSection.append(form, cityList);
 
   searchSection.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+    const eventKeys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown'];
+    if (eventKeys.includes(e.key)) {
       e.preventDefault();
       if (e.key === 'ArrowDown') {
         focusIndex += 1;
-      } else {
+      } else if (e.key === 'ArrowUp') {
         focusIndex -= 1;
+      } else if (e.key === 'PageUp') {
+        focusIndex -= 8;
+      } else {
+        focusIndex += 8;
       }
 
       const results = document.querySelectorAll('.search-result');
+      if (results.length === 0) return;
+      limitRange(results.length);
       results[focusIndex].focus();
     } else {
       if (e.key !== 'Enter') {
@@ -60,4 +67,9 @@ export default function search() {
   });
 
   return searchSection;
+}
+
+function limitRange(length) {
+  if (focusIndex < 0) focusIndex = 0;
+  if (focusIndex > length - 1) focusIndex = length - 1;
 }
