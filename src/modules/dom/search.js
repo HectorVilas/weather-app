@@ -43,15 +43,10 @@ export default function search() {
     const eventKeys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown'];
     if (eventKeys.includes(e.key)) {
       e.preventDefault();
-      if (e.key === 'ArrowDown') {
-        focusIndex += 1;
-      } else if (e.key === 'ArrowUp') {
-        focusIndex -= 1;
-      } else if (e.key === 'PageUp') {
-        focusIndex -= 8;
-      } else {
-        focusIndex += 8;
-      }
+      if (e.key === 'ArrowDown') focusIndex += 1;
+      if (e.key === 'ArrowUp') focusIndex -= 1;
+      if (e.key === 'PageUp') focusIndex -= 8;
+      if (e.key === 'PageDown') focusIndex += 8;
 
       const results = document.querySelectorAll('.search-result');
       if (results.length === 0) return;
