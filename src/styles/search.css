@@ -79,13 +79,17 @@
   align-items: center;
   color: #555;
   user-select: none;
+  width: 100%;
+  border: none;
 }
 .search-result {
   cursor: pointer;
 }
-.search-result:hover {
+.search-result:hover,
+.search-result:focus {
   color: black;
   box-shadow: inset calc(var(--max-flag-size) * 1.25) 0 5px #eee;
+  outline: transparent;
 }
 .search-result:not(:last-child) {
   border-bottom: 1px solid white;
@@ -94,19 +98,23 @@
 .search-result-empty {
   border-radius: 0 0 0 var(--radious);
 }
-.search-result p {
+.search-result p:not(.country-flag) {
   margin: 5px;
+  font-size: 1.25rem;
+  text-align: left;
 }
 
 .country-flag,
 .country-flag-none {
   text-align: center;
   text-align: center;
+  margin: 0;
 }
 .country-flag {
   font-size: var(--flag-size);
 }
-.search-result:hover .country-flag {
+.search-result:hover .country-flag,
+.search-result:focus .country-flag {
   font-size: var(--max-flag-size);
 }
 
