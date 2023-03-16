@@ -30,8 +30,8 @@ export default function updateCurrentWeather(data) {
   tempApparent.dataset.fahrenheit = celsiusToFahrenheit(data.tempApparent);
   humidity.innerText = data.humidity;
   humidityGaugePercent.style.maskImage = `conic-gradient(red ${data.humidity}%, transparent ${data.humidity}%)`;
-  windSpeed.innerText = data.windSpeed;
-  windSpeed.dataset.kilometers = data.windSpeed;
-  windSpeed.dataset.miles = kilometersToMiles(data.windSpeed);
+  windSpeed.innerText = parseInt(data.windSpeed, 10);
+  windSpeed.dataset.kilometers = parseInt(data.windSpeed, 10);
+  windSpeed.dataset.miles = parseInt(kilometersToMiles(data.windSpeed), 10);
   windDirection.style.rotate = `${data.windDirection}deg`;
 }
