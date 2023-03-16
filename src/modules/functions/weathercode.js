@@ -54,19 +54,19 @@ export default function getWeathercode(requestedCode) {
       code: 51,
       weather: 'drizzle',
       intensity: 'light',
-      icon: ['rainDrizzleLow', 'cloudsHigh'],
+      icon: ['drizzleLow', 'cloudsHigh'],
     },
     {
       code: 53,
       weather: 'drizzle',
       intensity: 'moderate',
-      icon: ['rainDrizzleMiddle', 'cloudsHigh'],
+      icon: ['drizzleMiddle', 'cloudsHigh'],
     },
     {
       code: 55,
       weather: 'drizzle',
       intensity: 'dense',
-      icon: ['rainDrizzleHigh', 'cloudsHigh'],
+      icon: ['drizzleHigh', 'cloudsHigh'],
     },
     {
       code: 56,
