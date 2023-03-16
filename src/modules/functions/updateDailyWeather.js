@@ -70,6 +70,6 @@ export default function updateDailyWeather(data) {
     sunset.innerText = `${getHours(new Date(data.sunsets[i]))}:${getMinutes(new Date(data.sunsets[i]))}hs`;
   });
   uvIndexes.forEach((uv, i) => {
-    uv.innerText = data.uvIndexes[i];
+    uv.innerText = data.uvIndexes[i] === null ? '-' : data.uvIndexes[i];
   });
 }
