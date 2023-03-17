@@ -39,8 +39,8 @@
   grid-template-areas:
     "current-day     "
     "day-weather-icon"
-    "current-temp    "
-    "apparent-temp   "
+    "max-temp    "
+    "min-temp   "
     "weather-descr   ";
 }
 
@@ -56,7 +56,7 @@
 }
 
 .daily-temp-max-div {
-  grid-area: current-temp;
+  grid-area: max-temp;
   display: flex;
   gap: 5px;
   color: var(--txt-color-1);
@@ -70,14 +70,14 @@
 
 .daily-temp-max-unit {
   --font-size: 1.75rem;
-  grid-area: current-temp-unit;
+  grid-area: max-temp-unit;
   width: var(--font-size);
   height: var(--font-size);
   font-size: var(--font-size);
 }
 
 .daily-temp-min-div {
-  grid-area: apparent-temp;
+  grid-area: min-temp;
   display: flex;
   gap: 3px;
   color: var(--txt-color-2);
@@ -90,7 +90,7 @@
 
 .daily-temp-min-unit {
   --font-size: 1rem;
-  grid-area: apparent-temp-unit;
+  grid-area: min-temp-unit;
   width: var(--font-size);
   height: var(--font-size);
   font-size: var(--font-size);
