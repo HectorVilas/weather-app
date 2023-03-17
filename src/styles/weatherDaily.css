@@ -34,14 +34,14 @@
 .daily-weather {
   grid-area: daily-weather;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: auto auto;
   grid-template-rows: repeat(5, auto);
   grid-template-areas:
-    "current-day     "
-    "day-weather-icon"
-    "max-temp    "
-    "min-temp   "
-    "weather-descr   ";
+    "current-day      current-day     "
+    "day-weather-icon day-weather-icon"
+    "max-temp         min-temp        "
+    "weather-descr    weather-descr   ";
+  align-items: end;
 }
 
 .daily-day {
@@ -81,7 +81,7 @@
   display: flex;
   gap: 3px;
   color: var(--txt-color-2);
-  justify-self: center;
+  justify-self: right;
 }
 
 .daily-temp-min {
