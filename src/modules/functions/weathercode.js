@@ -43,7 +43,7 @@ export default function getWeathercode(requestedCode) {
     {
       code: 45,
       weather: 'fog',
-      icon: ['fog', 'cloudsHigh', 'sunMoon'],
+      icon: ['fog', 'cloudsHigh'],
     },
     {
       code: 48,
