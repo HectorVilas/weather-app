@@ -1,9 +1,10 @@
 import dailyCard from './dailyCard';
+import weatherHourly from './weatherHourly';
 
 export default function weatherDailyHourly() {
   const section = document.createElement('section');
   const dailyDiv = document.createElement('div');
-  const hourlyDiv = document.createElement('div');
+  // const hourlyDiv = document.createElement('div');
 
   section.classList.add('weather-daily-hourly');
   dailyDiv.classList.add('weather-daily', 'invisible');
@@ -14,7 +15,7 @@ export default function weatherDailyHourly() {
 
   section.append(
     dailyDiv,
-    hourlyDiv,
+    weatherHourly(),
   );
 
   return section;
