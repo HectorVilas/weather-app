@@ -55,8 +55,8 @@ export default async function searchCity(search) {
       // data for daily weather, then update
       const dailyWeatherData = {
         weathercodes: weather.daily.weathercode,
-        temps: weather.daily.temperature_2m_max,
-        apparents: weather.daily.temperature_2m_min,
+        tempsMax: weather.daily.temperature_2m_max,
+        tempsMin: weather.daily.temperature_2m_min,
         precipitationQuantities: weather.daily.precipitation_sum,
         precipitationHours: weather.daily.precipitation_hours,
         windSpeeds: weather.daily.windspeed_10m_max,

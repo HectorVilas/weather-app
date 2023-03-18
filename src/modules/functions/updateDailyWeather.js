@@ -37,13 +37,13 @@ export default function updateDailyWeather(data) {
     icon.style.backgroundImage = weatherIcon(iconParts);
   });
   tempsMax.forEach((temp, i) => {
-    const temperature = data.temps[i];
+    const temperature = data.tempsMax[i];
     temp.innerText = temperature;
     temp.dataset.celsius = temperature;
     temp.dataset.fahrenheit = celsiusToFahrenheit(temperature);
   });
   tempsMin.forEach((apparent, i) => {
-    const temperature = data.apparents[i];
+    const temperature = data.tempsMin[i];
     apparent.innerText = temperature;
     apparent.dataset.celsius = temperature;
     apparent.dataset.fahrenheit = celsiusToFahrenheit(temperature);
