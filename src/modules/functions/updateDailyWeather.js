@@ -49,7 +49,11 @@ export default function updateDailyWeather(data) {
     apparent.dataset.fahrenheit = celsiusToFahrenheit(temperature);
   });
   descriptions.forEach((description, i) => {
-    description.innerText = getWeathercode(data.weathercodes[i]).weather;
+    const weather = getWeathercode(data.weathercodes[i]);
+    const type = weather.weather;
+    const hasIntensity = weather.intensity !== undefined;
+    const intensity = `,\n${weather.intensity}`;
+    description.innerText = `${type}${hasIntensity ? intensity : ''}`;
   });
   precipitationQuantities.forEach((quantity, i) => {
     quantity.innerText = `${data.precipitationQuantities[i]}mm`;
