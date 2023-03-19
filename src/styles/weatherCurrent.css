@@ -177,6 +177,7 @@
   rotate: 0deg;
   background: radial-gradient(transparent 60%, rgba(0, 0, 255, .5) 60%);
   mask-image: conic-gradient(red 5%, transparent 5%, transparent 95%, red 95%);
+  transition: rotate ease-out 2s;
 }
 
 .wind-title-div {
