@@ -1,6 +1,7 @@
 import weatherIcon from './weatherIcon';
 import { celsiusToFahrenheit, kilometersToMiles } from './unitConverter';
 import valueAdjust from './valueAdjust';
+import barAdjust from './barAdjust';
 
 export default function updateCurrentWeather(data) {
   const element = document.querySelector('.weather-current ');
@@ -33,7 +34,7 @@ export default function updateCurrentWeather(data) {
   tempApparent.dataset.fahrenheit = celsiusToFahrenheit(data.tempApparent);
   // humidity.innerText = data.humidity;
   valueAdjust(humidity, humidity.innerText, data.humidity);
-  humidityGaugePercent.style.maskImage = `conic-gradient(red ${data.humidity}%, transparent ${data.humidity}%)`;
+  barAdjust(humidityGaugePercent, humidityGaugePercent.dataset.percent, data.humidity);
   // windSpeed.innerText = parseInt(data.windSpeed, 10);
   valueAdjust(windSpeed, windSpeed.innerText, parseInt(data.windSpeed, 10));
   windSpeed.dataset.kilometers = parseInt(data.windSpeed, 10);
