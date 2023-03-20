@@ -69,6 +69,7 @@ export default function weatherCurrent() {
   humidityTitle.classList.add('humidity-title');
   humidityGauge.classList.add('humidity-gauge');
   humidityGaugePercent.classList.add('humidity-gauge-percent');
+  humidityGaugePercent.dataset.percent = 0;
   humidity.classList.add('humidity');
 
   humidityTitle.innerText = 'Humidity %';
