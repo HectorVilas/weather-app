@@ -24,16 +24,16 @@ export default function updateCurrentWeather(data) {
     data.sunset[0],
   );
   weathercode.innerText = `${data.weathercode.weather}${data.weathercode.intensity ? `, ${data.weathercode.intensity}` : ''}`;
-  valueAdjust(temp, temp.innerText, data.temp);
   temp.dataset.celsius = data.temp;
   temp.dataset.fahrenheit = celsiusToFahrenheit(data.temp);
-  valueAdjust(tempApparent, tempApparent.innerText, data.tempApparent);
+  valueAdjust(temp, temp.innerText, data.temp);
   tempApparent.dataset.celsius = data.tempApparent;
   tempApparent.dataset.fahrenheit = celsiusToFahrenheit(data.tempApparent);
+  valueAdjust(tempApparent, tempApparent.innerText, data.tempApparent);
   valueAdjust(humidity, humidity.innerText, data.humidity);
   barAdjust(humidityGaugePercent, humidityGaugePercent.dataset.percent, data.humidity);
-  valueAdjust(windSpeed, windSpeed.innerText, parseInt(data.windSpeed, 10));
   windSpeed.dataset.kilometers = parseInt(data.windSpeed, 10);
   windSpeed.dataset.miles = parseInt(kilometersToMiles(data.windSpeed), 10);
+  valueAdjust(windSpeed, windSpeed.innerText, parseInt(data.windSpeed, 10));
   windDirection.style.rotate = `${data.windDirection}deg`;
 }
