@@ -19,7 +19,7 @@ export default function changeUnits(e) {
       || number.className.includes('temp-apparent')) {
         valueAdjust(
           number,
-          number.innerText,
+          newValue ? number.dataset.celsius : number.dataset.fahrenheit,
           newValue ? number.dataset.fahrenheit : number.dataset.celsius,
         );
       } else {
@@ -29,7 +29,7 @@ export default function changeUnits(e) {
       && !number.className.includes('daily-wind-speed')) {
       valueAdjust(
         number,
-        number.innerText,
+        newValue ? number.dataset.kilometers : number.dataset.miles,
         newValue ? number.dataset.miles : number.dataset.kilometers,
       );
     } else {
