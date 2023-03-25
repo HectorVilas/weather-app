@@ -65,14 +65,15 @@ export default async function searchCity(search) {
         sunsets: weather.daily.sunset,
         uvIndexes: weather.daily.uv_index_max,
       };
+      // data for daily weather for 24 hours of current day, then update
       updateDailyWeather(dailyWeatherData);
       const hourlyWeatherData = {
-        hours: weather.hourly.time,
-        temps: weather.hourly.temperature_2m,
-        humidity: weather.hourly.relativehumidity_2m,
-        apparent: weather.hourly.apparent_temperature,
-        weathercode: weather.hourly.weathercode,
-        windspeed: weather.hourly.windspeed_10m,
+        hours: get24(weather.hourly.time),
+        temps: get24(weather.hourly.temperature_2m),
+        humidity: get24(weather.hourly.relativehumidity_2m),
+        apparent: get24(weather.hourly.apparent_temperature),
+        weathercode: get24(weather.hourly.weathercode),
+        windspeed: get24(weather.hourly.windspeed_10m),
       };
       updateHourlyWeather(hourlyWeatherData);
       hideSearch();
@@ -85,4 +86,13 @@ function hideSearch() {
   search.classList.add('hidden');
   // clear results after hiding
   domCitiesList('');
+}
+
+function get24(array) {
+  const newArray = [];
+  for (let i = 0; i < 24; i += 1) {
+    newArray.push(array[i]);
+  }
+
+  return newArray;
 }
