@@ -74,7 +74,6 @@ export default async function searchCity(search) {
         weathercode: weather.hourly.weathercode,
         windspeed: weather.hourly.windspeed_10m,
       };
-      console.log(weather);
       updateHourlyWeather(hourlyWeatherData);
       hideSearch();
     });
