@@ -2,6 +2,7 @@ import domCitiesList from '../dom/citiesList';
 import { fetchWeather } from '../fetch';
 import updateCurrentWeather from './updateCurrentWeather';
 import updateDailyWeather from './updateDailyWeather';
+import updateHourlyWeather from './updateHourlyWeather';
 import getWeathercode from './weathercode';
 
 let previousSearch;
@@ -65,6 +66,16 @@ export default async function searchCity(search) {
         uvIndexes: weather.daily.uv_index_max,
       };
       updateDailyWeather(dailyWeatherData);
+      const hourlyWeatherData = {
+        hours: weather.hourly.time,
+        temps: weather.hourly.temperature_2m,
+        humidity: weather.hourly.relativehumidity_2m,
+        apparent: weather.hourly.apparent_temperature,
+        weathercode: weather.hourly.weathercode,
+        windspeed: weather.hourly.windspeed_10m,
+      };
+      console.log(weather);
+      updateHourlyWeather(hourlyWeatherData);
       hideSearch();
     });
   });
