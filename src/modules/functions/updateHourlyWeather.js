@@ -47,7 +47,6 @@ function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours)
   // use values on draw
   let drawTemp = '';
   positionsX.forEach((pos, i) => {
-    // TODO: invert the chart using chartsHeightTemps
     const lineCommand = i === 0 ? 'M' : 'L';
     const posX = pos + marginX / 2;
     const posY = positionsToPixels[i];
