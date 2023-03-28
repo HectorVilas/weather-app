@@ -6,7 +6,7 @@ export default function updateHourlyWeather(data) {
   const textSpace = 30;
   const width = parseInt(parent.clientWidth, 10) - marginX;
   const height = parseInt(parent.clientHeight, 10);
-  const chartsHeightTemps = ((height * 70) / 100) - textSpace;
+  const chartsHeightTemps = ((height * 80) / 100) - textSpace;
   // const chartsHeightWindHumidity = height - textSpace;
   const positionsX = [0];
   // set values for vector horizontal positions
@@ -23,7 +23,7 @@ export default function updateHourlyWeather(data) {
   }
   // small timeout to allow animation between the empty chart and the updated one
   setTimeout(() => {
-    updateTemperature(data.temps, marginX, positionsX, chartsHeightTemps, hours);
+    updateTemperature(data.temps, marginX, positionsX, chartsHeightTemps, hours, textSpace);
   }, 50);
 }
 
@@ -38,7 +38,7 @@ function rangePercentToPixels(percent, height) {
   return (toPixels * -1) + height;
 }
 
-function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours) {
+function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours, textSpace) {
   const tempChart = document.querySelector('.hourly-chart-temperature');
   const positionsY = [];
   // set values for vector vertical positions
@@ -59,7 +59,7 @@ function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours)
     const lineCommand = i === 0 ? 'M' : 'L';
     const posX = pos + marginX / 2;
     const posY = positionsToPixels[i];
-    drawTemp += ` ${lineCommand} ${posX} ${posY}`;
+    drawTemp += ` ${lineCommand} ${posX} ${posY + (textSpace / 2)}`;
   });
 
   tempChart.setAttribute('d', drawTemp);
