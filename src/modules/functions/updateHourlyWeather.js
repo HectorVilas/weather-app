@@ -15,7 +15,16 @@ export default function updateHourlyWeather(data) {
     positionsX.push(currentValue);
   }
 
-  updateTemperature(data.temps, marginX, positionsX, chartsHeightTemps, hours);
+  // update current temperature line chart
+  const chartTemp = document.querySelector('.hourly-chart-temperature');
+  // detect empty draw on first load, place draw with values at 0
+  if (!chartTemp.getAttribute('d')) {
+    emptyChart(chartTemp, marginX, positionsX, chartsHeightTemps);
+  }
+  // small timeout to allow animation between the empty chart and the updated one
+  setTimeout(() => {
+    updateTemperature(data.temps, marginX, positionsX, chartsHeightTemps, hours);
+  }, 50);
 }
 
 function rangePercent(min, max, target) {
@@ -54,4 +63,14 @@ function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours)
   });
 
   tempChart.setAttribute('d', drawTemp);
+}
+
+function emptyChart(domElement, marginX, positionsX, height) {
+  let drawTemp = '';
+  positionsX.forEach((pos, i) => {
+    const lineCommand = i === 0 ? 'M' : 'L';
+    const posX = pos + marginX / 2;
+    drawTemp += ` ${lineCommand} ${posX} ${height}`;
+  });
+  domElement.setAttribute('d', drawTemp);
 }
