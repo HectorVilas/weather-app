@@ -14,8 +14,8 @@ export default function weatherDailyHourly() {
   }
 
   section.append(
-    dailyDiv,
     weatherHourly(),
+    dailyDiv,
   );
 
   return section;
