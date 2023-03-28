@@ -8,7 +8,6 @@ export default function weatherHourly() {
   tempChart.classList.add('hourly-chart-temperature');
   svg.setAttribute('width', '100%');
   svg.setAttribute('height', '100%');
-  tempChart.setAttribute('d', 'M 10 10 L 110 10 L 60 70 Z');
   tempChart.setAttribute('fill', 'transparent');
   tempChart.setAttribute('stroke', 'red');
   tempChart.setAttribute('stroke-width', '5');
