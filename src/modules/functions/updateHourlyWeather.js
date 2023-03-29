@@ -1,3 +1,5 @@
+import { celsiusToFahrenheit } from './unitConverter';
+
 export default function updateHourlyWeather(data) {
   const parent = document.querySelector('.weather-hourly');
   const hours = 24;
@@ -41,7 +43,7 @@ function rangePercentToPixels(percent, height) {
 function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours, textSpace) {
   const tempChart = document.querySelector('.hourly-chart-temperature');
   const tempChartTexts = document.querySelectorAll('.temp-chart-text');
-  const tempChartNumbers = document.querySelectorAll('.temp-chart-text .temperature-number');
+  const tempChartNumbers = document.querySelectorAll('.temp-chart-text .temperature-number-svg');
   const positionsY = [];
   // set values for vector vertical positions
   for (let i = 0; i < hours; i += 1) {
@@ -76,6 +78,8 @@ function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours,
   });
   tempChartNumbers.forEach((number, i) => {
     number.textContent = temps[i];
+    number.dataset.celsius = temps[i];
+    number.dataset.fahrenheit = celsiusToFahrenheit(temps[i]);
   });
 }
 
