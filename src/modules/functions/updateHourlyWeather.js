@@ -43,7 +43,7 @@ function rangePercentToPixels(percent, height) {
 function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours, textSpace) {
   const tempChart = document.querySelector('.hourly-chart-temperature');
   const tempChartTexts = document.querySelectorAll('.temp-chart-text');
-  const tempChartNumbers = document.querySelectorAll('.temp-chart-text .temperature-number-svg');
+  const tempChartNumbers = document.querySelectorAll('.temp-chart-text .temperature-number');
   const positionsY = [];
   // set values for vector vertical positions
   for (let i = 0; i < hours; i += 1) {
