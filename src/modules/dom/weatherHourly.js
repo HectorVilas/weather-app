@@ -3,6 +3,21 @@ export default function weatherHourly() {
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   const tempGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
   const tempChart = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  const tempChartNumbers = [];
+
+  for (let i = 0; i < 24; i += 1) {
+    const degrees = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    const degreesNumber = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+    const degreesSymbol = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+    degrees.setAttribute('x', 0);
+    degrees.setAttribute('y', 0);
+    degrees.classList.add('temp-chart-text');
+    degreesNumber.classList.add('temperature-number');
+    degreesNumber.textContent = '0';
+    degreesSymbol.textContent = '°';
+    degrees.append(degreesNumber, degreesSymbol);
+    tempChartNumbers.push(degrees);
+  }
 
   div.classList.add('weather-hourly');
   svg.classList.add('hourly-chart');
@@ -16,7 +31,7 @@ export default function weatherHourly() {
   tempChart.setAttribute('stroke-linecap', 'round');
   tempChart.setAttribute('stroke-linejoin', 'round');
 
-  tempGroup.append(tempChart);
+  tempGroup.append(tempChart, ...tempChartNumbers);
   svg.append(tempGroup);
   div.append(svg);
   return div;
