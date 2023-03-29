@@ -1,4 +1,5 @@
 import { celsiusToFahrenheit } from './unitConverter';
+import valueAdjust from './valueAdjust';
 
 export default function updateHourlyWeather(data) {
   const parent = document.querySelector('.weather-hourly');
@@ -77,7 +78,7 @@ function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours,
     }
   });
   tempChartNumbers.forEach((number, i) => {
-    number.textContent = temps[i];
+    valueAdjust(number, number.textContent, temps[i]);
     number.dataset.celsius = temps[i];
     number.dataset.fahrenheit = celsiusToFahrenheit(temps[i]);
   });
