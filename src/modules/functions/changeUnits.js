@@ -2,7 +2,7 @@ import valueAdjust from './valueAdjust';
 
 export default function changeUnits(e) {
   const newValue = e.target.checked;
-  const unitsClass = e.target.className.includes('temperature-unit')
+  const unitsClass = e.target.classList.contains('temperature-unit')
     ? '.temperature-unit' : '.wind-speed-unit';
   const valuesClass = unitsClass === '.temperature-unit'
     ? '.temperature-number' : '.speed-number';
@@ -15,25 +15,25 @@ export default function changeUnits(e) {
   const values = document.querySelectorAll(valuesClass);
   values.forEach((number) => {
     if (valuesClass === '.temperature-number') {
-      if (number.className.includes('temp-current')
-      || number.className.includes('temp-apparent')) {
+      if (number.classList.contains('temp-current')
+      || number.classList.contains('temp-apparent')) {
         valueAdjust(
           number,
           newValue ? number.dataset.celsius : number.dataset.fahrenheit,
           newValue ? number.dataset.fahrenheit : number.dataset.celsius,
         );
       } else {
-        number.innerText = newValue ? number.dataset.fahrenheit : number.dataset.celsius;
+        number.textContent = newValue ? number.dataset.fahrenheit : number.dataset.celsius;
       }
-    } else if (number.className.includes('speed-number')
-      && !number.className.includes('daily-wind-speed')) {
+    } else if (number.classList.contains('speed-number')
+      && !number.classList.contains('daily-wind-speed')) {
       valueAdjust(
         number,
         newValue ? number.dataset.kilometers : number.dataset.miles,
         newValue ? number.dataset.miles : number.dataset.kilometers,
       );
     } else {
-      number.innerText = newValue ? number.dataset.miles : number.dataset.kilometers;
+      number.textContent = newValue ? number.dataset.miles : number.dataset.kilometers;
     }
   });
 }
