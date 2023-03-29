@@ -12,7 +12,7 @@ export default function weatherHourly() {
     degrees.setAttribute('x', 0);
     degrees.setAttribute('y', 0);
     degrees.classList.add('temp-chart-text');
-    degreesNumber.classList.add('temperature-number');
+    degreesNumber.classList.add('temperature-number-svg');
     degreesNumber.textContent = '0';
     degreesSymbol.textContent = '°';
     degrees.append(degreesNumber, degreesSymbol);
