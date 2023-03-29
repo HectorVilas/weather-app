@@ -13,8 +13,6 @@ export default function weatherHourly() {
     degrees.setAttribute('y', 0);
     degrees.classList.add('temp-chart-text');
     degreesNumber.classList.add('temperature-number');
-    degreesNumber.dataset.celsius = 1;
-    degreesNumber.dataset.fahrenheit = 2;
     degreesNumber.textContent = '0';
     degreesSymbol.textContent = '°';
     degrees.append(degreesNumber, degreesSymbol);
