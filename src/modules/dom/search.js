@@ -20,6 +20,7 @@ export default function search() {
   cityList.classList.add('search-results');
   loadingAnimDiv.classList.add('search-loading', 'hidden');
   input.classList.add('search-input');
+  input.setAttribute('autofocus', true);
   input.type = 'search';
   input.placeholder = 'Write a location name';
 
