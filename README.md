@@ -43,9 +43,9 @@ For this project I'm going to use Webpack again. I've been setting everything up
       - ✔️ all the Celcius values on screen will be converted to Fahrenheit
       - ✔️ same for km/h and mph values
   - ❌ the background image or colors must change to something representing the current weather
-  - ❌ at the bottom will be a line chart with the predicted temperatures
-    - ❌ on each vector:
-      - ❌ the height of the vector will represent the predicted temperature
+  - ⭕ at the bottom will be a line chart with the predicted temperatures
+    - ⭕ on each vector:
+      - ✔️ the height of the vector will represent the predicted temperature
       - ❌ the hour will appear at the bottom
       - ❌ an icon will represent the forecast (sun, clouds, rain, etc)
         - ❌ if the next vector have the same forecast, no icon will be shown
@@ -91,7 +91,7 @@ For this project I'm going to use Webpack again. I've been setting everything up
   - ✔️ icon picker for current weather
     - parameters: current weather
     - returns: respective weather image element
-  - ❌ line chart element
-  - ❌ line chart updater
+  - ⭕ line chart element
+  - ⭕ line chart updater
   - - parameters: an array with objects, each with hour, weather icon and predicted temp
     - action: update vectors position on Y axis from the line chart, replace weather icons, update hours and move 0:00hs line if necessary
