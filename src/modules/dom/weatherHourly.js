@@ -30,13 +30,6 @@ function createTempGroup() {
   tempSvg.classList.add('hourly-chart');
   tempGroup.classList.add('hourly-chart-group');
   tempChart.classList.add('hourly-chart-temperature');
-  tempSvg.setAttribute('width', '100%');
-  tempSvg.setAttribute('height', '100%');
-  tempChart.setAttribute('fill', 'transparent');
-  tempChart.setAttribute('stroke', 'red');
-  tempChart.setAttribute('stroke-width', '5');
-  tempChart.setAttribute('stroke-linecap', 'round');
-  tempChart.setAttribute('stroke-linejoin', 'round');
 
   tempGroup.append(tempChart, ...tempChartNumbers);
   tempSvg.append(tempGroup);
