@@ -4,10 +4,29 @@ export default function weatherHourly() {
   div.classList.add('weather-hourly');
   svg.classList.add('hourly-chart');
   svg.append(
+    createChartLines(),
     createTempGroup(),
   );
   div.append(svg);
   return div;
+}
+
+function createChartLines() {
+  const chartLinesGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  const horizontalLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+
+  for (let i = 0; i < 24; i += 1) {
+    const verticalLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    verticalLine.classList.add('chart-line-hour');
+    chartLinesGroup.append(verticalLine);
+  }
+
+  chartLinesGroup.classList.add('chart-lines-group');
+  horizontalLine.classList.add('chart-line-base');
+
+  chartLinesGroup.append(horizontalLine);
+
+  return chartLinesGroup;
 }
 
 function createTempGroup() {
