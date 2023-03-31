@@ -14,17 +14,30 @@ export default function weatherHourly() {
 function createChartLines() {
   const chartLinesGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
   const horizontalLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  const hoursTexts = [];
 
   for (let i = 0; i < 24; i += 1) {
     const verticalLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
     verticalLine.classList.add('chart-line-hour');
     chartLinesGroup.append(verticalLine);
   }
-
+  for (let i = 0; i < 24; i += 1) {
+    const hours = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    const hoursNumber = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+    const hoursText = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+    hours.setAttribute('x', 0);
+    hours.setAttribute('y', 0);
+    hours.classList.add('hours-chart-text');
+    hoursNumber.classList.add('hours-chart-numbers');
+    hoursNumber.textContent = '0';
+    hoursText.textContent = 'hs';
+    hours.append(hoursNumber, hoursText);
+    hoursTexts.push(hours);
+  }
   chartLinesGroup.classList.add('chart-lines-group');
   horizontalLine.classList.add('chart-line-base');
 
-  chartLinesGroup.append(horizontalLine);
+  chartLinesGroup.append(horizontalLine, ...hoursTexts);
 
   return chartLinesGroup;
 }
