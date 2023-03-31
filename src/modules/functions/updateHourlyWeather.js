@@ -89,6 +89,7 @@ function positionChartLines(hours, marginX, positionsX, textSpace, width, height
 
 function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours, textSpace) {
   const tempChart = document.querySelector('.hourly-chart-temperature');
+  const tempChartVectors = document.querySelectorAll('.temp-chart-vector');
   const tempChartTexts = document.querySelectorAll('.temp-chart-text');
   const tempChartNumbers = document.querySelectorAll('.temp-chart-text .temperature-number');
   const positionsY = [];
@@ -126,6 +127,13 @@ function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours,
     number.dataset.celsius = temps[i];
     number.dataset.fahrenheit = celsiusToFahrenheit(temps[i]);
   });
+
+  // position circle vectors
+  tempChartVectors.forEach((vector, i) => {
+    vector.setAttribute('cx', `${positionsX[i] + (marginX / 2)}`);
+    vector.setAttribute('cy', `${positionsToPixels[i] + (textSpace / 2)}`);
+  });
+  hideBetween(tempChartVectors);
 }
 
 function emptyChart(domElement, marginX, positionsX, height) {
