@@ -46,14 +46,16 @@ function rangePercentToPixels(percent, height) {
 function positionChartLines(marginX, positionsX, textSpace, width, height) {
   const hourLines = document.querySelectorAll('.chart-line-hour');
   const baseLine = document.querySelector('.chart-line-base');
+  const currentHour = new Date().getHours();
 
   baseLine.setAttribute('x1', `${marginX / 2}`);
   baseLine.setAttribute('y1', `${height - (textSpace / 2)}`);
   baseLine.setAttribute('x2', `${width + (marginX / 2)}`);
   baseLine.setAttribute('y2', `${height - (textSpace / 2)}`);
+
   hourLines.forEach((line, i) => {
     const positionX = positionsX[i] + (marginX / 2);
-    const lineLength = 20;
+    const lineLength = currentHour === i ? 70 : 20;
     line.setAttribute('x1', `${positionX}`);
     line.setAttribute('y1', `${height - (textSpace / 2)}`);
     line.setAttribute('x2', `${positionX}`);
