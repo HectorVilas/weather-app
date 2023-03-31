@@ -6,7 +6,7 @@ export default function updateHourlyWeather(data) {
   const hours = 24;
   const marginX = 20;
   // vertical space reserved on pixels for hours and temp values
-  const textSpace = 30;
+  const textSpace = 35;
   const width = parseInt(parent.clientWidth, 10) - marginX;
   const height = parseInt(parent.clientHeight, 10);
   const chartsHeightTemps = ((height * 80) / 100) - textSpace;
@@ -19,7 +19,7 @@ export default function updateHourlyWeather(data) {
   }
 
   // position hour lines and base line for the chart
-  positionChartLines(marginX, positionsX, textSpace, width, height);
+  positionChartLines(data.hours, marginX, positionsX, textSpace, width, height);
   // update current temperature line chart
   const chartTemp = document.querySelector('.hourly-chart-temperature');
   // detect empty draw on first load, place draw with values at 0
@@ -43,11 +43,13 @@ function rangePercentToPixels(percent, height) {
   return (toPixels * -1) + height;
 }
 
-function positionChartLines(marginX, positionsX, textSpace, width, height) {
+function positionChartLines(hours, marginX, positionsX, textSpace, width, height) {
   const hourLines = document.querySelectorAll('.chart-line-hour');
   const baseLine = document.querySelector('.chart-line-base');
+  const hoursTexts = document.querySelectorAll('.hours-chart-text');
+  const hoursNumbers = document.querySelectorAll('.hours-chart-numbers');
   const currentHour = new Date().getHours();
-
+  // position lines
   baseLine.setAttribute('x1', `${marginX / 2}`);
   baseLine.setAttribute('y1', `${height - (textSpace / 2)}`);
   baseLine.setAttribute('x2', `${width + (marginX / 2)}`);
@@ -55,11 +57,28 @@ function positionChartLines(marginX, positionsX, textSpace, width, height) {
 
   hourLines.forEach((line, i) => {
     const positionX = positionsX[i] + (marginX / 2);
-    const lineLength = currentHour === i ? 70 : 20;
+    const lineLength = currentHour === i ? 20 : 5;
     line.setAttribute('x1', `${positionX}`);
     line.setAttribute('y1', `${height - (textSpace / 2)}`);
     line.setAttribute('x2', `${positionX}`);
     line.setAttribute('y2', `${height - (textSpace / 2) - lineLength}`);
+  });
+  // position hour text
+  hoursTexts.forEach((text, i) => {
+    const textMargin = 1;
+    text.setAttribute('x', `${positionsX[i] + (marginX / 4)}`);
+    text.setAttribute('y', `${height - textMargin}`);
+  });
+  // add hour numbers
+  hoursNumbers.forEach((hour, i) => {
+    const thisour = new Date(hours[i]).getHours();
+    hour.textContent = thisour;
+  });
+  // hide unnecesary hours, keep it visually clean
+  hoursTexts.forEach((text, i) => {
+    if ((i + 2) % 3 !== 0) {
+      text.classList.add('hidden');
+    }
   });
 }
 
