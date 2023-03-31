@@ -6,7 +6,7 @@ export default function updateHourlyWeather(data) {
   const hours = 24;
   const marginX = 20;
   // vertical space reserved on pixels for hours and temp values
-  const textSpace = 35;
+  const textSpace = 45;
   const width = parseInt(parent.clientWidth, 10) - marginX;
   const height = parseInt(parent.clientHeight, 10);
   const chartsHeightTemps = ((height * 80) / 100) - textSpace;
@@ -115,7 +115,7 @@ function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours,
   // position the numbers on each vector
   tempChartTexts.forEach((text, i) => {
     text.setAttribute('x', positionsX[i]);
-    text.setAttribute('y', positionsToPixels[i] + (textSpace / 2));
+    text.setAttribute('y', positionsToPixels[i] + (textSpace / 4));
     if ((i + 2) % 3 !== 0) {
       text.classList.add('hidden');
     }
