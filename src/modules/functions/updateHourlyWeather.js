@@ -43,12 +43,21 @@ function rangePercentToPixels(percent, height) {
   return (toPixels * -1) + height;
 }
 
+function hideBetween(domElements) {
+  domElements.forEach((element, i) => {
+    if ((i + 2) % 3 !== 0) {
+      element.classList.add('hidden');
+    } else {
+      element.classList.remove('hidden');
+    }
+  });
+}
+
 function positionChartLines(hours, marginX, positionsX, textSpace, width, height) {
   const hourLines = document.querySelectorAll('.chart-line-hour');
   const baseLine = document.querySelector('.chart-line-base');
   const hoursTexts = document.querySelectorAll('.hours-chart-text');
   const hoursNumbers = document.querySelectorAll('.hours-chart-numbers');
-  // const currentHour = new Date().getHours();
   // position lines
   baseLine.setAttribute('x1', `${marginX / 2}`);
   baseLine.setAttribute('y1', `${height - (textSpace / 2)}`);
@@ -59,7 +68,6 @@ function positionChartLines(hours, marginX, positionsX, textSpace, width, height
     const positionX = positionsX[i] + (marginX / 2);
     let lineLength = 4;
     if ((i + 2) % 3 === 0) lineLength = 10;
-    // if (currentHour === i) lineLength = 25;
     line.setAttribute('x1', `${positionX}`);
     line.setAttribute('y1', `${height - (textSpace / 2)}`);
     line.setAttribute('x2', `${positionX}`);
@@ -71,16 +79,11 @@ function positionChartLines(hours, marginX, positionsX, textSpace, width, height
     text.setAttribute('x', `${positionsX[i] + (marginX / 4)}`);
     text.setAttribute('y', `${height - textMargin}`);
   });
+  hideBetween(hoursTexts);
   // add hour numbers
   hoursNumbers.forEach((hour, i) => {
     const thisour = new Date(hours[i]).getHours();
     hour.textContent = thisour;
-  });
-  // hide unnecesary hours, keep it visually clean
-  hoursTexts.forEach((text, i) => {
-    if ((i + 2) % 3 !== 0) {
-      text.classList.add('hidden');
-    }
   });
 }
 
@@ -116,10 +119,8 @@ function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours,
   tempChartTexts.forEach((text, i) => {
     text.setAttribute('x', positionsX[i]);
     text.setAttribute('y', positionsToPixels[i] + (textSpace / 4));
-    if ((i + 2) % 3 !== 0) {
-      text.classList.add('hidden');
-    }
   });
+  hideBetween(tempChartTexts);
   tempChartNumbers.forEach((number, i) => {
     valueAdjust(number, number.textContent, temps[i]);
     number.dataset.celsius = temps[i];
