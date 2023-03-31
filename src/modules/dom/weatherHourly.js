@@ -46,6 +46,7 @@ function createTempGroup() {
   const tempGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
   const tempChart = document.createElementNS('http://www.w3.org/2000/svg', 'path');
   const tempChartNumbers = [];
+  const tempChartVectors = [];
 
   for (let i = 0; i < 24; i += 1) {
     const degrees = document.createElementNS('http://www.w3.org/2000/svg', 'text');
@@ -60,11 +61,17 @@ function createTempGroup() {
     degrees.append(degreesNumber, degreesSymbol);
     tempChartNumbers.push(degrees);
   }
+  for (let i = 0; i < 24; i += 1) {
+    const vector = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    vector.classList.add('temp-chart-vector');
+    vector.setAttribute('r', 4);
+    tempChartVectors.push(vector);
+  }
 
   tempGroup.classList.add('hourly-chart-group');
   tempChart.classList.add('hourly-chart-temperature');
 
-  tempGroup.append(tempChart, ...tempChartNumbers);
+  tempGroup.append(tempChart, ...tempChartNumbers, ...tempChartVectors);
 
   return tempGroup;
 }
