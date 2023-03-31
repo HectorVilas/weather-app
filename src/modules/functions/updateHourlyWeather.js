@@ -48,7 +48,7 @@ function positionChartLines(hours, marginX, positionsX, textSpace, width, height
   const baseLine = document.querySelector('.chart-line-base');
   const hoursTexts = document.querySelectorAll('.hours-chart-text');
   const hoursNumbers = document.querySelectorAll('.hours-chart-numbers');
-  const currentHour = new Date().getHours();
+  // const currentHour = new Date().getHours();
   // position lines
   baseLine.setAttribute('x1', `${marginX / 2}`);
   baseLine.setAttribute('y1', `${height - (textSpace / 2)}`);
@@ -57,7 +57,9 @@ function positionChartLines(hours, marginX, positionsX, textSpace, width, height
 
   hourLines.forEach((line, i) => {
     const positionX = positionsX[i] + (marginX / 2);
-    const lineLength = currentHour === i ? 20 : 5;
+    let lineLength = 4;
+    if ((i + 2) % 3 === 0) lineLength = 10;
+    // if (currentHour === i) lineLength = 25;
     line.setAttribute('x1', `${positionX}`);
     line.setAttribute('y1', `${height - (textSpace / 2)}`);
     line.setAttribute('x2', `${positionX}`);
