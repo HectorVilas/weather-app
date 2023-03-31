@@ -22,3 +22,7 @@
   stroke-linejoin: round;
   transition: 200ms linear;
 }
+
+.temp-chart-vector {
+  fill: green;
+}
