@@ -18,6 +18,8 @@ export default function updateHourlyWeather(data) {
     positionsX.push(currentValue);
   }
 
+  // position hour lines and base line for the chart
+  positionChartLines(marginX, positionsX, textSpace, width, height);
   // update current temperature line chart
   const chartTemp = document.querySelector('.hourly-chart-temperature');
   // detect empty draw on first load, place draw with values at 0
@@ -39,6 +41,24 @@ function rangePercentToPixels(percent, height) {
   // as the Y axis ascend going down, the graphic will be inverted
   // using the bottom of it's height as base for min temp
   return (toPixels * -1) + height;
+}
+
+function positionChartLines(marginX, positionsX, textSpace, width, height) {
+  const hourLines = document.querySelectorAll('.chart-line-hour');
+  const baseLine = document.querySelector('.chart-line-base');
+
+  baseLine.setAttribute('x1', `${marginX / 2}`);
+  baseLine.setAttribute('y1', `${height - (textSpace / 2)}`);
+  baseLine.setAttribute('x2', `${width + (marginX / 2)}`);
+  baseLine.setAttribute('y2', `${height - (textSpace / 2)}`);
+  hourLines.forEach((line, i) => {
+    const positionX = positionsX[i] + (marginX / 2);
+    const lineLength = 20;
+    line.setAttribute('x1', `${positionX}`);
+    line.setAttribute('y1', `${height - (textSpace / 2)}`);
+    line.setAttribute('x2', `${positionX}`);
+    line.setAttribute('y2', `${height - (textSpace / 2) - lineLength}`);
+  });
 }
 
 function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours, textSpace) {
