@@ -8,6 +8,12 @@
   height: 100%;
 }
 
+.chart-line-hour,
+.chart-line-base {
+  stroke: gray;
+  stroke-width: 2px;
+}
+
 .hourly-chart-temperature {
   fill: transparent;
   stroke: red;
