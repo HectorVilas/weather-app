@@ -1,5 +1,6 @@
 import dailyCard from './dailyCard';
 import weatherHourly from './weatherHourly';
+import moveViewBox from '../functions/moveViewBox';
 
 export default function weatherDailyHourly() {
   const section = document.createElement('section');
@@ -17,6 +18,14 @@ export default function weatherDailyHourly() {
     weatherHourly(),
     dailyDiv,
   );
-
+  // adding listeners to hourly cards
+  const hourlyCards = section.querySelectorAll('.daily-card');
+  hourlyCards.forEach((card, i) => {
+    card.addEventListener('click', () => {
+      const parent = document.querySelector('.weather-hourly');
+      const svg = document.querySelector('.hourly-chart');
+      moveViewBox(parent, svg, 0, i);
+    });
+  });
   return section;
 }
