@@ -67,7 +67,7 @@ export default async function searchCity(search) {
       };
       updateDailyWeather(dailyWeatherData);
       // data for hourly weather for 24 hours of current day, then update
-      // const localHour = new Date(weather.current_weather.time).getHours();
+      const localHour = new Date(weather.current_weather.time).getHours();
       const hourlyWeatherData = {
         hours: weather.hourly.time,
         temps: weather.hourly.temperature_2m,
@@ -76,7 +76,7 @@ export default async function searchCity(search) {
         weathercode: weather.hourly.weathercode,
         windspeed: weather.hourly.windspeed_10m,
       };
-      updateHourlyWeather(hourlyWeatherData);
+      updateHourlyWeather(hourlyWeatherData, localHour);
       hideSearch();
     });
   });
