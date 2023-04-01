@@ -1,7 +1,7 @@
 import { celsiusToFahrenheit } from './unitConverter';
 import valueAdjust from './valueAdjust';
 
-export default function updateHourlyWeather(data) {
+export default function updateHourlyWeather(data, startFromHour = 0, startFromDay = 0) {
   const parent = document.querySelector('.weather-hourly');
   const svg = document.querySelector('.hourly-chart');
   const hours = 168;
@@ -32,7 +32,8 @@ export default function updateHourlyWeather(data) {
   }, 50);
 
   // move viewbox to only show 24 hours
-  svg.setAttribute('viewBox', `${0} ${0} ${width} ${height}`);
+  const viewboxStart = ((width / 24) * startFromHour) + (width * startFromDay);
+  svg.setAttribute('viewBox', `${viewboxStart} ${0} ${width} ${height}`);
 }
 
 function rangePercent(min, max, target) {
