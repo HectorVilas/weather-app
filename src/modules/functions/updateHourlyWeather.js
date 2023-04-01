@@ -19,7 +19,7 @@ export default function updateHourlyWeather(data, startFromHour = 0, startFromDa
   }
 
   // position hour lines and base line for the chart
-  positionChartLines(data.hours, positionsX, textSpace, width, height);
+  positionLinesAndHours(data.hours, positionsX, textSpace, width, height);
   // update current temperature line chart
   const chartTemp = document.querySelector('.hourly-chart-temperature');
   // detect empty draw on first load, place draw with values at 0
@@ -49,7 +49,8 @@ function rangePercentToPixels(percent, height) {
 
 function hideBetween(domElements) {
   domElements.forEach((element, i) => {
-    if ((i + 2) % 3 !== 0) {
+    // if ((i + 2) % 3 !== 0) {
+    if (i % 4 !== 0) {
       element.classList.add('hidden');
     } else {
       element.classList.remove('hidden');
@@ -57,7 +58,7 @@ function hideBetween(domElements) {
   });
 }
 
-function positionChartLines(hours, positionsX, textSpace, width, height) {
+function positionLinesAndHours(hours, positionsX, textSpace, width, height) {
   const hourLines = document.querySelectorAll('.chart-line-hour');
   const baseLine = document.querySelector('.chart-line-base');
   const hoursTexts = document.querySelectorAll('.hours-chart-text');
@@ -71,7 +72,8 @@ function positionChartLines(hours, positionsX, textSpace, width, height) {
   hourLines.forEach((line, i) => {
     const positionX = positionsX[i];
     let lineLength = 4;
-    if ((i + 2) % 3 === 0) lineLength = 10;
+    if (i % 4 === 0) lineLength = 10;
+    if (i % 24 === 0) lineLength = 30;
     line.setAttribute('x1', `${positionX}`);
     line.setAttribute('y1', `${height - (textSpace / 2)}`);
     line.setAttribute('x2', `${positionX}`);
