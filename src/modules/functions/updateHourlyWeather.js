@@ -13,8 +13,8 @@ export default function updateHourlyWeather(data) {
   // const chartsHeightWindHumidity = height - textSpace;
   const positionsX = [0];
   // set values for vertex horizontal positions
-  for (let i = 0; i < hours - 1; i += 1) {
-    const currentValue = parseFloat(parseFloat(((width * 7) / (hours - 1)) * (i + 1)).toFixed(1));
+  for (let i = 0; i < hours; i += 1) {
+    const currentValue = ((width * 7) / (hours)) * (i + 1);
     positionsX.push(currentValue);
   }
 
