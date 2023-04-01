@@ -27,6 +27,7 @@ function createChartLines() {
     const hoursText = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
     hours.setAttribute('x', 0);
     hours.setAttribute('y', 0);
+    hours.setAttribute('text-anchor', 'middle');
     hours.classList.add('hours-chart-text');
     hoursNumber.classList.add('hours-chart-numbers');
     hoursNumber.textContent = '0';
@@ -54,6 +55,7 @@ function createTempGroup() {
     const degreesSymbol = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
     degrees.setAttribute('x', 0);
     degrees.setAttribute('y', 0);
+    degrees.setAttribute('text-anchor', 'middle');
     degrees.classList.add('temp-chart-text');
     degreesNumber.classList.add('temp-chart', 'temperature-number');
     degreesNumber.textContent = '0';
