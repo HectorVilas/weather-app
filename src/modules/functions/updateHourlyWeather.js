@@ -3,33 +3,36 @@ import valueAdjust from './valueAdjust';
 
 export default function updateHourlyWeather(data) {
   const parent = document.querySelector('.weather-hourly');
-  const hours = 24;
-  const marginX = 20;
+  const svg = document.querySelector('.hourly-chart');
+  const hours = 168;
   // vertical space reserved on pixels for hours and temp values
   const textSpace = 45;
-  const width = parseInt(parent.clientWidth, 10) - marginX;
+  const width = parseInt(parent.clientWidth, 10);
   const height = parseInt(parent.clientHeight, 10);
   const chartsHeightTemps = ((height * 80) / 100) - textSpace;
   // const chartsHeightWindHumidity = height - textSpace;
   const positionsX = [0];
   // set values for vertex horizontal positions
   for (let i = 0; i < hours - 1; i += 1) {
-    const currentValue = parseFloat(parseFloat(((width) / (hours - 1)) * (i + 1)).toFixed(1));
+    const currentValue = parseFloat(parseFloat(((width * 7) / (hours - 1)) * (i + 1)).toFixed(1));
     positionsX.push(currentValue);
   }
 
   // position hour lines and base line for the chart
-  positionChartLines(data.hours, marginX, positionsX, textSpace, width, height);
+  positionChartLines(data.hours, positionsX, textSpace, width, height);
   // update current temperature line chart
   const chartTemp = document.querySelector('.hourly-chart-temperature');
   // detect empty draw on first load, place draw with values at 0
   if (!chartTemp.getAttribute('d')) {
-    emptyChart(chartTemp, marginX, positionsX, chartsHeightTemps);
+    emptyChart(chartTemp, positionsX, chartsHeightTemps);
   }
   // small timeout to allow animation between the empty chart and the updated one
   setTimeout(() => {
-    updateTemperature(data.temps, marginX, positionsX, chartsHeightTemps, hours, textSpace);
+    updateTemperature(data.temps, positionsX, chartsHeightTemps, hours, textSpace);
   }, 50);
+
+  // move viewbox to only show 24 hours
+  svg.setAttribute('viewBox', `${0} ${0} ${width} ${height}`);
 }
 
 function rangePercent(min, max, target) {
@@ -53,19 +56,19 @@ function hideBetween(domElements) {
   });
 }
 
-function positionChartLines(hours, marginX, positionsX, textSpace, width, height) {
+function positionChartLines(hours, positionsX, textSpace, width, height) {
   const hourLines = document.querySelectorAll('.chart-line-hour');
   const baseLine = document.querySelector('.chart-line-base');
   const hoursTexts = document.querySelectorAll('.hours-chart-text');
   const hoursNumbers = document.querySelectorAll('.hours-chart-numbers');
   // position lines
-  baseLine.setAttribute('x1', `${marginX / 2}`);
+  baseLine.setAttribute('x1', `${0}`);
   baseLine.setAttribute('y1', `${height - (textSpace / 2)}`);
-  baseLine.setAttribute('x2', `${width + (marginX / 2)}`);
+  baseLine.setAttribute('x2', `${width * 7}`);
   baseLine.setAttribute('y2', `${height - (textSpace / 2)}`);
 
   hourLines.forEach((line, i) => {
-    const positionX = positionsX[i] + (marginX / 2);
+    const positionX = positionsX[i];
     let lineLength = 4;
     if ((i + 2) % 3 === 0) lineLength = 10;
     line.setAttribute('x1', `${positionX}`);
@@ -76,7 +79,7 @@ function positionChartLines(hours, marginX, positionsX, textSpace, width, height
   // position hour text
   hoursTexts.forEach((text, i) => {
     const textMargin = 1;
-    text.setAttribute('x', `${positionsX[i] + (marginX / 4)}`);
+    text.setAttribute('x', `${positionsX[i]}`);
     text.setAttribute('y', `${height - textMargin}`);
   });
   hideBetween(hoursTexts);
@@ -87,7 +90,7 @@ function positionChartLines(hours, marginX, positionsX, textSpace, width, height
   });
 }
 
-function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours, textSpace) {
+function updateTemperature(temps, positionsX, chartsHeightTemps, hours, textSpace) {
   const tempChart = document.querySelector('.hourly-chart-temperature');
   const tempChartVertices = document.querySelectorAll('.temp-chart-vertex');
   const tempChartTexts = document.querySelectorAll('.temp-chart-text');
@@ -109,7 +112,7 @@ function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours,
   let drawTemp = '';
   positionsX.forEach((pos, i) => {
     const lineCommand = i === 0 ? 'M' : 'L';
-    const posX = pos + marginX / 2;
+    const posX = pos;
     const posY = positionsToPixels[i];
     drawTemp += ` ${lineCommand} ${posX} ${posY + (textSpace / 2)}`;
   });
@@ -130,17 +133,17 @@ function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours,
 
   // position circle vertices
   tempChartVertices.forEach((vertex, i) => {
-    vertex.setAttribute('cx', `${positionsX[i] + (marginX / 2)}`);
+    vertex.setAttribute('cx', `${positionsX[i]}`);
     vertex.setAttribute('cy', `${positionsToPixels[i] + (textSpace / 2)}`);
   });
   hideBetween(tempChartVertices);
 }
 
-function emptyChart(domElement, marginX, positionsX, height) {
+function emptyChart(domElement, positionsX, height) {
   let drawTemp = '';
   positionsX.forEach((pos, i) => {
     const lineCommand = i === 0 ? 'M' : 'L';
-    const posX = pos + marginX / 2;
+    const posX = pos;
     drawTemp += ` ${lineCommand} ${posX} ${height}`;
   });
   domElement.setAttribute('d', drawTemp);
