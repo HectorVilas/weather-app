@@ -12,7 +12,7 @@ export default function updateHourlyWeather(data) {
   const chartsHeightTemps = ((height * 80) / 100) - textSpace;
   // const chartsHeightWindHumidity = height - textSpace;
   const positionsX = [0];
-  // set values for vector horizontal positions
+  // set values for vertex horizontal positions
   for (let i = 0; i < hours - 1; i += 1) {
     const currentValue = parseFloat(parseFloat(((width) / (hours - 1)) * (i + 1)).toFixed(1));
     positionsX.push(currentValue);
@@ -89,11 +89,11 @@ function positionChartLines(hours, marginX, positionsX, textSpace, width, height
 
 function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours, textSpace) {
   const tempChart = document.querySelector('.hourly-chart-temperature');
-  const tempChartVectors = document.querySelectorAll('.temp-chart-vector');
+  const tempChartVertices = document.querySelectorAll('.temp-chart-vertex');
   const tempChartTexts = document.querySelectorAll('.temp-chart-text');
   const tempChartNumbers = document.querySelectorAll('.temp-chart-text .temperature-number');
   const positionsY = [];
-  // set values for vector vertical positions
+  // set values for vertex vertical positions
   for (let i = 0; i < hours; i += 1) {
     const currentValue = parseFloat(temps[i]);
     positionsY.push(currentValue);
@@ -116,7 +116,7 @@ function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours,
 
   tempChart.setAttribute('d', drawTemp);
 
-  // position the numbers on each vector
+  // position the numbers on each vertex
   tempChartTexts.forEach((text, i) => {
     text.setAttribute('x', positionsX[i]);
     text.setAttribute('y', positionsToPixels[i] + (textSpace / 4));
@@ -128,12 +128,12 @@ function updateTemperature(temps, marginX, positionsX, chartsHeightTemps, hours,
     number.dataset.fahrenheit = celsiusToFahrenheit(temps[i]);
   });
 
-  // position circle vectors
-  tempChartVectors.forEach((vector, i) => {
-    vector.setAttribute('cx', `${positionsX[i] + (marginX / 2)}`);
-    vector.setAttribute('cy', `${positionsToPixels[i] + (textSpace / 2)}`);
+  // position circle vertices
+  tempChartVertices.forEach((vertex, i) => {
+    vertex.setAttribute('cx', `${positionsX[i] + (marginX / 2)}`);
+    vertex.setAttribute('cy', `${positionsToPixels[i] + (textSpace / 2)}`);
   });
-  hideBetween(tempChartVectors);
+  hideBetween(tempChartVertices);
 }
 
 function emptyChart(domElement, marginX, positionsX, height) {
