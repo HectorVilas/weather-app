@@ -51,13 +51,13 @@ function rangePercentToPixels(percent, height) {
 }
 
 function hideBetween(domElements) {
-  domElements.forEach((element, i) => {
-    if ((i + 2) % 3 !== 0) {
-      element.classList.add('hidden');
-    } else {
-      element.classList.remove('hidden');
-    }
-  });
+  // domElements.forEach((element, i) => {
+  //   if ((i + 2) % 3 !== 0) {
+  //     element.classList.add('hidden');
+  //   } else {
+  //     element.classList.remove('hidden');
+  //   }
+  // });
 }
 
 function getNext25(array, startFromIndex = 0) {
@@ -98,8 +98,8 @@ function positionLinesAndHours(hours, positionsX, textSpace, width, height) {
   hideBetween(hoursTexts);
   // add hour numbers
   hoursNumbers.forEach((hour, i) => {
-    const thisour = new Date(hours[i]).getHours();
-    hour.textContent = thisour;
+    const thisHour = new Date(hours[i]).getHours();
+    hour.textContent = thisHour;
   });
 }
 
