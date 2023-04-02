@@ -79,8 +79,8 @@ export default async function searchCity(search) {
       };
       updateHourlyWeather(hourlyWeatherData);
       // hide search
-      const search = document.querySelector('.city-search');
-      search.classList.add('hidden');
+      const domSearch = document.querySelector('.city-search');
+      domSearch.classList.add('hidden');
       // clear results after hiding
       domCitiesList('');
     });
