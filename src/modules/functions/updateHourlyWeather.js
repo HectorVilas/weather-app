@@ -1,11 +1,9 @@
 import { celsiusToFahrenheit } from './unitConverter';
 import valueAdjust from './valueAdjust';
-import moveViewBox from './moveViewBox';
 
 export default function updateHourlyWeather(data) {
   const parent = document.querySelector('.weather-hourly');
-  const svg = document.querySelector('.hourly-chart');
-  const hours = 168;
+  const hours = 24;
   // vertical space reserved on pixels for hours and temp values
   const textSpace = 45;
   const width = parseInt(parent.clientWidth, 10);
@@ -15,25 +13,20 @@ export default function updateHourlyWeather(data) {
   const positionsX = [0];
   // set values for vertex horizontal positions
   for (let i = 0; i < hours; i += 1) {
-    const currentValue = ((width * 7) / (hours)) * (i + 1);
+    const currentValue = (width / (hours)) * (i + 1);
     positionsX.push(currentValue);
   }
 
-  // position hour lines and base line for the chart
-  positionLinesAndHours(data.hours, positionsX, textSpace, width, height);
+  positionLinesAndHours(getNext25(data.hours), positionsX, textSpace, width, height);
   // update current temperature line chart
   const chartTemp = document.querySelector('.hourly-chart-temperature');
-  // detect empty draw on first load, place draw with values at 0
   if (!chartTemp.getAttribute('d')) {
     emptyChart(chartTemp, positionsX, chartsHeightTemps);
   }
   // small timeout to allow animation between the empty chart and the updated one
   setTimeout(() => {
-    updateTemperature(data.temps, positionsX, chartsHeightTemps, hours, textSpace);
+    updateTemperature(getNext25(data.temps), positionsX, chartsHeightTemps, hours, textSpace);
   }, 50);
-
-  // move viewbox to only show 24 hours
-  moveViewBox(parent, svg, data.localHour, 0);
 }
 
 function rangePercent(min, max, target) {
@@ -42,20 +35,27 @@ function rangePercent(min, max, target) {
 }
 function rangePercentToPixels(percent, height) {
   const toPixels = ((percent * height) / 100);
-  // as the Y axis ascend going down, the graphic will be inverted
-  // using the bottom of it's height as base for min temp
+  // invert default Y axis behavior, use base as zero, ascend going up
   return (toPixels * -1) + height;
 }
 
 function hideBetween(domElements) {
   domElements.forEach((element, i) => {
-    // if ((i + 2) % 3 !== 0) {
-    if (i % 4 !== 0) {
+    if ((i + 2) % 3 !== 0) {
       element.classList.add('hidden');
     } else {
       element.classList.remove('hidden');
     }
   });
+}
+
+function getNext25(array, startFromIndex = 0) {
+  const newArray = [];
+  for (let i = 0; i < 25; i += 1) {
+    newArray.push(array[i + startFromIndex]);
+  }
+
+  return newArray;
 }
 
 function positionLinesAndHours(hours, positionsX, textSpace, width, height) {
@@ -66,14 +66,13 @@ function positionLinesAndHours(hours, positionsX, textSpace, width, height) {
   // position lines
   baseLine.setAttribute('x1', `${0}`);
   baseLine.setAttribute('y1', `${height - (textSpace / 2)}`);
-  baseLine.setAttribute('x2', `${width * 7}`);
+  baseLine.setAttribute('x2', `${width}`);
   baseLine.setAttribute('y2', `${height - (textSpace / 2)}`);
 
   hourLines.forEach((line, i) => {
     const positionX = positionsX[i];
     let lineLength = 4;
-    if (i % 4 === 0) lineLength = 10;
-    if (i % 24 === 0) lineLength = 30;
+    if ((i + 2) % 3 === 0) lineLength = 10;
     line.setAttribute('x1', `${positionX}`);
     line.setAttribute('y1', `${height - (textSpace / 2)}`);
     line.setAttribute('x2', `${positionX}`);
@@ -100,7 +99,7 @@ function updateTemperature(temps, positionsX, chartsHeightTemps, hours, textSpac
   const tempChartNumbers = document.querySelectorAll('.temp-chart-text .temperature-number');
   const positionsY = [];
   // set values for vertex vertical positions
-  for (let i = 0; i < hours; i += 1) {
+  for (let i = 0; i <= hours; i += 1) {
     const currentValue = parseFloat(temps[i]);
     positionsY.push(currentValue);
   }
