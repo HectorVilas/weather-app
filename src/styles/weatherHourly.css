@@ -5,6 +5,7 @@
 .weather-hourly {
   height: 150px;
   overflow: hidden;
+  transition: opacity 2s;
 }
 
 .hourly-chart {
