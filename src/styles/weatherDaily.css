@@ -27,6 +27,12 @@
     "sunrise-sunset uv-index     ";
   padding: 2px;
   gap: 2px;
+  cursor: pointer;
+}
+
+.daily-card.active {
+  z-index: 1;
+  box-shadow: 0 0 0 3px blue;
 }
 
 /* main, weathercode and temperatures */
