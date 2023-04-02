@@ -78,23 +78,11 @@ export default async function searchCity(search) {
         windspeed: weather.hourly.windspeed_10m,
       };
       updateHourlyWeather(hourlyWeatherData);
-      hideSearch();
+      // hide search
+      const search = document.querySelector('.city-search');
+      search.classList.add('hidden');
+      // clear results after hiding
+      domCitiesList('');
     });
   });
 }
-
-function hideSearch() {
-  const search = document.querySelector('.city-search');
-  search.classList.add('hidden');
-  // clear results after hiding
-  domCitiesList('');
-}
-
-// function getNext24(array, localHour) {
-//   const newArray = [];
-//   for (let i = 0; i < 24; i += 1) {
-//     newArray.push(array[i + localHour]);
-//   }
-
-//   return newArray;
-// }
