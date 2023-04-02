@@ -1,7 +1,16 @@
 import { celsiusToFahrenheit } from './unitConverter';
 import valueAdjust from './valueAdjust';
 
-export default function updateHourlyWeather(data) {
+let storedData;
+let storedStartingIndex;
+
+export default function updateHourlyWeather(data, startFromIndex) {
+  // store arguments for later use without passing data
+  if (!data) data = storedData;
+  storedData = data;
+  if (startFromIndex === undefined) startFromIndex = storedStartingIndex;
+  storedStartingIndex = startFromIndex;
+
   const parent = document.querySelector('.weather-hourly');
   const hours = 24;
   // vertical space reserved on pixels for hours and temp values
@@ -17,7 +26,8 @@ export default function updateHourlyWeather(data) {
     positionsX.push(currentValue);
   }
 
-  positionLinesAndHours(getNext25(data.hours), positionsX, textSpace, width, height);
+  const next25Hours = getNext25(data.hours, startFromIndex);
+  positionLinesAndHours(next25Hours, positionsX, textSpace, width, height);
   // update current temperature line chart
   const chartTemp = document.querySelector('.hourly-chart-temperature');
   if (!chartTemp.getAttribute('d')) {
@@ -25,7 +35,8 @@ export default function updateHourlyWeather(data) {
   }
   // small timeout to allow animation between the empty chart and the updated one
   setTimeout(() => {
-    updateTemperature(getNext25(data.temps), positionsX, chartsHeightTemps, hours, textSpace);
+    const next25Temps = getNext25(data.temps, startFromIndex);
+    updateTemperature(next25Temps, positionsX, chartsHeightTemps, hours, textSpace);
   }, 50);
 }
 
