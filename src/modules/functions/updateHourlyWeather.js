@@ -5,6 +5,8 @@ let storedData;
 let storedStartingIndex;
 
 export default function updateHourlyWeather(data, startFromIndex) {
+  // prevent error on resizing without chart loaded
+  if (data === undefined && storedData === undefined) return;
   // store arguments for later use without passing data
   if (!data) data = storedData;
   storedData = data;
@@ -178,3 +180,13 @@ function emptyChartVertices(domElements, positionsX, height) {
     vertex.setAttribute('cy', `${height}`);
   });
 }
+
+// add listener to window resize to adjust graph
+let windowResizeTimeout;
+
+window.addEventListener('resize', () => {
+  clearTimeout(windowResizeTimeout);
+  windowResizeTimeout = setTimeout(() => {
+    updateHourlyWeather();
+  }, 100);
+});
