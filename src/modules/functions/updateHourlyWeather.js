@@ -70,6 +70,11 @@ function getNext25(array, startFromIndex = 0) {
 }
 
 function positionLinesAndHours(hours, positionsX, textSpace, width, height) {
+  // repeat first value for first hour on missing 8th day
+  if (hours.at(-1) === undefined) {
+    const firstHour = hours[0];
+    hours[hours.length - 1] = firstHour;
+  }
   const hourLines = document.querySelectorAll('.chart-line-hour');
   const baseLine = document.querySelector('.chart-line-base');
   const hoursTexts = document.querySelectorAll('.hours-chart-text');
@@ -104,6 +109,8 @@ function positionLinesAndHours(hours, positionsX, textSpace, width, height) {
 }
 
 function updateTemperature(temps, positionsX, chartsHeightTemps, hours, textSpace) {
+  // repeat previos value for missing 8th day data at 0hs
+  if (temps.at(-1) === undefined) temps[temps.length - 1] = temps.at(-2);
   const tempChart = document.querySelector('.hourly-chart-temperature');
   const tempChartVertices = document.querySelectorAll('.temp-chart-vertex');
   const tempChartTexts = document.querySelectorAll('.temp-chart-text');
