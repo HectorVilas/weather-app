@@ -21,7 +21,11 @@ export default function weatherDailyHourly() {
   // adding listeners to hourly cards
   const hourlyCards = section.querySelectorAll('.daily-card');
   hourlyCards.forEach((card, i) => {
-    card.addEventListener('click', () => {
+    card.addEventListener('click', (e) => {
+      const allCards = document.querySelectorAll('.daily-card');
+      allCards.forEach((thisCard) => thisCard.classList.remove('active'));
+      const thisCard = e.currentTarget;
+      thisCard.classList.add('active');
       const parent = document.querySelector('.weather-hourly');
       const svg = document.querySelector('.hourly-chart');
       moveViewBox(parent, svg, 0, i);
