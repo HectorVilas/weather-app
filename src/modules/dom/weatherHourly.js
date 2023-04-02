@@ -1,7 +1,7 @@
 export default function weatherHourly() {
   const div = document.createElement('div');
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  div.classList.add('weather-hourly');
+  div.classList.add('weather-hourly', 'invisible');
   svg.classList.add('hourly-chart');
   svg.append(
     createChartLines(),
@@ -67,6 +67,8 @@ function createTempGroup() {
     const vertex = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
     vertex.classList.add('temp-chart-vertex');
     vertex.setAttribute('r', 4);
+    vertex.setAttribute('cx', 500);
+    vertex.setAttribute('cy', 500);
     tempChartVertices.push(vertex);
   }
 
