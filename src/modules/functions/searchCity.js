@@ -73,7 +73,7 @@ export default async function searchCity(search) {
       };
       updateCurrentWeather(currentWeatherData);
       updateDailyWeather(dailyWeatherData);
-      updateHourlyWeather(hourlyWeatherData);
+      updateHourlyWeather(hourlyWeatherData, hourlyWeatherData.localHour);
       // hide search
       const domSearch = document.querySelector('.city-search');
       domSearch.classList.add('hidden');
