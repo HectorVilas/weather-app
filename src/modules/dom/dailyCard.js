@@ -46,7 +46,7 @@ function weatherDiv() {
   weatherDescription.innerText = 'weather description';
 
   [tempMaxUnit, tempMinUnit].forEach((element) => {
-    element.addEventListener('change', changeUnits);
+    element.addEventListener('click', changeUnits);
   });
 
   tempMaxDiv.append(tempMax, tempMaxUnit);

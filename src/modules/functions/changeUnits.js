@@ -1,6 +1,7 @@
 import valueAdjust from './valueAdjust';
 
 export default function changeUnits(e) {
+  e.stopPropagation();
   const newValue = e.target.checked;
   const unitsClass = e.target.classList.contains('temperature-unit')
     ? '.temperature-unit' : '.wind-speed-unit';
