@@ -12,6 +12,7 @@ export default function updateHourlyWeather(data, startFromIndex) {
   storedStartingIndex = startFromIndex;
 
   const parent = document.querySelector('.weather-hourly');
+  parent.classList.remove('invisible');
   const hours = 24;
   // vertical space reserved on pixels for hours and temp values
   const textSpace = 45;
@@ -30,8 +31,10 @@ export default function updateHourlyWeather(data, startFromIndex) {
   positionLinesAndHours(next25Hours, positionsX, textSpace, width, height);
   // update current temperature line chart
   const chartTemp = document.querySelector('.hourly-chart-temperature');
+  const chartTempVertices = document.querySelectorAll('.temp-chart-vertex');
   if (!chartTemp.getAttribute('d')) {
     emptyChart(chartTemp, positionsX, chartsHeightTemps);
+    emptyChartVertices(chartTempVertices, positionsX, chartsHeightTemps);
   }
   // small timeout to allow animation between the empty chart and the updated one
   setTimeout(() => {
@@ -167,4 +170,11 @@ function emptyChart(domElement, positionsX, height) {
     drawTemp += ` ${lineCommand} ${posX} ${height}`;
   });
   domElement.setAttribute('d', drawTemp);
+}
+
+function emptyChartVertices(domElements, positionsX, height) {
+  domElements.forEach((vertex, i) => {
+    vertex.setAttribute('cx', `${positionsX[i]}`);
+    vertex.setAttribute('cy', `${height}`);
+  });
 }
