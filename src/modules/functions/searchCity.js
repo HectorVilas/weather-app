@@ -39,7 +39,6 @@ export default async function searchCity(search) {
       const { longitude } = city.dataset;
       const weather = await fetchWeather(latitude, longitude);
       const currentHour = new Date().getHours();
-      // data for current weather, then update
       const currentWeatherData = {
         city: city.dataset.location,
         weathercode: getWeathercode(weather.current_weather.weathercode),
@@ -52,8 +51,6 @@ export default async function searchCity(search) {
         sunset: weather.daily.sunset,
         localHour: weather.current_weather.time,
       };
-      updateCurrentWeather(currentWeatherData);
-      // data for daily weather, then update
       const dailyWeatherData = {
         weathercodes: weather.daily.weathercode,
         tempsMax: weather.daily.temperature_2m_max,
@@ -65,11 +62,8 @@ export default async function searchCity(search) {
         sunsets: weather.daily.sunset,
         uvIndexes: weather.daily.uv_index_max,
       };
-      updateDailyWeather(dailyWeatherData);
-      // data for hourly weather for 24 hours of current day, then update
-      const localHour = new Date(weather.current_weather.time).getHours();
       const hourlyWeatherData = {
-        localHour,
+        localHour: new Date(weather.current_weather.time).getHours(),
         hours: weather.hourly.time,
         temps: weather.hourly.temperature_2m,
         humidity: weather.hourly.relativehumidity_2m,
@@ -77,6 +71,8 @@ export default async function searchCity(search) {
         weathercode: weather.hourly.weathercode,
         windspeed: weather.hourly.windspeed_10m,
       };
+      updateCurrentWeather(currentWeatherData);
+      updateDailyWeather(dailyWeatherData);
       updateHourlyWeather(hourlyWeatherData);
       // hide search
       const domSearch = document.querySelector('.city-search');
