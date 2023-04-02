@@ -1,3 +1,7 @@
+:root {
+  --chart-transition: 200ms linear;
+}
+
 .weather-hourly {
   height: 150px;
   overflow: hidden;
@@ -20,9 +24,10 @@
   stroke-width: 2px;
   stroke-linecap: round;
   stroke-linejoin: round;
-  transition: 200ms linear;
+  transition: var(--chart-transition);
 }
 
 .temp-chart-vertex {
   fill: green;
+  transition: var(--chart-transition);
 }
