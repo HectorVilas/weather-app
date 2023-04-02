@@ -51,13 +51,13 @@ function rangePercentToPixels(percent, height) {
 }
 
 function hideBetween(domElements) {
-  // domElements.forEach((element, i) => {
-  //   if ((i + 2) % 3 !== 0) {
-  //     element.classList.add('hidden');
-  //   } else {
-  //     element.classList.remove('hidden');
-  //   }
-  // });
+  domElements.forEach((element, i) => {
+    if ((i + 2) % 3 !== 0) {
+      element.classList.add('hidden');
+    } else {
+      element.classList.remove('hidden');
+    }
+  });
 }
 
 function getNext25(array, startFromIndex = 0) {
