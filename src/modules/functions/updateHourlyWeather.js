@@ -94,11 +94,12 @@ function positionLinesAndHours(hours, positionsX, textSpace, width, height) {
   hourLines.forEach((line, i) => {
     const positionX = positionsX[i];
     const localHour = new Date(hours[i]).getHours();
+    const isZeroHour = startsPastZero && localHour % 24 === 0;
     let lineLength = 4;
     if ((i + 2) % 3 === 0) lineLength = 10;
-    if (startsPastZero && localHour % 24 === 0) lineLength = 30;
+    if (isZeroHour) lineLength = 30;
     line.setAttribute('x1', `${positionX}`);
-    line.setAttribute('y1', `${height - (textSpace / 2)}`);
+    line.setAttribute('y1', `${height - (textSpace / 2) + (isZeroHour ? 10 : 0)}`);
     line.setAttribute('x2', `${positionX}`);
     line.setAttribute('y2', `${height - (textSpace / 2) - lineLength}`);
   });
