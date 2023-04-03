@@ -155,7 +155,7 @@ function updateTemperature(temps, positionsX, chartsHeightTemps, hours, textSpac
   });
   hideBetween(tempChartTexts);
   tempChartNumbers.forEach((number, i) => {
-    valueAdjust(number, number.textContent, temps[i]);
+    valueAdjust(number, number.textContent, temps[i], 10);
     number.dataset.celsius = temps[i];
     number.dataset.fahrenheit = celsiusToFahrenheit(temps[i]);
   });
