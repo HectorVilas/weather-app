@@ -80,6 +80,7 @@ function positionLinesAndHours(hours, positionsX, textSpace, width, height) {
     const firstHour = hours[0];
     hours[hours.length - 1] = firstHour;
   }
+  const startsPastZero = new Date(hours[0]).getHours() !== 0;
   const hourLines = document.querySelectorAll('.chart-line-hour');
   const baseLine = document.querySelector('.chart-line-base');
   const hoursTexts = document.querySelectorAll('.hours-chart-text');
@@ -92,8 +93,10 @@ function positionLinesAndHours(hours, positionsX, textSpace, width, height) {
 
   hourLines.forEach((line, i) => {
     const positionX = positionsX[i];
+    const localHour = new Date(hours[i]).getHours();
     let lineLength = 4;
     if ((i + 2) % 3 === 0) lineLength = 10;
+    if (startsPastZero && localHour % 24 === 0) lineLength = 30;
     line.setAttribute('x1', `${positionX}`);
     line.setAttribute('y1', `${height - (textSpace / 2)}`);
     line.setAttribute('x2', `${positionX}`);
