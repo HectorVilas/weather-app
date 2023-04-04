@@ -1,13 +1,7 @@
-import { celsiusToFahrenheit } from '../../unitConverter';
-import valueAdjust from '../../valueAdjust';
-import {
-  rangePercent,
-  rangePercentToPixels,
-  hideBetween,
-  getNext25,
-} from './graphFunctions';
+import { getNext25 } from './graphFunctions';
 import positionLinesAndHours from './positionLinesAndHours';
 import { emptyChart, emptyChartVertices } from './emptyChartPositions';
+import updateChartLine from './updateChartLine';
 
 let storedData;
 let storedStartingIndex;
@@ -51,57 +45,6 @@ export default function updateHourlyWeather(data, startFromIndex) {
     const next25Temps = getNext25(data.temps, startFromIndex);
     updateChartLine(next25Temps, positionsX, chartsHeightTemps, hours, textSpace, 'temp');
   }, 50);
-}
-
-function updateChartLine(values, positionsX, chartsHeight, hours, textSpace, className) {
-  // repeat previos value for missing 8th day data at 0hs
-  if (values.at(-1) === undefined) values[values.length - 1] = values.at(-2);
-  const chart = document.querySelector(`.hourly-chart-${className}`);
-  const chartVertices = document.querySelectorAll(`.${className}-chart-vertex`);
-  const chartTexts = document.querySelectorAll(`.${className}-chart-text`);
-  const chartNumbers = document.querySelectorAll(`.${className}-chart-text .temperature-number`);
-  const positionsY = [];
-  // set values for vertex vertical positions
-  for (let i = 0; i <= hours; i += 1) {
-    const currentValue = parseFloat(values[i]);
-    positionsY.push(currentValue);
-  }
-  const minValue = positionsY.reduce((min, current) => (min < current ? min : current));
-  const maxValue = positionsY.reduce((max, current) => (max > current ? max : current));
-  // turn values to pixels
-  const positionsToPixels = positionsY.map((value) => {
-    const percent = rangePercent(minValue, maxValue, value);
-    return rangePercentToPixels(percent, chartsHeight);
-  });
-  // use values on draw
-  let drawChart = '';
-  positionsX.forEach((pos, i) => {
-    const lineCommand = i === 0 ? 'M' : 'L';
-    const posX = pos;
-    const posY = positionsToPixels[i];
-    drawChart += ` ${lineCommand} ${posX} ${posY + (textSpace / 2)}`;
-  });
-
-  chart.setAttribute('d', drawChart);
-
-  // position the numbers on each vertex
-  chartTexts.forEach((text, i) => {
-    text.setAttribute('x', positionsX[i]);
-    text.setAttribute('y', positionsToPixels[i] + (textSpace / 4));
-  });
-  hideBetween(chartTexts);
-  chartNumbers.forEach((number, i) => {
-    valueAdjust(number, number.textContent, values[i], 10);
-    number.dataset.celsius = values[i];
-    number.dataset.fahrenheit = celsiusToFahrenheit(values[i]);
-  });
-
-  // position circle vertices
-  chartVertices.forEach((vertex, i) => {
-    vertex.setAttribute('cx', `${positionsX[i]}`);
-    vertex.setAttribute('cy', `${positionsToPixels[i] + (textSpace / 2)}`);
-  });
-  hideBetween(chartVertices);
 }
 
 // add listener to window resize to adjust graph
