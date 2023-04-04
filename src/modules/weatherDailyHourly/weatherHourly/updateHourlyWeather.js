@@ -40,7 +40,7 @@ export default function updateHourlyWeather(data, startFromIndex) {
   const next25Hours = getNext25(data.hours, startFromIndex);
   positionLinesAndHours(next25Hours, positionsX, textSpace, width, height);
   // update current temperature line chart
-  const chartTemp = document.querySelector('.hourly-chart-temperature');
+  const chartTemp = document.querySelector('.hourly-chart-temp');
   const chartTempVertices = document.querySelectorAll('.temp-chart-vertex');
   if (!chartTemp.getAttribute('d')) {
     emptyChart(chartTemp, positionsX, chartsHeightTemps);
@@ -49,21 +49,21 @@ export default function updateHourlyWeather(data, startFromIndex) {
   // small timeout to allow animation between the empty chart and the updated one
   setTimeout(() => {
     const next25Temps = getNext25(data.temps, startFromIndex);
-    updateTemperature(next25Temps, positionsX, chartsHeightTemps, hours, textSpace);
+    updateChartLine(next25Temps, positionsX, chartsHeightTemps, hours, textSpace, 'temp');
   }, 50);
 }
 
-function updateTemperature(temps, positionsX, chartsHeightTemps, hours, textSpace) {
+function updateChartLine(values, positionsX, chartsHeight, hours, textSpace, className) {
   // repeat previos value for missing 8th day data at 0hs
-  if (temps.at(-1) === undefined) temps[temps.length - 1] = temps.at(-2);
-  const tempChart = document.querySelector('.hourly-chart-temperature');
-  const tempChartVertices = document.querySelectorAll('.temp-chart-vertex');
-  const tempChartTexts = document.querySelectorAll('.temp-chart-text');
-  const tempChartNumbers = document.querySelectorAll('.temp-chart-text .temperature-number');
+  if (values.at(-1) === undefined) values[values.length - 1] = values.at(-2);
+  const chart = document.querySelector(`.hourly-chart-${className}`);
+  const chartVertices = document.querySelectorAll(`.${className}-chart-vertex`);
+  const chartTexts = document.querySelectorAll(`.${className}-chart-text`);
+  const chartNumbers = document.querySelectorAll(`.${className}-chart-text .temperature-number`);
   const positionsY = [];
   // set values for vertex vertical positions
   for (let i = 0; i <= hours; i += 1) {
-    const currentValue = parseFloat(temps[i]);
+    const currentValue = parseFloat(values[i]);
     positionsY.push(currentValue);
   }
   const minValue = positionsY.reduce((min, current) => (min < current ? min : current));
@@ -71,37 +71,37 @@ function updateTemperature(temps, positionsX, chartsHeightTemps, hours, textSpac
   // turn values to pixels
   const positionsToPixels = positionsY.map((value) => {
     const percent = rangePercent(minValue, maxValue, value);
-    return rangePercentToPixels(percent, chartsHeightTemps);
+    return rangePercentToPixels(percent, chartsHeight);
   });
   // use values on draw
-  let drawTemp = '';
+  let drawChart = '';
   positionsX.forEach((pos, i) => {
     const lineCommand = i === 0 ? 'M' : 'L';
     const posX = pos;
     const posY = positionsToPixels[i];
-    drawTemp += ` ${lineCommand} ${posX} ${posY + (textSpace / 2)}`;
+    drawChart += ` ${lineCommand} ${posX} ${posY + (textSpace / 2)}`;
   });
 
-  tempChart.setAttribute('d', drawTemp);
+  chart.setAttribute('d', drawChart);
 
   // position the numbers on each vertex
-  tempChartTexts.forEach((text, i) => {
+  chartTexts.forEach((text, i) => {
     text.setAttribute('x', positionsX[i]);
     text.setAttribute('y', positionsToPixels[i] + (textSpace / 4));
   });
-  hideBetween(tempChartTexts);
-  tempChartNumbers.forEach((number, i) => {
-    valueAdjust(number, number.textContent, temps[i], 10);
-    number.dataset.celsius = temps[i];
-    number.dataset.fahrenheit = celsiusToFahrenheit(temps[i]);
+  hideBetween(chartTexts);
+  chartNumbers.forEach((number, i) => {
+    valueAdjust(number, number.textContent, values[i], 10);
+    number.dataset.celsius = values[i];
+    number.dataset.fahrenheit = celsiusToFahrenheit(values[i]);
   });
 
   // position circle vertices
-  tempChartVertices.forEach((vertex, i) => {
+  chartVertices.forEach((vertex, i) => {
     vertex.setAttribute('cx', `${positionsX[i]}`);
     vertex.setAttribute('cy', `${positionsToPixels[i] + (textSpace / 2)}`);
   });
-  hideBetween(tempChartVertices);
+  hideBetween(chartVertices);
 }
 
 // add listener to window resize to adjust graph
