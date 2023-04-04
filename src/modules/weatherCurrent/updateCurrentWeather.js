@@ -1,6 +1,6 @@
-import weatherIcon from './weatherIcon';
-import { celsiusToFahrenheit, kilometersToMiles } from './unitConverter';
-import valueAdjust from './valueAdjust';
+import weatherIcon from '../weatherIcon';
+import { celsiusToFahrenheit, kilometersToMiles } from '../unitConverter';
+import valueAdjust from '../valueAdjust';
 import barAdjust from './barAdjust';
 
 export default function updateCurrentWeather(data) {

@@ -1,4 +1,4 @@
-import changeUnits from '../functions/changeUnits';
+import changeUnits from '../changeUnits';
 
 export default function weatherCurrent() {
   const section = document.createElement('section');

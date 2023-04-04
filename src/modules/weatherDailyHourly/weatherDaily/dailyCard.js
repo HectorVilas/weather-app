@@ -1,4 +1,4 @@
-import changeUnits from '../functions/changeUnits';
+import changeUnits from '../../changeUnits';
 
 export default function dailyCard() {
   const card = document.createElement('div');

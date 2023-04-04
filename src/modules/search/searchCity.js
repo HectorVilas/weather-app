@@ -1,9 +1,9 @@
-import domCitiesList from '../dom/citiesList';
+import domCitiesList from './citiesList';
 import { fetchWeather } from '../fetch';
-import updateCurrentWeather from './updateCurrentWeather';
-import updateDailyWeather from './updateDailyWeather';
-import updateHourlyWeather from './updateHourlyWeather';
-import getWeathercode from './weathercode';
+import updateCurrentWeather from '../weatherCurrent/updateCurrentWeather';
+import updateDailyWeather from '../weatherDailyHourly/weatherDaily/updateDailyWeather';
+import updateHourlyWeather from '../weatherDailyHourly/weatherHourly/updateHourlyWeather';
+import getWeathercode from '../weathercode';
 
 let previousSearch;
 

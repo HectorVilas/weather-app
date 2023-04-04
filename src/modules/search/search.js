@@ -1,4 +1,4 @@
-import searchCity from '../functions/searchCity';
+import searchCity from './searchCity';
 
 let focusIndex = -1;
 

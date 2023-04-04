@@ -5,9 +5,9 @@ import {
   getDay,
   getDate,
 } from 'date-fns';
-import getWeathercode from './weathercode';
-import weatherIcon from './weatherIcon';
-import { celsiusToFahrenheit, kilometersToMiles } from './unitConverter';
+import getWeathercode from '../../weathercode';
+import weatherIcon from '../../weatherIcon';
+import { celsiusToFahrenheit, kilometersToMiles } from '../../unitConverter';
 
 const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 

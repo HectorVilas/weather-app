@@ -1,6 +1,6 @@
-import search from './dom/search';
-import weatherCurrent from './dom/weatherCurrent';
-import weatherDailyHourly from './dom/weatherDailyHourly';
+import search from './search/search';
+import weatherCurrent from './weatherCurrent/weatherCurrent';
+import weatherDailyHourly from './weatherDailyHourly/weatherDailyHourly';
 
 export default function loadUi() {
   const body = document.querySelector('body');

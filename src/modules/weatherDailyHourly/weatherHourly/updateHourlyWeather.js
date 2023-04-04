@@ -1,5 +1,5 @@
-import { celsiusToFahrenheit } from './unitConverter';
-import valueAdjust from './valueAdjust';
+import { celsiusToFahrenheit } from '../../unitConverter';
+import valueAdjust from '../../valueAdjust';
 
 let storedData;
 let storedStartingIndex;

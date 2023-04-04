@@ -1,6 +1,6 @@
-import dailyCard from './dailyCard';
-import weatherHourly from './weatherHourly';
-import updateHourlyWeather from '../functions/updateHourlyWeather';
+import dailyCard from './weatherDaily/dailyCard';
+import weatherHourly from './weatherHourly/weatherHourly';
+import updateHourlyWeather from './weatherHourly/updateHourlyWeather';
 
 export default function weatherDailyHourly() {
   const section = document.createElement('section');
