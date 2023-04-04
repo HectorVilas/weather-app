@@ -73,7 +73,7 @@ function createTempGroup() {
   }
 
   tempGroup.classList.add('hourly-chart-group');
-  tempChart.classList.add('hourly-chart-temperature');
+  tempChart.classList.add('hourly-chart-temp');
 
   tempGroup.append(tempChart, ...tempChartNumbers, ...tempChartVertices);
 
