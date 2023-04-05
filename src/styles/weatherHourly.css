@@ -28,13 +28,33 @@
 .hourly-chart-temp {
   fill: transparent;
   stroke: red;
-  stroke-width: 2px;
+  stroke-width: 3px;
   stroke-linecap: round;
   stroke-linejoin: round;
   transition: var(--chart-transition);
 }
 
 .temp-chart-vertex {
+  fill: green;
+  transition: var(--chart-transition);
+}
+
+/* temp apparent related */
+
+.temp-apparent-chart-group {
+  opacity: .5;
+}
+
+.hourly-chart-temp-apparent {
+  fill: transparent;
+  stroke: coral;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: var(--chart-transition);
+}
+
+.temp-apparent-chart-vertex {
   fill: green;
   transition: var(--chart-transition);
 }
