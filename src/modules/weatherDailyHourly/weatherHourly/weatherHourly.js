@@ -6,17 +6,17 @@ export default function weatherHourly() {
   div.classList.add('weather-hourly', 'invisible');
   svg.classList.add('hourly-chart');
   svg.append(
-    createChartLines(),
-    createChartLineGroup('temp', '°', 'temperature-number'),
-    createChartLineGroup('temp-apparent'),
+    createChartMarksAndHours(),
     createChartLineGroup('wind'),
     createChartLineGroup('humidity'),
+    createChartLineGroup('temp-apparent'),
+    createChartLineGroup('temp', '°', 'temperature-number'),
   );
   div.append(svg);
   return div;
 }
 
-function createChartLines() {
+function createChartMarksAndHours() {
   const chartLinesGroup = document.createElementNS(svgNs, 'g');
   const horizontalLine = document.createElementNS(svgNs, 'line');
   const hoursTexts = [];
