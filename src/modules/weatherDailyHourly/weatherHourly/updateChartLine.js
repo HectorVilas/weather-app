@@ -23,8 +23,8 @@ export default function updateChartLine(
     const currentValue = parseFloat(values[i]);
     positionsY.push(currentValue);
   }
-  const minValue = positionsY.reduce((min, current) => (min < current ? min : current));
-  const maxValue = positionsY.reduce((max, current) => (max > current ? max : current));
+  const minValue = className === 'humidity' ? 0 : positionsY.reduce((min, current) => (min < current ? min : current));
+  const maxValue = className === 'humidity' ? 100 : positionsY.reduce((max, current) => (max > current ? max : current));
   // turn values to pixels
   const positionsToPixels = positionsY.map((value) => {
     const percent = rangePercent(minValue, maxValue, value);
