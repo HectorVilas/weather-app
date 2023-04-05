@@ -1,6 +1,6 @@
 import { rangePercent, rangePercentToPixels, hideBetween } from './graphFunctions';
 import valueAdjust from '../../valueAdjust';
-import { celsiusToFahrenheit } from '../../unitConverter';
+import { celsiusToFahrenheit, kilometersToMiles } from '../../unitConverter';
 
 export default function updateChartLine(
   values,
@@ -9,13 +9,14 @@ export default function updateChartLine(
   hours,
   textSpace,
   className,
+  unitType,
 ) {
   // repeat previos value for missing 8th day data at 0hs
   if (values.at(-1) === undefined) values[values.length - 1] = values.at(-2);
   const chart = document.querySelector(`.hourly-chart-${className}`);
   const chartVertices = document.querySelectorAll(`.${className}-chart-vertex`);
   const chartTexts = document.querySelectorAll(`.${className}-chart-text`);
-  const chartNumbers = document.querySelectorAll(`.${className}-chart-text .temperature-number`);
+  const chartNumbers = document.querySelectorAll(`.${className}-chart-text ${unitType}`);
   const positionsY = [];
   // set values for vertex vertical positions
   for (let i = 0; i <= hours; i += 1) {
@@ -48,8 +49,13 @@ export default function updateChartLine(
   hideBetween(chartTexts);
   chartNumbers.forEach((number, i) => {
     valueAdjust(number, number.textContent, values[i], 10);
-    number.dataset.celsius = values[i];
-    number.dataset.fahrenheit = celsiusToFahrenheit(values[i]);
+    if (unitType === '.temperature-number') {
+      number.dataset.celsius = values[i];
+      number.dataset.fahrenheit = celsiusToFahrenheit(values[i]);
+    } else if (unitType === '.speed-number') {
+      number.dataset.kilometers = values[i];
+      number.dataset.miles = kilometersToMiles(values[i]);
+    }
   });
 
   // position circle vertices
