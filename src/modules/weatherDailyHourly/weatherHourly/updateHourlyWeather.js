@@ -23,7 +23,7 @@ export default function updateHourlyWeather(data, startFromIndex) {
   const width = parseInt(parent.clientWidth, 10);
   const height = parseInt(parent.clientHeight, 10);
   const chartsHeightTemps = ((height * 80) / 100) - textSpace;
-  // const chartsHeightWindHumidity = height - textSpace;
+  const chartsHeightWindHumidity = height - textSpace;
   const positionsX = [0];
   // set values for vertex horizontal positions
   for (let i = 0; i < hours; i += 1) {
@@ -43,7 +43,9 @@ export default function updateHourlyWeather(data, startFromIndex) {
   // small timeout to allow animation between the empty chart and the updated one
   setTimeout(() => {
     const next25Temps = getNext25(data.temps, startFromIndex);
-    updateChartLine(next25Temps, positionsX, chartsHeightTemps, hours, textSpace, 'temp');
+    updateChartLine(next25Temps, positionsX, chartsHeightTemps, hours, textSpace, 'temp', '.temperature-number');
+    const next25WindSpeeds = getNext25(data.windspeed, startFromIndex);
+    updateChartLine(next25WindSpeeds, positionsX, chartsHeightWindHumidity, hours, textSpace, 'wind', '.speed-number');
   }, 50);
 }
 
