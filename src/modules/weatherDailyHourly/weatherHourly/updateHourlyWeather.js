@@ -44,6 +44,8 @@ export default function updateHourlyWeather(data, startFromIndex) {
   setTimeout(() => {
     const next25Temps = getNext25(data.temps, startFromIndex);
     updateChartLine(next25Temps, positionsX, chartsHeightTemps, hours, textSpace, 'temp', '.temperature-number');
+    const next25apparents = getNext25(data.apparent, startFromIndex);
+    updateChartLine(next25apparents, positionsX, chartsHeightTemps, hours, textSpace, 'temp-apparent', '.temperature-number');
     const next25WindSpeeds = getNext25(data.windspeed, startFromIndex);
     updateChartLine(next25WindSpeeds, positionsX, chartsHeightWindHumidity, hours, textSpace, 'wind', '.speed-number');
   }, 50);
