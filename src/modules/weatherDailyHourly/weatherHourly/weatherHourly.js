@@ -8,8 +8,10 @@ export default function weatherHourly() {
   svg.append(
     createChartLines(),
     createChartLineGroup('temp', '°', 'temperature-number'),
-    createChartLineGroup('temp-apparent', '°', 'temperature-number'),
-    createChartLineGroup('wind', '', 'speed-number'),
+    // createChartLineGroup('temp-apparent', '°', 'temperature-number'),
+    // createChartLineGroup('wind', '', 'speed-number'),
+    createChartLineGroup('temp-apparent'),
+    createChartLineGroup('wind'),
   );
   div.append(svg);
   return div;
@@ -53,21 +55,24 @@ function createChartLineGroup(className, unitSymbol, unitType) {
   const chartNumbers = [];
   const chartVertices = [];
 
-  for (let i = 0; i <= 24; i += 1) {
-    const values = document.createElementNS(svgNs, 'text');
-    const valuesNumber = document.createElementNS(svgNs, 'tspan');
-    const valuesSymbol = document.createElementNS(svgNs, 'tspan');
-    const numbersClasses = [`${className}-chart`, unitType];
-    values.setAttribute('x', 0);
-    values.setAttribute('y', 0);
-    values.setAttribute('text-anchor', 'middle');
-    values.classList.add(`${className}-chart-text`);
-    valuesNumber.classList.add(...numbersClasses);
-    valuesNumber.textContent = '0';
-    valuesSymbol.textContent = `${unitSymbol}`;
-    values.append(valuesNumber, valuesSymbol);
-    chartNumbers.push(values);
+  if (unitSymbol !== undefined && unitType !== undefined) {
+    for (let i = 0; i <= 24; i += 1) {
+      const values = document.createElementNS(svgNs, 'text');
+      const valuesNumber = document.createElementNS(svgNs, 'tspan');
+      const valuesSymbol = document.createElementNS(svgNs, 'tspan');
+      const numbersClasses = [`${className}-chart`, unitType];
+      values.setAttribute('x', 0);
+      values.setAttribute('y', 0);
+      values.setAttribute('text-anchor', 'middle');
+      values.classList.add(`${className}-chart-text`);
+      valuesNumber.classList.add(...numbersClasses);
+      valuesNumber.textContent = '0';
+      valuesSymbol.textContent = `${unitSymbol}`;
+      values.append(valuesNumber, valuesSymbol);
+      chartNumbers.push(values);
+    }
   }
+
   for (let i = 0; i <= 24; i += 1) {
     const vertex = document.createElementNS(svgNs, 'circle');
     vertex.classList.add(`${className}-chart-vertex`);
