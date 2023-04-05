@@ -19,6 +19,12 @@
   stroke-width: 2px;
 }
 
+/* temp related */
+
+.temp-chart-group {
+  opacity: 1;
+}
+
 .hourly-chart-temp {
   fill: transparent;
   stroke: red;
@@ -30,5 +36,25 @@
 
 .temp-chart-vertex {
   fill: green;
+  transition: var(--chart-transition);
+}
+
+/* wind related */
+
+.wind-chart-group {
+  opacity: .25;
+}
+
+.hourly-chart-wind {
+  fill: transparent;
+  stroke: blue;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: var(--chart-transition);
+}
+
+.wind-chart-vertex {
+  fill: blueviolet;
   transition: var(--chart-transition);
 }
