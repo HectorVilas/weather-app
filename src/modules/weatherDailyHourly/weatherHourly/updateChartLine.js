@@ -41,22 +41,24 @@ export default function updateChartLine(
 
   chart.setAttribute('d', drawChart);
 
+  if (className === 'temp') {
   // position the numbers on each vertex
-  chartTexts.forEach((text, i) => {
-    text.setAttribute('x', positionsX[i]);
-    text.setAttribute('y', positionsToPixels[i] + (textSpace / 4));
-  });
-  hideBetween(chartTexts);
-  chartNumbers.forEach((number, i) => {
-    valueAdjust(number, number.textContent, values[i], 10);
-    if (unitType === '.temperature-number') {
-      number.dataset.celsius = values[i];
-      number.dataset.fahrenheit = celsiusToFahrenheit(values[i]);
-    } else if (unitType === '.speed-number') {
-      number.dataset.kilometers = values[i];
-      number.dataset.miles = kilometersToMiles(values[i]);
-    }
-  });
+    chartTexts.forEach((text, i) => {
+      text.setAttribute('x', positionsX[i]);
+      text.setAttribute('y', positionsToPixels[i] + (textSpace / 4));
+    });
+    hideBetween(chartTexts);
+    chartNumbers.forEach((number, i) => {
+      valueAdjust(number, number.textContent, values[i], 10);
+      if (unitType === '.temperature-number') {
+        number.dataset.celsius = values[i];
+        number.dataset.fahrenheit = celsiusToFahrenheit(values[i]);
+      } else if (unitType === '.speed-number') {
+        number.dataset.kilometers = values[i];
+        number.dataset.miles = kilometersToMiles(values[i]);
+      }
+    });
+  }
 
   // position circle vertices
   chartVertices.forEach((vertex, i) => {
