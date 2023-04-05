@@ -8,6 +8,7 @@ export default function weatherHourly() {
   svg.append(
     createChartLines(),
     createChartLineGroup('temp', '°', 'temperature-number'),
+    createChartLineGroup('temp-apparent', '°', 'temperature-number'),
     createChartLineGroup('wind', '', 'speed-number'),
   );
   div.append(svg);
