@@ -48,6 +48,8 @@ export default function updateHourlyWeather(data, startFromIndex) {
     updateChartLine(next25apparents, positionsX, chartsHeightTemps, hours, textSpace, 'temp-apparent', '.temperature-number');
     const next25WindSpeeds = getNext25(data.windspeed, startFromIndex);
     updateChartLine(next25WindSpeeds, positionsX, chartsHeightWindHumidity, hours, textSpace, 'wind', '.speed-number');
+    const next25Humidity = getNext25(data.humidity, startFromIndex);
+    updateChartLine(next25Humidity, positionsX, chartsHeightWindHumidity, hours, textSpace, 'humidity', '.humidity-percent');
   }, 50);
 }
 
