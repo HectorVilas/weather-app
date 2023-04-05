@@ -7,7 +7,8 @@ export default function weatherHourly() {
   svg.classList.add('hourly-chart');
   svg.append(
     createChartLines(),
-    createTempGroup(),
+    createChartLineGroup('temp', '°', 'temperature-number'),
+    createChartLineGroup('wind', '', 'speed-number'),
   );
   div.append(svg);
   return div;
@@ -45,39 +46,40 @@ function createChartLines() {
   return chartLinesGroup;
 }
 
-function createTempGroup() {
-  const tempGroup = document.createElementNS(svgNs, 'g');
-  const tempChart = document.createElementNS(svgNs, 'path');
-  const tempChartNumbers = [];
-  const tempChartVertices = [];
+function createChartLineGroup(className, unitSymbol, unitType) {
+  const chartGroup = document.createElementNS(svgNs, 'g');
+  const chart = document.createElementNS(svgNs, 'path');
+  const chartNumbers = [];
+  const chartVertices = [];
 
   for (let i = 0; i <= 24; i += 1) {
-    const degrees = document.createElementNS(svgNs, 'text');
-    const degreesNumber = document.createElementNS(svgNs, 'tspan');
-    const degreesSymbol = document.createElementNS(svgNs, 'tspan');
-    degrees.setAttribute('x', 0);
-    degrees.setAttribute('y', 0);
-    degrees.setAttribute('text-anchor', 'middle');
-    degrees.classList.add('temp-chart-text');
-    degreesNumber.classList.add('temp-chart', 'temperature-number');
-    degreesNumber.textContent = '0';
-    degreesSymbol.textContent = '°';
-    degrees.append(degreesNumber, degreesSymbol);
-    tempChartNumbers.push(degrees);
+    const values = document.createElementNS(svgNs, 'text');
+    const valuesNumber = document.createElementNS(svgNs, 'tspan');
+    const valuesSymbol = document.createElementNS(svgNs, 'tspan');
+    const numbersClasses = [`${className}-chart`, unitType];
+    values.setAttribute('x', 0);
+    values.setAttribute('y', 0);
+    values.setAttribute('text-anchor', 'middle');
+    values.classList.add(`${className}-chart-text`);
+    valuesNumber.classList.add(...numbersClasses);
+    valuesNumber.textContent = '0';
+    valuesSymbol.textContent = `${unitSymbol}`;
+    values.append(valuesNumber, valuesSymbol);
+    chartNumbers.push(values);
   }
   for (let i = 0; i <= 24; i += 1) {
     const vertex = document.createElementNS(svgNs, 'circle');
-    vertex.classList.add('temp-chart-vertex');
+    vertex.classList.add(`${className}-chart-vertex`);
     vertex.setAttribute('r', 4);
     vertex.setAttribute('cx', 500);
     vertex.setAttribute('cy', 500);
-    tempChartVertices.push(vertex);
+    chartVertices.push(vertex);
   }
 
-  tempGroup.classList.add('hourly-chart-group');
-  tempChart.classList.add('hourly-chart-temp');
+  chartGroup.classList.add('hourly-chart-group', `${className}-chart-group`);
+  chart.classList.add(`hourly-chart-${className}`);
 
-  tempGroup.append(tempChart, ...tempChartNumbers, ...tempChartVertices);
+  chartGroup.append(chart, ...chartNumbers, ...chartVertices);
 
-  return tempGroup;
+  return chartGroup;
 }
