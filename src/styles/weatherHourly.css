@@ -78,3 +78,23 @@
   fill: blueviolet;
   transition: var(--chart-transition);
 }
+
+/* humidity related */
+
+.humidity-chart-group {
+  opacity: .25;
+}
+
+.hourly-chart-humidity {
+  fill: transparent;
+  stroke: aquamarine;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: var(--chart-transition);
+}
+
+.humidity-chart-vertex {
+  fill: cadetblue;
+  transition: var(--chart-transition);
+}
