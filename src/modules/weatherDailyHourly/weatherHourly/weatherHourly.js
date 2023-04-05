@@ -1,6 +1,8 @@
+const svgNs = 'http://www.w3.org/2000/svg';
+
 export default function weatherHourly() {
   const div = document.createElement('div');
-  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  const svg = document.createElementNS(svgNs, 'svg');
   div.classList.add('weather-hourly', 'invisible');
   svg.classList.add('hourly-chart');
   svg.append(
@@ -12,19 +14,19 @@ export default function weatherHourly() {
 }
 
 function createChartLines() {
-  const chartLinesGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-  const horizontalLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  const chartLinesGroup = document.createElementNS(svgNs, 'g');
+  const horizontalLine = document.createElementNS(svgNs, 'line');
   const hoursTexts = [];
 
   for (let i = 0; i <= 24; i += 1) {
-    const verticalLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    const verticalLine = document.createElementNS(svgNs, 'line');
     verticalLine.classList.add('chart-line-hour');
     chartLinesGroup.append(verticalLine);
   }
   for (let i = 0; i <= 24; i += 1) {
-    const hours = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    const hoursNumber = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
-    const hoursText = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+    const hours = document.createElementNS(svgNs, 'text');
+    const hoursNumber = document.createElementNS(svgNs, 'tspan');
+    const hoursText = document.createElementNS(svgNs, 'tspan');
     hours.setAttribute('x', 0);
     hours.setAttribute('y', 0);
     hours.setAttribute('text-anchor', 'middle');
@@ -44,15 +46,15 @@ function createChartLines() {
 }
 
 function createTempGroup() {
-  const tempGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-  const tempChart = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  const tempGroup = document.createElementNS(svgNs, 'g');
+  const tempChart = document.createElementNS(svgNs, 'path');
   const tempChartNumbers = [];
   const tempChartVertices = [];
 
   for (let i = 0; i <= 24; i += 1) {
-    const degrees = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    const degreesNumber = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
-    const degreesSymbol = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+    const degrees = document.createElementNS(svgNs, 'text');
+    const degreesNumber = document.createElementNS(svgNs, 'tspan');
+    const degreesSymbol = document.createElementNS(svgNs, 'tspan');
     degrees.setAttribute('x', 0);
     degrees.setAttribute('y', 0);
     degrees.setAttribute('text-anchor', 'middle');
@@ -64,7 +66,7 @@ function createTempGroup() {
     tempChartNumbers.push(degrees);
   }
   for (let i = 0; i <= 24; i += 1) {
-    const vertex = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    const vertex = document.createElementNS(svgNs, 'circle');
     vertex.classList.add('temp-chart-vertex');
     vertex.setAttribute('r', 4);
     vertex.setAttribute('cx', 500);
