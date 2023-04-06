@@ -52,13 +52,3 @@ export default function updateHourlyWeather(data, startFromIndex) {
     updateChartLine(next25Humidity, positionsX, chartsHeightWindHumidity, hours, textSpace, 'humidity', '.humidity-percent');
   }, 50);
 }
-
-// add listener to window resize to adjust graph
-let windowResizeTimeout;
-
-window.addEventListener('resize', () => {
-  clearTimeout(windowResizeTimeout);
-  windowResizeTimeout = setTimeout(() => {
-    updateHourlyWeather();
-  }, 100);
-});
