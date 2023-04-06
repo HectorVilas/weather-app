@@ -5,6 +5,7 @@
   padding: 5px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  justify-items: center;
   gap: 5px;
   overflow-x: auto;
   overflow-y: hidden;

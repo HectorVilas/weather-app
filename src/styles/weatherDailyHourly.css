@@ -1,7 +1,8 @@
 .weather-daily-hourly {
   position: absolute;
   box-sizing: border-box;
-  left: 0;
+  right: 0;
   bottom: 0;
   width: 100vw;
+  max-width: 1230px;
 }
