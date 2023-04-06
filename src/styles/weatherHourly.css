@@ -1,9 +1,11 @@
 :root {
   --chart-transition: 200ms linear;
+  --weather-hourly-div-height: 150px;
 }
 
 .weather-hourly {
-  height: 150px;
+  position: relative;
+  height: var(--weather-hourly-div-height);
   overflow: hidden;
   transition: opacity 2s;
 }
@@ -97,4 +99,25 @@
 .humidity-chart-vertex {
   fill: cadetblue;
   transition: var(--chart-transition);
+}
+
+/* hourly weather icon related */
+
+.chart-weather-icons-div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: calc(var(--weather-hourly-div-height) - 23px);
+  user-select: none;
+  display: flex;
+  align-items: flex-end;
+}
+
+.chart-weather-icon {
+  height: 30px;
+  flex: 1 1 auto;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, .25));
 }
