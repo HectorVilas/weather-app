@@ -13,7 +13,7 @@ export default async function domCitiesList(search) {
     noResults.classList.add('search-result-empty');
     noFlagIcon.classList.add('country-flag-none');
     noFlagIcon.innerText = '⚠️';
-    para.innerText = 'No location found.';
+    para.innerText = `No locations found for "${search}".`;
 
     noResults.append(noFlagIcon, para);
 
