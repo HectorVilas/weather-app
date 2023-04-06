@@ -2,6 +2,7 @@ import { getNext25 } from './graphFunctions';
 import positionLinesAndHours from './positionLinesAndHours';
 import { emptyChart, emptyChartVertices } from './emptyChartPositions';
 import updateChartLine from './updateChartLine';
+import updateChartIcons from './updateChartIcons';
 
 let storedData;
 let storedStartingIndex;
@@ -50,5 +51,7 @@ export default function updateHourlyWeather(data, startFromIndex) {
     updateChartLine(next25WindSpeeds, positionsX, chartsHeightWindHumidity, hours, textSpace, 'wind', '.speed-number');
     const next25Humidity = getNext25(data.humidity, startFromIndex);
     updateChartLine(next25Humidity, positionsX, chartsHeightWindHumidity, hours, textSpace, 'humidity', '.humidity-percent');
+    const next25Weathercodes = getNext25(data.weathercode);
+    updateChartIcons(next25Weathercodes, next25Hours, width);
   }, 50);
 }
