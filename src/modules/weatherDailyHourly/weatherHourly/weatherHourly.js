@@ -14,7 +14,10 @@ export default function weatherHourly() {
     createChartLineGroup('temp-apparent'),
     createChartLineGroup('temp', '°', 'temperature-number'),
   );
-  div.append(svg);
+  div.append(
+    svg,
+    createWeatherIcons(),
+  );
   return div;
 }
 
@@ -48,4 +51,20 @@ function createChartMarksAndHours() {
   chartLinesGroup.append(horizontalLine, ...hoursTexts);
 
   return chartLinesGroup;
+}
+
+function createWeatherIcons() {
+  const div = document.createElement('div');
+  const images = [];
+  for (let i = 0; i < 23; i += 1) {
+    const img = document.createElement('div');
+    img.classList.add('chart-weather-icon');
+    images.push(img);
+  }
+
+  div.classList.add('chart-weather-icons-div');
+
+  div.append(...images);
+
+  return div;
 }
