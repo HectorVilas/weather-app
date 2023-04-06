@@ -52,7 +52,7 @@ export default function updateDailyWeather(data) {
     const weather = getWeathercode(data.weathercodes[i]);
     const type = weather.weather;
     const hasIntensity = weather.intensity !== undefined;
-    const intensity = `,\n${weather.intensity}`;
+    const intensity = `, ${weather.intensity}`;
     description.innerText = `${type}${hasIntensity ? intensity : ''}`;
   });
   precipitationQuantities.forEach((quantity, i) => {
