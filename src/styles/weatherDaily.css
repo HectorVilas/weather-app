@@ -7,6 +7,7 @@
   grid-template-columns: repeat(7, 1fr);
   gap: 5px;
   overflow-x: auto;
+  overflow-y: hidden;
   transition: opacity 2s;
 }
 
@@ -17,6 +18,7 @@
 
 .daily-card {
   width: 165px;
+  height: 130px;
   background-color: #766ea8;
   display: grid;
   grid-template-columns: repeat(2, auto);
@@ -28,6 +30,12 @@
   padding: 2px;
   gap: 2px;
   cursor: pointer;
+  transition: 100ms ease-out;
+}
+.weather-daily:hover .daily-card,
+.weather-daily:active .daily-card {
+  user-select: none;
+  height: 260px;
 }
 
 .daily-card.active {
