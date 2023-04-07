@@ -31,7 +31,7 @@
   padding: 2px;
   gap: 2px;
   cursor: pointer;
-  transition: 100ms ease-out;
+  transition: 100ms ease-out 100ms;
 }
 .weather-daily:hover .daily-card,
 .weather-daily:active .daily-card {

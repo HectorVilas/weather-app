@@ -1,7 +1,11 @@
 :root {
   --chart-transition: 200ms linear;
-  --weather-hourly-div-height: 150px;
+  --weather-hourly-div-height: 200px;
+  --chart-text-color-fill: #ddd;
+  --chart-text-shadow-filter: drop-shadow(1px 1px 0px black);
 }
+
+/* chart divisions and hours */
 
 .weather-hourly {
   position: relative;
@@ -19,6 +23,11 @@
 .chart-line-base {
   stroke: gray;
   stroke-width: 2px;
+}
+
+.hours-chart-text {
+  fill: var(--chart-text-color-fill);
+  filter: var(--chart-text-shadow-filter);
 }
 
 /* temp related */
@@ -39,6 +48,11 @@
 .temp-chart-vertex {
   fill: green;
   transition: var(--chart-transition);
+}
+
+.temp-chart-text {
+  fill: var(--chart-text-color-fill);
+  filter: var(--chart-text-shadow-filter);
 }
 
 /* temp apparent related */
@@ -114,10 +128,12 @@
 }
 
 .chart-weather-icon {
-  height: 30px;
+  height: 100%;
   flex: 1 1 auto;
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center;
+  background-position: bottom;
   filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, .25));
+  /* outline: 1px solid greenyellow;
+  outline-offset: -1px; */
 }
