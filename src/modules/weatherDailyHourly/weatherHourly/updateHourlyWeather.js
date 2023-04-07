@@ -17,8 +17,9 @@ export default function updateHourlyWeather(data, startFromIndex) {
   storedStartingIndex = startFromIndex;
 
   const parent = document.querySelector('.weather-hourly');
-  parent.classList.remove('invisible');
-  const hours = 24;
+  const chartTemp = document.querySelector('.hourly-chart-temp');
+  const chartTempVertices = document.querySelectorAll('.temp-chart-vertex');
+  const hoursUsed = 24;
   // vertical space reserved on pixels for hours and temp values
   const textSpace = 45;
   const width = parseInt(parent.clientWidth, 10);
@@ -27,20 +28,19 @@ export default function updateHourlyWeather(data, startFromIndex) {
   const chartsHeightWindHumidity = height - textSpace;
   const positionsX = [0];
   // get the necessary data for chart
-  const next25Hours = getNext25(data.hours, startFromIndex);
-  const chartTemp = document.querySelector('.hourly-chart-temp');
-  const chartTempVertices = document.querySelectorAll('.temp-chart-vertex');
-  const next25Temps = getNext25(data.temps, startFromIndex);
-  const next25apparents = getNext25(data.apparent, startFromIndex);
-  const next25WindSpeeds = getNext25(data.windspeed, startFromIndex);
-  const next25Humidity = getNext25(data.humidity, startFromIndex);
-  const next25Weathercodes = getNext25(data.weathercode, startFromIndex);
+  const hours = getNext25(data.hours, startFromIndex);
+  const temps = getNext25(data.temps, startFromIndex);
+  const apparents = getNext25(data.apparent, startFromIndex);
+  const windSpeeds = getNext25(data.windspeed, startFromIndex);
+  const humidity = getNext25(data.humidity, startFromIndex);
+  const weathercodes = getNext25(data.weathercode, startFromIndex);
   const { sunrise } = data;
   const { sunset } = data;
 
+  parent.classList.remove('invisible');
   // set values for vertex horizontal positions
-  for (let i = 0; i < hours; i += 1) {
-    const currentValue = (width / (hours)) * (i + 1);
+  for (let i = 0; i < hoursUsed; i += 1) {
+    const currentValue = (width / (hoursUsed)) * (i + 1);
     positionsX.push(currentValue);
   }
   // if there's no temp chart drawn, an empty one (values at 0) will be placed
@@ -50,11 +50,11 @@ export default function updateHourlyWeather(data, startFromIndex) {
   }
   // small timeout to allow animation between the empty chart and the updated one
   setTimeout(() => {
-    positionLinesAndHours(next25Hours, positionsX, textSpace, width, height);
-    updateChartLine(next25Temps, positionsX, chartsHeightTemps, hours, textSpace, width, 'temp', '.temperature-number');
-    updateChartLine(next25apparents, positionsX, chartsHeightTemps, hours, textSpace, width, 'temp-apparent', '.temperature-number');
-    updateChartLine(next25WindSpeeds, positionsX, chartsHeightWindHumidity, hours, textSpace, width, 'wind', '.speed-number');
-    updateChartLine(next25Humidity, positionsX, chartsHeightWindHumidity, hours, textSpace, width, 'humidity', '.humidity-percent');
-    updateChartIcons(next25Weathercodes, sunrise, sunset, next25Hours, width);
+    positionLinesAndHours(hours, positionsX, textSpace, width, height);
+    updateChartLine(temps, positionsX, chartsHeightTemps, hoursUsed, textSpace, width, 'temp', '.temperature-number');
+    updateChartLine(apparents, positionsX, chartsHeightTemps, hoursUsed, textSpace, width, 'temp-apparent', '.temperature-number');
+    updateChartLine(windSpeeds, positionsX, chartsHeightWindHumidity, hoursUsed, textSpace, width, 'wind', '.speed-number');
+    updateChartLine(humidity, positionsX, chartsHeightWindHumidity, hoursUsed, textSpace, width, 'humidity', '.humidity-percent');
+    updateChartIcons(weathercodes, sunrise, sunset, hours, width);
   }, 50);
 }
