@@ -19,7 +19,7 @@ export default function updateChartHoverDataset(
     item.dataset.temp = temps[i];
     item.dataset.apparent = apparents[i];
     item.dataset.wind = windSpeeds[i];
-    item.dataset.hunidity = humidity[i];
+    item.dataset.humidity = humidity[i];
     item.dataset.weathercode = weathercodes[i];
   });
 }
