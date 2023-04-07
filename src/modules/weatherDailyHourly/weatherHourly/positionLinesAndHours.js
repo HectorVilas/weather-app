@@ -22,7 +22,25 @@ export default function positionLinesAndHours(hours, positionsX, textSpace, widt
     const localHour = new Date(hours[i]).getHours();
     const isZeroHour = startsPastZero && localHour % 24 === 0;
     let lineLength = 4;
-    if ((i + 2) % 3 === 0) lineLength = 10;
+    let startFrom;
+    let every;
+    if (width < 190) {
+      startFrom = 0;
+      every = 0;
+    } else if (width < 290) {
+      startFrom = 2;
+      every = 4;
+    } else if (width < 400) {
+      startFrom = 2;
+      every = 3;
+    } else if (width < 950) {
+      startFrom = 1;
+      every = 2;
+    } else {
+      startFrom = 1;
+      every = -1;
+    }
+    if ((i + startFrom) % every === 0) lineLength = 10;
     if (isZeroHour) lineLength = 30;
     line.setAttribute('x1', `${positionX}`);
     line.setAttribute('y1', `${height - (textSpace / 2) + (isZeroHour ? 10 : 0)}`);
