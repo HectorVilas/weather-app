@@ -2,7 +2,13 @@ import { setHours } from 'date-fns';
 import weatherIcon from '../../weatherIcon';
 import getWeathercode from '../../weathercode';
 
-export default function updateChartIcons(next25Weathercodes, next25Hours, width) {
+export default function updateChartIcons(
+  next25Weathercodes,
+  sunrise,
+  sunset,
+  next25Hours,
+  width,
+) {
   const iconsDiv = document.querySelector('.chart-weather-icons-div');
   const icons = document.querySelectorAll('.chart-weather-icon');
   let previousWeathercode;
@@ -21,8 +27,8 @@ export default function updateChartIcons(next25Weathercodes, next25Hours, width)
       icon.style.backgroundImage = weatherIcon(
         iconParts,
         new Date(next25Hours[i + 1]),
-        setHours(new Date(next25Hours[i + 1]), 6),
-        setHours(new Date(next25Hours[i + 1]), 18),
+        setHours(new Date(next25Hours[i + 1]), new Date(sunrise).getHours()),
+        setHours(new Date(next25Hours[i + 1]), new Date(sunset).getHours()),
       );
     } else {
       icon.style.backgroundImage = 'none';
