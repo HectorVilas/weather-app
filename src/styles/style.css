@@ -12,10 +12,10 @@ body {
 /* for general use */
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .invisible {
-  opacity: 0;
-  pointer-events: none;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
