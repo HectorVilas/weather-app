@@ -45,13 +45,19 @@ export default function updateHourlyWeather(data, startFromIndex) {
   setTimeout(() => {
     const next25Temps = getNext25(data.temps, startFromIndex);
     updateChartLine(next25Temps, positionsX, chartsHeightTemps, hours, textSpace, 'temp', '.temperature-number');
+
     const next25apparents = getNext25(data.apparent, startFromIndex);
     updateChartLine(next25apparents, positionsX, chartsHeightTemps, hours, textSpace, 'temp-apparent', '.temperature-number');
+
     const next25WindSpeeds = getNext25(data.windspeed, startFromIndex);
     updateChartLine(next25WindSpeeds, positionsX, chartsHeightWindHumidity, hours, textSpace, 'wind', '.speed-number');
+
     const next25Humidity = getNext25(data.humidity, startFromIndex);
     updateChartLine(next25Humidity, positionsX, chartsHeightWindHumidity, hours, textSpace, 'humidity', '.humidity-percent');
+
     const next25Weathercodes = getNext25(data.weathercode, startFromIndex);
-    updateChartIcons(next25Weathercodes, next25Hours, width);
+    const { sunrise } = data;
+    const { sunset } = data;
+    updateChartIcons(next25Weathercodes, sunrise, sunset, next25Hours, width);
   }, 50);
 }
