@@ -44,16 +44,16 @@ export default function updateHourlyWeather(data, startFromIndex) {
   // small timeout to allow animation between the empty chart and the updated one
   setTimeout(() => {
     const next25Temps = getNext25(data.temps, startFromIndex);
-    updateChartLine(next25Temps, positionsX, chartsHeightTemps, hours, textSpace, 'temp', '.temperature-number');
+    updateChartLine(next25Temps, positionsX, chartsHeightTemps, hours, textSpace, width, 'temp', '.temperature-number');
 
     const next25apparents = getNext25(data.apparent, startFromIndex);
-    updateChartLine(next25apparents, positionsX, chartsHeightTemps, hours, textSpace, 'temp-apparent', '.temperature-number');
+    updateChartLine(next25apparents, positionsX, chartsHeightTemps, hours, textSpace, width, 'temp-apparent', '.temperature-number');
 
     const next25WindSpeeds = getNext25(data.windspeed, startFromIndex);
-    updateChartLine(next25WindSpeeds, positionsX, chartsHeightWindHumidity, hours, textSpace, 'wind', '.speed-number');
+    updateChartLine(next25WindSpeeds, positionsX, chartsHeightWindHumidity, hours, textSpace, width, 'wind', '.speed-number');
 
     const next25Humidity = getNext25(data.humidity, startFromIndex);
-    updateChartLine(next25Humidity, positionsX, chartsHeightWindHumidity, hours, textSpace, 'humidity', '.humidity-percent');
+    updateChartLine(next25Humidity, positionsX, chartsHeightWindHumidity, hours, textSpace, width, 'humidity', '.humidity-percent');
 
     const next25Weathercodes = getNext25(data.weathercode, startFromIndex);
     const { sunrise } = data;

@@ -35,7 +35,7 @@ export default function positionLinesAndHours(hours, positionsX, textSpace, widt
     text.setAttribute('x', `${positionsX[i]}`);
     text.setAttribute('y', `${height - textMargin}`);
   });
-  hideBetween(hoursTexts);
+  hideBetween(hoursTexts, width);
   // add hour numbers
   hoursNumbers.forEach((hour, i) => {
     const thisHour = new Date(hours[i]).getHours();

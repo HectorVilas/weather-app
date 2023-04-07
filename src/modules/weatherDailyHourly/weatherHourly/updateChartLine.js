@@ -8,6 +8,7 @@ export default function updateChartLine(
   chartsHeight,
   hours,
   textSpace,
+  width,
   className,
   unitType,
 ) {
@@ -47,7 +48,7 @@ export default function updateChartLine(
       text.setAttribute('x', positionsX[i]);
       text.setAttribute('y', positionsToPixels[i] + (textSpace / 4));
     });
-    hideBetween(chartTexts);
+    hideBetween(chartTexts, width);
     chartNumbers.forEach((number, i) => {
       valueAdjust(number, number.textContent, values[i], 10);
       if (unitType === '.temperature-number') {
@@ -66,7 +67,7 @@ export default function updateChartLine(
     vertex.setAttribute('cy', `${positionsToPixels[i] + (textSpace / 2)}`);
   });
   if (className === 'temp') {
-    hideBetween(chartVertices);
+    hideBetween(chartVertices, width);
   } else {
     chartVertices.forEach((vertex) => vertex.classList.add('hidden'));
   }
