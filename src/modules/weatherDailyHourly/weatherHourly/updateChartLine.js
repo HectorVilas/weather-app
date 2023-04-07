@@ -65,5 +65,9 @@ export default function updateChartLine(
     vertex.setAttribute('cx', `${positionsX[i]}`);
     vertex.setAttribute('cy', `${positionsToPixels[i] + (textSpace / 2)}`);
   });
-  hideBetween(chartVertices);
+  if (className === 'temp') {
+    hideBetween(chartVertices);
+  } else {
+    chartVertices.forEach((vertex) => vertex.classList.add('hidden'));
+  }
 }
