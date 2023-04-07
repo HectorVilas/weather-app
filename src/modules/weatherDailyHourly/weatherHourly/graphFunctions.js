@@ -8,9 +8,27 @@ export function rangePercentToPixels(percent, height) {
   return (toPixels * -1) + height;
 }
 
-export function hideBetween(domElements) {
+export function hideBetween(domElements, parentWidth) {
+  let startFrom;
+  let every;
+  if (parentWidth < 190) {
+    startFrom = 0;
+    every = 0;
+  } else if (parentWidth < 290) {
+    startFrom = 2;
+    every = 4;
+  } else if (parentWidth < 400) {
+    startFrom = 2;
+    every = 3;
+  } else if (parentWidth < 950) {
+    startFrom = 1;
+    every = 2;
+  } else {
+    startFrom = 1;
+    every = -1;
+  }
   domElements.forEach((element, i) => {
-    if ((i + 2) % 3 !== 0) {
+    if ((i + startFrom) % every !== 0) {
       element.classList.add('hidden');
     } else {
       element.classList.remove('hidden');
