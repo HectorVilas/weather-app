@@ -2,7 +2,11 @@
   --chart-transition: 200ms linear;
   --weather-hourly-div-height: 200px;
   --chart-text-color-fill: #ddd;
-  --chart-text-shadow-filter: drop-shadow(1px 1px 0px black);
+  --chart-text-shadow: 1px 1px black;
+  --chart-color-temp: red;
+  --chart-color-apparent: coral;
+  --chart-color-wind: blue;
+  --chart-color-humidity: aquamarine;
 }
 
 /* chart divisions and hours */
@@ -17,6 +21,7 @@
   width: 100%;
   height: 100%;
   mask-image: linear-gradient(to right, transparent, black 3%);
+  filter: drop-shadow(1px 1px 2px black);
 }
 
 .chart-line-hour,
@@ -27,7 +32,7 @@
 
 .hours-chart-text {
   fill: var(--chart-text-color-fill);
-  filter: var(--chart-text-shadow-filter);
+  text-shadow: var(--chart-text-shadow);
 }
 
 /* temp related */
@@ -38,7 +43,7 @@
 
 .hourly-chart-temp {
   fill: transparent;
-  stroke: red;
+  stroke: var(--chart-color-temp);
   stroke-width: 3px;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -46,13 +51,13 @@
 }
 
 .temp-chart-vertex {
-  fill: green;
+  fill: var(--chart-color-temp);
   transition: var(--chart-transition);
 }
 
 .temp-chart-text {
   fill: var(--chart-text-color-fill);
-  filter: var(--chart-text-shadow-filter);
+  text-shadow: var(--chart-text-shadow);
 }
 
 /* temp apparent related */
@@ -67,7 +72,7 @@
 
 .hourly-chart-temp-apparent {
   fill: transparent;
-  stroke: coral;
+  stroke: var(--chart-color-apparent);
   stroke-width: 2px;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -75,7 +80,7 @@
 }
 
 .temp-apparent-chart-vertex {
-  fill: green;
+  fill: var(--chart-color-apparent);
   transition: var(--chart-transition);
 }
 
@@ -91,7 +96,7 @@
 
 .hourly-chart-wind {
   fill: transparent;
-  stroke: blue;
+  stroke: var(--chart-color-wind);
   stroke-width: 2px;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -99,7 +104,7 @@
 }
 
 .wind-chart-vertex {
-  fill: blueviolet;
+  fill: var(--chart-color-wind);
   transition: var(--chart-transition);
 }
 
@@ -115,7 +120,7 @@
 
 .hourly-chart-humidity {
   fill: transparent;
-  stroke: aquamarine;
+  stroke: var(--chart-color-humidity);
   stroke-width: 2px;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -123,7 +128,7 @@
 }
 
 .humidity-chart-vertex {
-  fill: cadetblue;
+  fill: var(--chart-color-humidity);
   transition: var(--chart-transition);
 }
 
@@ -145,7 +150,6 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom;
-  filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, .25));
 }
 
 /* detail div related */
@@ -163,6 +167,8 @@
   display: flex;
   flex-direction: column;
   pointer-events: none;
+  color: var(--chart-text-color-fill);
+  text-shadow: var(--chart-text-shadow);
 }
 .chart-details-div div {
   display: grid;
