@@ -160,14 +160,15 @@
   box-shadow: 2px 2px 2px rgba(0, 0, 0, .25),
     inset 2px 2px 2px rgba(255, 255, 255, .25);
   backdrop-filter: blur(5px);
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 10px 5px 10px 15px;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   pointer-events: none;
   color: var(--chart-text-color-fill);
   text-shadow: var(--chart-text-shadow);
   width: 170px;
+  transition: border-radius 300ms ease-out 300ms;
 }
 .chart-details-div div {
   display: grid;

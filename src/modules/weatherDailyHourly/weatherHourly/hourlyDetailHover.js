@@ -66,12 +66,16 @@ export function positionHourlyDetail(e) {
   const mouseY = e.layerY;
   const pixelsBeforeBorder = 20;
   const distanceFromCursor = 5;
+  const borderRadius = 15;
   const isOverflowing = mouseX + (detailsCardWidth + pixelsBeforeBorder) > hourlyParentWidth;
   detailsCard.style.left = `${mouseX}px`;
   detailsCard.style.top = `${mouseY}px`;
   detailsCard.style.transform = isOverflowing
     ? `translate(calc(-100% - ${distanceFromCursor}px), calc(-100% - ${distanceFromCursor}px))`
     : `translate(${distanceFromCursor}px, calc(-100% - ${distanceFromCursor}px))`;
+  detailsCard.style.borderRadius = isOverflowing
+    ? `${borderRadius}px ${borderRadius}px 0px ${borderRadius}px`
+    : `${borderRadius}px ${borderRadius}px ${borderRadius}px 0px`;
 }
 
 export function hideHourlyDetail() {
