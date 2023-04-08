@@ -57,6 +57,6 @@ export default function updateHourlyWeather(data, startFromIndex) {
     updateChartLine(windSpeeds, positionsX, chartsHeightWindHumidity, hoursUsed, textSpace, width, 'wind', '.speed-number');
     updateChartLine(humidity, positionsX, chartsHeightWindHumidity, hoursUsed, textSpace, width, 'humidity', '.humidity-percent');
     updateChartIcons(weathercodes, sunrise, sunset, hours, width);
-    updateChartHoverDataset(hours, temps, apparents, windSpeeds, humidity, weathercodes);
+    updateChartHoverDataset(temps, apparents, windSpeeds, humidity, weathercodes);
   }, 50);
 }
