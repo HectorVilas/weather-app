@@ -1,4 +1,4 @@
-import { showHourlyDetail, hideHourlyDetail } from './hourlyDetailHover';
+import { showHourlyDetail, positionHourlyDetail, hideHourlyDetail } from './hourlyDetailHover';
 
 export default function createWeatherIcons() {
   const div = document.createElement('div');
@@ -9,6 +9,7 @@ export default function createWeatherIcons() {
     imagesAndHover.push(img);
     img.dataset.pointed = i + 1;
     img.addEventListener('mouseenter', showHourlyDetail);
+    img.addEventListener('mousemove', positionHourlyDetail);
     img.addEventListener('mouseleave', hideHourlyDetail);
   }
 
