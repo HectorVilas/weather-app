@@ -1,9 +1,15 @@
 import getWeathercode from '../../weathercode';
 import { celsiusToFahrenheit, kilometersToMiles } from '../../unitConverter';
 
+let tempVertices;
+let windVertices;
+let humidityVertices;
+let tempApparentVertices;
+let detailsCard;
+
 export function showHourlyDetail() {
   const pointed = parseInt(this.dataset.pointed, 10);
-  const detailsCard = document.querySelector('.chart-details-div');
+  detailsCard = document.querySelector('.chart-details-div');
   detailsCard.classList.remove('hidden');
   // unit checkboxes
   const tempUnits = document.querySelector('.temperature-unit');
@@ -18,10 +24,10 @@ export function showHourlyDetail() {
   const humidity = document.querySelector('.chart-details-value-humidity');
   const weather = document.querySelector('.chart-details-value-weathercode');
   // vertices
-  const tempVertices = document.querySelectorAll('.temp-chart-vertex');
-  const windVertices = document.querySelectorAll('.wind-chart-vertex');
-  const humidityVertices = document.querySelectorAll('.humidity-chart-vertex');
-  const tempApparentVertices = document.querySelectorAll('.temp-apparent-chart-vertex');
+  tempVertices = document.querySelectorAll('.temp-chart-vertex');
+  windVertices = document.querySelectorAll('.wind-chart-vertex');
+  humidityVertices = document.querySelectorAll('.humidity-chart-vertex');
+  tempApparentVertices = document.querySelectorAll('.temp-apparent-chart-vertex');
   // weather description
   const weatherType = getWeathercode(parseInt(this.dataset.weathercode, 10)).weather;
   const weatherIntensity = getWeathercode(parseInt(this.dataset.weathercode, 10))?.intensity;
@@ -52,7 +58,7 @@ export function showHourlyDetail() {
 }
 
 export function positionHourlyDetail(e) {
-  const detailsCard = document.querySelector('.chart-details-div');
+  detailsCard = document.querySelector('.chart-details-div');
   const hourlyParent = e.target.closest('.chart-weather-icons-div');
   const detailsCardWidth = detailsCard.clientWidth;
   const hourlyParentWidth = hourlyParent.clientWidth;
@@ -69,13 +75,6 @@ export function positionHourlyDetail(e) {
 }
 
 export function hideHourlyDetail() {
-  const detailsCard = document.querySelector('.chart-details-div');
-  // vertices
-  const tempVertices = document.querySelectorAll('.temp-chart-vertex');
-  const windVertices = document.querySelectorAll('.wind-chart-vertex');
-  const humidityVertices = document.querySelectorAll('.humidity-chart-vertex');
-  const tempApparentVertices = document.querySelectorAll('.temp-apparent-chart-vertex');
-
   detailsCard.classList.add('hidden');
   const allVertices = [tempVertices, windVertices, humidityVertices, tempApparentVertices];
   allVertices.forEach((vertices) => {
