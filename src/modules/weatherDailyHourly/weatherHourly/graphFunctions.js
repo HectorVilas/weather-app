@@ -30,8 +30,10 @@ export function hideBetween(domElements, parentWidth) {
   domElements.forEach((element, i) => {
     if ((i + startFrom) % every !== 0) {
       element.classList.add('hidden');
+      element.dataset.hidden = true;
     } else {
       element.classList.remove('hidden');
+      element.dataset.hidden = false;
     }
   });
 }
