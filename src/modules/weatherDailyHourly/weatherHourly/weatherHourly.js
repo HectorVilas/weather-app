@@ -1,5 +1,5 @@
 import createChartLineGroup from './createChartLineGroup';
-import createWeatherIcons from './function createWeatherIcons';
+import createWeatherIcons from './createWeatherIcons';
 import createChartDetails from './createChartDetails';
 
 const svgNs = 'http://www.w3.org/2000/svg';
