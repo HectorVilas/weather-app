@@ -12,6 +12,7 @@
   height: var(--weather-hourly-div-height);
   /* overflow: hidden; */
   transition: opacity 2s;
+  mask-image: linear-gradient(to right, transparent, black 3%);
 }
 
 .hourly-chart {
