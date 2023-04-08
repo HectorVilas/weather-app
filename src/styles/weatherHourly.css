@@ -61,6 +61,10 @@
   opacity: .5;
 }
 
+.weather-hourly:hover .temp-apparent-chart-group {
+  opacity: 1;
+}
+
 .hourly-chart-temp-apparent {
   fill: transparent;
   stroke: coral;
@@ -81,6 +85,10 @@
   opacity: .25;
 }
 
+.weather-hourly:hover .wind-chart-group {
+  opacity: 1;
+}
+
 .hourly-chart-wind {
   fill: transparent;
   stroke: blue;
@@ -99,6 +107,10 @@
 
 .humidity-chart-group {
   opacity: .25;
+}
+
+.weather-hourly:hover .humidity-chart-group {
+  opacity: 1;
 }
 
 .hourly-chart-humidity {
@@ -134,8 +146,6 @@
   background-size: contain;
   background-position: bottom;
   filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, .25));
-  /* outline: 1px solid greenyellow;
-  outline-offset: -1px; */
 }
 
 .chart-weather-icon:hover {
