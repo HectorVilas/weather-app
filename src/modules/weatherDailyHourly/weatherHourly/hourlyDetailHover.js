@@ -51,6 +51,23 @@ export function showHourlyDetail() {
   });
 }
 
+export function positionHourlyDetail(e) {
+  const detailsCard = document.querySelector('.chart-details-div');
+  const hourlyParent = e.target.closest('.chart-weather-icons-div');
+  const detailsCardWidth = detailsCard.clientWidth;
+  const hourlyParentWidth = hourlyParent.clientWidth;
+  const mouseX = e.layerX;
+  const mouseY = e.layerY;
+  const pixelsBeforeBorder = 20;
+  const distanceFromCursor = 5;
+  const isOverflowing = mouseX + (detailsCardWidth + pixelsBeforeBorder) > hourlyParentWidth;
+  detailsCard.style.left = `${mouseX}px`;
+  detailsCard.style.top = `${mouseY}px`;
+  detailsCard.style.transform = isOverflowing
+    ? `translate(calc(-100% - ${distanceFromCursor}px), calc(-100% - ${distanceFromCursor}px))`
+    : `translate(${distanceFromCursor}px, calc(-100% - ${distanceFromCursor}px))`;
+}
+
 export function hideHourlyDetail() {
   const detailsCard = document.querySelector('.chart-details-div');
   // vertices
