@@ -25,8 +25,8 @@ export default function updateHourlyWeather(data, startFromIndex) {
   const textSpace = 45;
   const width = parseInt(parent.clientWidth, 10);
   const height = parseInt(parent.clientHeight, 10);
-  const chartsHeightTemps = ((height * 80) / 100) - textSpace;
-  const chartsHeightWindHumidity = height - textSpace;
+  const heightTempsWind = ((height * 80) / 100) - textSpace;
+  const heightsHumidity = height - textSpace;
   const positionsX = [0];
   // get the necessary data for chart
   const hours = getNext25(data.hours, startFromIndex);
@@ -46,16 +46,16 @@ export default function updateHourlyWeather(data, startFromIndex) {
   }
   // if there's no temp chart drawn, an empty one (values at 0) will be placed
   if (!chartTemp.getAttribute('d')) {
-    emptyChart(chartTemp, positionsX, chartsHeightTemps);
-    emptyChartVertices(chartTempVertices, positionsX, chartsHeightTemps);
+    emptyChart(chartTemp, positionsX, heightTempsWind);
+    emptyChartVertices(chartTempVertices, positionsX, heightTempsWind);
   }
   // small timeout to allow animation between the empty chart and the updated one
   setTimeout(() => {
     positionLinesAndHours(hours, positionsX, textSpace, width, height);
-    updateChartLine(temps, positionsX, chartsHeightTemps, hoursUsed, textSpace, width, 'temp', '.temperature-number');
-    updateChartLine(apparents, positionsX, chartsHeightTemps, hoursUsed, textSpace, width, 'temp-apparent', '.temperature-number');
-    updateChartLine(windSpeeds, positionsX, chartsHeightWindHumidity, hoursUsed, textSpace, width, 'wind', '.speed-number');
-    updateChartLine(humidity, positionsX, chartsHeightWindHumidity, hoursUsed, textSpace, width, 'humidity', '.humidity-percent');
+    updateChartLine(temps, positionsX, heightTempsWind, hoursUsed, textSpace, width, 'temp', '.temperature-number');
+    updateChartLine(apparents, positionsX, heightTempsWind, hoursUsed, textSpace, width, 'temp-apparent', '.temperature-number');
+    updateChartLine(windSpeeds, positionsX, heightTempsWind, hoursUsed, textSpace, width, 'wind', '.speed-number');
+    updateChartLine(humidity, positionsX, heightsHumidity, hoursUsed, textSpace, width, 'humidity', '.humidity-percent');
     updateChartIcons(weathercodes, sunrise, sunset, hours, width);
     updateChartHoverDataset(temps, apparents, windSpeeds, humidity, weathercodes);
   }, 50);
