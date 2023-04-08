@@ -29,6 +29,7 @@ export default function createChartLineGroup(className, unitSymbol, unitType) {
     vertex.setAttribute('r', 4);
     vertex.setAttribute('cx', 500);
     vertex.setAttribute('cy', 500);
+    vertex.dataset.hidden = true;
     chartVertices.push(vertex);
   }
 

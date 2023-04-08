@@ -7,6 +7,7 @@ export default function createWeatherIcons() {
     const img = document.createElement('div');
     img.classList.add('chart-weather-icon');
     imagesAndHover.push(img);
+    img.dataset.pointed = i + 1;
     img.addEventListener('mouseenter', showHourlyDetail);
     img.addEventListener('mouseleave', hideHourlyDetail);
   }
