@@ -180,3 +180,24 @@
   grid-area: text;
   margin: 0;
 }
+
+.chart-details-symbol {
+  width: 15px;
+  height: 15px;
+}
+
+.chart-details-symbol-temp {
+  background-color: var(--chart-color-temp);
+}
+
+.chart-details-symbol-apparent {
+  background-color: var(--chart-color-apparent);
+}
+
+.chart-details-symbol-wind {
+  background-color: var(--chart-color-wind);
+}
+
+.chart-details-symbol-humidity {
+  background-color: var(--chart-color-humidity);
+}

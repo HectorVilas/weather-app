@@ -5,28 +5,28 @@ export default function createChartDetails() {
   const elements = [
     {
       class: 'temp',
-      symbolColor: 'red',
+      hasSymbol: true,
       text: 'Temperature: ',
       value: '0',
       unit: '°C',
     },
     {
       class: 'apparent',
-      symbolColor: 'pink',
+      hasSymbol: true,
       text: 'Feels like: ',
       value: '0',
       unit: '°C',
     },
     {
       class: 'wind',
-      symbolColor: 'blue',
+      hasSymbol: true,
       text: 'Wind speed: ',
       value: '0',
       unit: 'km/h',
     },
     {
       class: 'humidity',
-      symbolColor: 'cyan',
+      hasSymbol: true,
       text: 'Humidity: ',
       value: '0',
       unit: '%',
@@ -42,12 +42,9 @@ export default function createChartDetails() {
     const div = document.createElement('div');
     div.classList.add(`chart-details-${elements[i].class}`);
 
-    if (elements[i]?.symbolColor) {
+    if (elements[i]?.hasSymbol) {
       const symbol = document.createElement('div');
-      symbol.classList.add(`chart-details-symbol-${elements[i].class}`);
-      symbol.style.backgroundColor = elements[i].symbolColor;
-      symbol.style.width = '15px';
-      symbol.style.height = '15px';
+      symbol.classList.add('chart-details-symbol', `chart-details-symbol-${elements[i].class}`);
       div.append(symbol);
     }
 
