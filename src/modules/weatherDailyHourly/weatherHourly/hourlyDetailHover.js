@@ -33,7 +33,7 @@ export function showHourlyDetail() {
     ? celsiusToFahrenheit(this.dataset.apparent) : this.dataset.apparent;
   apparentUnit.innerText = tempUnits.checked ? '°F' : '°C';
   wind.innerText = speedUnits.checked ? kilometersToMiles(this.dataset.wind) : this.dataset.wind;
-  windUnit.innerText = speedUnits.checked ? 'mph' : 'km/h';
+  windUnit.innerText = speedUnits.checked ? ' mph' : ' km/h';
   humidity.innerText = this.dataset.humidity;
   weather.innerText = `${weatherType}${weatherIntensity ? `, ${weatherIntensity}` : ''}`;
 
