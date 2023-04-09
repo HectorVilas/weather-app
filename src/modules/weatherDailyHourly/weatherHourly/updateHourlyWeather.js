@@ -32,6 +32,10 @@ export default function updateHourlyWeather(data, startFromIndex) {
   const hours = getNext25(data.hours, startFromIndex);
   const temps = getNext25(data.temps, startFromIndex);
   const apparents = getNext25(data.apparent, startFromIndex);
+  const minTempsApparents = temps.concat(apparents)
+    .reduce((min, current) => (min < current ? min : current));
+  const maxTempsApparents = temps.concat(apparents)
+    .reduce((max, current) => (max > current ? max : current));
   const windSpeeds = getNext25(data.windspeed, startFromIndex);
   const humidity = getNext25(data.humidity, startFromIndex);
   const weathercodes = getNext25(data.weathercode, startFromIndex);
@@ -52,10 +56,10 @@ export default function updateHourlyWeather(data, startFromIndex) {
   // small timeout to allow animation between the empty chart and the updated one
   setTimeout(() => {
     positionLinesAndHours(hours, positionsX, textSpace, width, height);
-    updateChartLine(temps, positionsX, heightTempsWind, hoursUsed, textSpace, width, 'temp', '.temperature-number');
-    updateChartLine(apparents, positionsX, heightTempsWind, hoursUsed, textSpace, width, 'temp-apparent', '.temperature-number');
+    updateChartLine(temps, positionsX, heightTempsWind, hoursUsed, textSpace, width, 'temp', '.temperature-number', minTempsApparents, maxTempsApparents);
+    updateChartLine(apparents, positionsX, heightTempsWind, hoursUsed, textSpace, width, 'temp-apparent', '.temperature-number', minTempsApparents, maxTempsApparents);
     updateChartLine(windSpeeds, positionsX, heightTempsWind, hoursUsed, textSpace, width, 'wind', '.speed-number');
-    updateChartLine(humidity, positionsX, heightsHumidity, hoursUsed, textSpace, width, 'humidity', '.humidity-percent');
+    updateChartLine(humidity, positionsX, heightsHumidity, hoursUsed, textSpace, width, 'humidity', '.humidity-percent', 0, 100);
     updateChartIcons(weathercodes, sunrise, sunset, hours, width);
     updateChartHoverDataset(temps, apparents, windSpeeds, humidity, weathercodes);
   }, 50);
