@@ -11,6 +11,8 @@ export default function updateChartLine(
   width,
   className,
   unitType,
+  fixedMinValue,
+  fixedMaxValue,
 ) {
   // repeat previos value for missing 8th day data at 0hs
   if (values.at(-1) === undefined) values[values.length - 1] = values.at(-2);
@@ -24,8 +26,8 @@ export default function updateChartLine(
     const currentValue = parseFloat(values[i]);
     positionsY.push(currentValue);
   }
-  const minValue = className === 'humidity' ? 0 : positionsY.reduce((min, current) => (min < current ? min : current));
-  const maxValue = className === 'humidity' ? 100 : positionsY.reduce((max, current) => (max > current ? max : current));
+  const minValue = typeof fixedMinValue === 'number' ? fixedMinValue : positionsY.reduce((min, current) => (min < current ? min : current));
+  const maxValue = typeof fixedMaxValue === 'number' ? fixedMaxValue : positionsY.reduce((max, current) => (max > current ? max : current));
   // turn values to pixels
   const positionsToPixels = positionsY.map((value) => {
     const percent = rangePercent(minValue, maxValue, value);
