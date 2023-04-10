@@ -58,7 +58,7 @@ export default function updateHourlyWeather(data, startFromIndex) {
     positionLinesAndHours(hours, positionsX, textSpace, width, height);
     updateChartLine(temps, positionsX, heightTempsWind, hoursUsed, textSpace, width, 'temp', '.temperature-number', minTempsApparents, maxTempsApparents);
     updateChartLine(apparents, positionsX, heightTempsWind, hoursUsed, textSpace, width, 'temp-apparent', '.temperature-number', minTempsApparents, maxTempsApparents);
-    updateChartLine(windSpeeds, positionsX, heightTempsWind, hoursUsed, textSpace, width, 'wind', '.speed-number');
+    updateChartLine(windSpeeds, positionsX, heightTempsWind, hoursUsed, textSpace, width, 'wind', '.speed-number', 0);
     updateChartLine(humidity, positionsX, heightsHumidity, hoursUsed, textSpace, width, 'humidity', '.humidity-percent', 0, 100);
     updateChartIcons(weathercodes, sunrise, sunset, hours, width);
     updateChartHoverDataset(temps, apparents, windSpeeds, humidity, weathercodes);
