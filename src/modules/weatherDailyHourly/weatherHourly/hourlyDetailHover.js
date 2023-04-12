@@ -48,10 +48,8 @@ export function showHourlyDetail() {
     vertices.forEach((vertex, i) => {
       if (pointed === i) {
         vertex.classList.remove('hidden');
-        vertex.setAttribute('r', 7);
       } else {
         vertex.classList.add('hidden');
-        vertex.setAttribute('r', 4);
       }
     });
   });
@@ -88,7 +86,6 @@ export function hideHourlyDetail() {
       } else {
         vertex.classList.remove('hidden');
       }
-      vertex.setAttribute('r', 4);
     });
   });
 }
