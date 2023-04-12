@@ -2,6 +2,12 @@ import createChartLineGroup from './createChartLineGroup';
 import createWeatherIcons from './createWeatherIcons';
 import createChartDetails from './createChartDetails';
 
+import vectorSquare from '../../../media/images/icons-chart/square.svg';
+import vectorCircle from '../../../media/images/icons-chart/circle.svg';
+import vectorDiamond from '../../../media/images/icons-chart/diamond.svg';
+import vectorStar from '../../../media/images/icons-chart/star.svg';
+// import vectorArrow from '../../../media/images/icons-chart/arrow.svg';
+
 const svgNs = 'http://www.w3.org/2000/svg';
 
 export default function weatherHourly() {
@@ -11,10 +17,10 @@ export default function weatherHourly() {
   svg.classList.add('hourly-chart');
   svg.append(
     createChartMarksAndHours(),
-    createChartLineGroup('wind'),
-    createChartLineGroup('humidity'),
-    createChartLineGroup('temp-apparent'),
-    createChartLineGroup('temp', '°', 'temperature-number'),
+    createChartLineGroup('wind', vectorStar),
+    createChartLineGroup('humidity', vectorDiamond),
+    createChartLineGroup('temp-apparent', vectorSquare),
+    createChartLineGroup('temp', vectorCircle, '°', 'temperature-number'),
   );
   div.append(
     svg,
