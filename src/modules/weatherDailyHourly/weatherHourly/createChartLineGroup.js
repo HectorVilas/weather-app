@@ -1,4 +1,4 @@
-export default function createChartLineGroup(className, unitSymbol, unitType) {
+export default function createChartLineGroup(className, vertexImage, unitSymbol, unitType) {
   const svgNs = 'http://www.w3.org/2000/svg';
   const chartGroup = document.createElementNS(svgNs, 'g');
   const chart = document.createElementNS(svgNs, 'path');
@@ -24,11 +24,13 @@ export default function createChartLineGroup(className, unitSymbol, unitType) {
   }
 
   for (let i = 0; i <= 24; i += 1) {
-    const vertex = document.createElementNS(svgNs, 'circle');
+    const vertex = document.createElementNS(svgNs, 'image');
     vertex.classList.add(`${className}-chart-vertex`);
-    vertex.setAttribute('r', 4);
-    vertex.setAttribute('cx', 500);
-    vertex.setAttribute('cy', 500);
+    vertex.setAttribute('width', 20);
+    vertex.setAttribute('href', vertexImage);
+    vertex.setAttribute('height', 20);
+    vertex.setAttribute('x', 500);
+    vertex.setAttribute('y', 500);
     vertex.dataset.hidden = true;
     chartVertices.push(vertex);
   }
