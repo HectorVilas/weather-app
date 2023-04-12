@@ -63,10 +63,14 @@ export default function updateChartLine(
     });
   }
 
-  // position circle vertices
+  // position vertices
   chartVertices.forEach((vertex, i) => {
-    vertex.setAttribute('cx', `${positionsX[i]}`);
-    vertex.setAttribute('cy', `${positionsToPixels[i] + (textSpace / 2)}`);
+    const vertexWidth = vertex.getAttribute('width');
+    const vertexHeight = vertex.getAttribute('height');
+    const vertexX = positionsX[i] - (vertexWidth / 2);
+    const vertexY = (positionsToPixels[i] + (textSpace / 2)) - (vertexHeight / 2);
+    vertex.setAttribute('x', vertexX);
+    vertex.setAttribute('y', vertexY);
   });
   if (className === 'temp') {
     hideBetween(chartVertices, width);
