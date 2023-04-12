@@ -174,30 +174,39 @@
   display: grid;
   grid-template-columns: 20px 1fr;
   grid-template-areas: "... text";
+  align-items: center;
 }
 
 .chart-details-div p {
   grid-area: text;
-  margin: 0;
+  margin: 2px 0;
 }
 
 .chart-details-symbol {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, .5));
 }
 
 .chart-details-symbol-temp {
-  background-color: var(--chart-color-temp);
+  /* background-color: var(--chart-color-temp); */
+  background-image: url(../media/images/icons-chart/circle.svg);
 }
 
 .chart-details-symbol-apparent {
-  background-color: var(--chart-color-apparent);
+  /* background-color: var(--chart-color-apparent); */
+  background-image: url(../media/images/icons-chart/square.svg);
 }
 
 .chart-details-symbol-wind {
-  background-color: var(--chart-color-wind);
+  /* background-color: var(--chart-color-wind); */
+  background-image: url(../media/images/icons-chart/star.svg);
 }
 
 .chart-details-symbol-humidity {
-  background-color: var(--chart-color-humidity);
+  /* background-color: var(--chart-color-humidity); */
+  background-image: url(../media/images/icons-chart/diamond.svg);
 }
