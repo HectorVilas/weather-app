@@ -4,6 +4,7 @@ import { emptyChart, emptyChartVertices } from './emptyChartPositions';
 import updateChartLine from './updateChartLine';
 import updateChartIcons from './updateChartIcons';
 import updateChartHoverDataset from './updateChartHoverDataset';
+import rotateChartVertices from './rotateChartVertices';
 
 let storedData;
 let storedStartingIndex;
@@ -20,6 +21,7 @@ export default function updateHourlyWeather(data, startFromIndex) {
   const parent = document.querySelector('.weather-hourly');
   const chartTemp = document.querySelector('.hourly-chart-temp');
   const chartTempVertices = document.querySelectorAll('.temp-chart-vertex');
+  const windChartVertices = document.querySelectorAll('.wind-chart-vertex');
   const hoursUsed = 24;
   // vertical space reserved on pixels for hours and temp values
   const textSpace = 45;
@@ -37,6 +39,7 @@ export default function updateHourlyWeather(data, startFromIndex) {
   const maxTempsApparents = temps.concat(apparents)
     .reduce((max, current) => (max > current ? max : current));
   const windSpeeds = getNext25(data.windspeed, startFromIndex);
+  const windDirection = getNext25(data.windDirection, startFromIndex);
   const humidity = getNext25(data.humidity, startFromIndex);
   const weathercodes = getNext25(data.weathercode, startFromIndex);
   const { sunrise } = data;
@@ -60,7 +63,8 @@ export default function updateHourlyWeather(data, startFromIndex) {
     updateChartLine(apparents, positionsX, heightTempsWind, hoursUsed, textSpace, width, 'temp-apparent', '.temperature-number', minTempsApparents, maxTempsApparents);
     updateChartLine(windSpeeds, positionsX, heightTempsWind, hoursUsed, textSpace, width, 'wind', '.speed-number', 0);
     updateChartLine(humidity, positionsX, heightsHumidity, hoursUsed, textSpace, width, 'humidity', '.humidity-percent', 0, 100);
+    rotateChartVertices(windChartVertices, windDirection);
     updateChartIcons(weathercodes, sunrise, sunset, hours, width);
-    updateChartHoverDataset(temps, apparents, windSpeeds, humidity, weathercodes);
+    updateChartHoverDataset(temps, apparents, windSpeeds, windDirection, humidity, weathercodes);
   }, 50);
 }
