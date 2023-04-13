@@ -2,6 +2,7 @@ export default function updateChartHoverDataset(
   temps,
   apparents,
   windSpeeds,
+  windDirectons,
   humidity,
   weathercodes,
 ) {
@@ -17,6 +18,7 @@ export default function updateChartHoverDataset(
     item.dataset.temp = temps[i];
     item.dataset.apparent = apparents[i];
     item.dataset.wind = windSpeeds[i];
+    item.dataset.windDirection = windDirectons[i];
     item.dataset.humidity = humidity[i];
     item.dataset.weathercode = weathercodes[i];
   });
