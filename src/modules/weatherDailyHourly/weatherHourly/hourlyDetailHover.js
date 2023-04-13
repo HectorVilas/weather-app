@@ -23,6 +23,8 @@ export function showHourlyDetail() {
   const windUnit = document.querySelector('.chart-details-unit-wind');
   const humidity = document.querySelector('.chart-details-value-humidity');
   const weather = document.querySelector('.chart-details-value-weathercode');
+  // wind icon, for rotation
+  const windIcon = document.querySelector('.chart-details-symbol-wind');
   // vertices
   tempVertices = document.querySelectorAll('.temp-chart-vertex');
   windVertices = document.querySelectorAll('.wind-chart-vertex');
@@ -42,6 +44,8 @@ export function showHourlyDetail() {
   windUnit.innerText = speedUnits.checked ? ' mph' : ' km/h';
   humidity.innerText = this.dataset.humidity;
   weather.innerText = `${weatherType}${weatherIntensity ? `, ${weatherIntensity}` : ''}`;
+
+  windIcon.style.rotate = `${this.dataset.windDirection}deg`;
 
   const allVertices = [tempVertices, windVertices, humidityVertices, tempApparentVertices];
   allVertices.forEach((vertices) => {
