@@ -20,7 +20,7 @@ export default function createChartDetails() {
     {
       class: 'wind',
       hasSymbol: true,
-      text: 'Wind speed: ',
+      text: 'Wind: ',
       value: '0',
       unit: 'km/h',
     },
