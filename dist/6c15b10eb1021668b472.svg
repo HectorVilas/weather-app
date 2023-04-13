@@ -8,9 +8,10 @@
    version="1.1"
    id="svg5"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
-   sodipodi:docname="star.svg"
+   sodipodi:docname="arrow.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
@@ -25,7 +26,7 @@
      inkscape:document-units="mm"
      showgrid="true"
      inkscape:zoom="6.7277216"
-     inkscape:cx="11.74246"
+     inkscape:cx="-1.7836648"
      inkscape:cy="38.943347"
      inkscape:window-width="1920"
      inkscape:window-height="1027"
@@ -42,26 +43,36 @@
        originy="8.4666665" />
   </sodipodi:namedview>
   <defs
-     id="defs2" />
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3196">
+      <stop
+         style="stop-color:#0000ff;stop-opacity:1;"
+         offset="0"
+         id="stop3192" />
+      <stop
+         style="stop-color:#00caff;stop-opacity:1;"
+         offset="1"
+         id="stop3194" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3196"
+       id="linearGradient3198"
+       x1="8.4666662"
+       y1="16.404165"
+       x2="8.4666662"
+       y2="0.52916688"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       sodipodi:type="star"
-       style="opacity:1;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:2.64583;stroke-linecap:round"
-       id="path6298"
-       inkscape:flatsided="false"
-       sodipodi:sides="5"
-       sodipodi:cx="8.4666662"
-       sodipodi:cy="8.4666662"
-       sodipodi:r1="7.9374995"
-       sodipodi:r2="3.9687498"
-       sodipodi:arg1="-1.5707963"
-       sodipodi:arg2="-0.9424778"
-       inkscape:rounded="0"
-       inkscape:randomized="0"
-       d="m 8.4666664,0.5291667 2.3327726,4.7267135 5.216238,0.757964 -3.774505,3.6792331 0.891039,5.1951607 L 8.4666662,12.435416 3.8011209,14.888238 4.6921609,9.6930774 0.91765564,6.0138438 6.1338936,5.2558802 Z"
-       inkscape:transform-center-y="-0.75796385" />
+       style="fill:url(#linearGradient3198);stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+       d="M 8.4666663,0.5291669 1.8520835,7.1437499 H 5.8208333 V 16.404166 H 11.1125 V 7.1437499 h 3.968749 z"
+       id="path7764" />
   </g>
 </svg>
