@@ -106,6 +106,9 @@
 .wind-chart-vertex {
   fill: var(--chart-color-wind);
   transition: var(--chart-transition);
+  /* allow rotation from the center of the image */
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
 /* humidity related */
@@ -179,7 +182,7 @@
 
 .chart-details-div p {
   grid-area: text;
-  margin: 2px 0;
+  margin: 1px 0;
 }
 
 .chart-details-symbol {
@@ -203,7 +206,7 @@
 
 .chart-details-symbol-wind {
   /* background-color: var(--chart-color-wind); */
-  background-image: url(../media/images/icons-chart/star.svg);
+  background-image: url(../media/images/icons-chart/arrow.svg);
 }
 
 .chart-details-symbol-humidity {
