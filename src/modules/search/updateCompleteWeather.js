@@ -41,6 +41,7 @@ export default async function updateCompleteWeather(chosenCity) {
     apparent: weather.hourly.apparent_temperature,
     weathercode: weather.hourly.weathercode,
     windspeed: weather.hourly.windspeed_10m,
+    windDirection: weather.hourly.winddirection_10m,
     sunrise: weather.daily.sunrise[0],
     sunset: weather.daily.sunset[0],
   };
