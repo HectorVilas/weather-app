@@ -16,14 +16,14 @@ For this project I'm going to use Webpack again. I've been setting everything up
 - ✔️ Write the functions that hit the API. You’re going to want functions that can take a location and return the weather data for that location. For now, just console.log() the information.
 - ✔️ write the functions that process the JSON data you’re getting from the API and return an object with only the data you require for your app
 - ✔️ set up a simple form that will let users input their location and will fetch the weather info
-- ⭕ display the information on your webpage
-- ⭕ optional: add a "loading" component that displays from the time the form is submitted until the information comes back from the API
+- ✔️ display the information on your webpage
+- ✔️ optional: add a "loading" component that displays from the time the form is submitted until the information comes back from the API
 
 # planning
 
 ## the page
-- ⭕ the page on desktop won't be scrollable
-  - ❌ the mobile version will
+- ✔️ the page on desktop won't be scrollable
+  - ~~the mobile version will~~
 - ✔️ the user on first visit will be received by a simple page with an input and a search button next to it
   - ✔️ a \<form> will be used here, with a listener on "submit"
 - ✔️ to prevent errors, locations will be listed, ~~maybe~~ from another API ~~or a library~~, so the user can't input an invalid location name, ~~or maybe use it as autocomplete to be less restrictive~~
@@ -43,20 +43,20 @@ For this project I'm going to use Webpack again. I've been setting everything up
       - ✔️ all the Celcius values on screen will be converted to Fahrenheit
       - ✔️ same for km/h and mph values
   - ❌ the background image or colors must change to something representing the current weather
-  - ⭕ at the bottom will be a line chart with the predicted temperatures
-    - ⭕ on each vector:
+  - ✔️ at the bottom will be a line chart with the predicted temperatures
+    - on each vector:
       - ✔️ the height of the vector will represent the predicted temperature
-      - ❌ the hour will appear at the bottom
-      - ❌ an icon will represent the forecast (sun, clouds, rain, etc)
-        - ❌ if the next vector have the same forecast, no icon will be shown
-      - ❌ if the hour is at 0:00hs, a vertical line will appear
+      - ✔️ the hour will appear at the bottom
+      - ✔️ an icon will represent the forecast (sun, clouds, rain, etc)
+        - ✔️ if the next vector have the same forecast, no icon will be shown
+      - ✔️ if the hour is at 0:00hs, a vertical line will appear
 
 ### Other ideas
 - ❓ store the weather forecast on `localStorage`
   - ❓ add "expiration date" so instead of fetching from the API on each refresh, it will render the info from here
     - ❓ if it expired (the duration will depend on how often the weather forecast is updated), a fetch will be done, updating it's data on `localStorage`
   - ❓ if the location is changed, force fetch
-- ❓ have the sky, clouds, ground and other parts on individual images and combine the relevant ones to form the background
+- ⭕ have the sky, clouds, ground and other parts on individual images and combine the relevant ones to form the background
   - ❓ maybe animate the clouds and weather effects and set the sun height depending on the data from the weather forecast
   - ❓ try parallax effect for clouds (or everything on mouseMove)
 - ❓ a paragraph describing the weather forecast
@@ -81,8 +81,8 @@ For this project I'm going to use Webpack again. I've been setting everything up
   - parameters: location, weather forecast as object, expiration date
 - ✔️ the `date-fns` library will be used for converting the shown data on the page to something more readable
   - parameters: date, required format
-- ⭕ a module for DOM manipulation with the next functions and respective listeners:
-  - ⭕ a function to place all elements on DOM (search, current weather, chart...)
+- ✔️ a module for DOM manipulation with the next functions and respective listeners:
+  - ✔️ a function to place all elements on DOM (search, current weather, chart...)
   - ✔️ search bar element
   - ✔️ current weather forecast elements for icons and text
   - ✔️ current weather forecast elements updater
@@ -91,7 +91,7 @@ For this project I'm going to use Webpack again. I've been setting everything up
   - ✔️ icon picker for current weather
     - parameters: current weather
     - returns: respective weather image element
-  - ⭕ line chart element
-  - ⭕ line chart updater
+  - ✔️ line chart element
+  - ✔️ line chart updater
   - - parameters: an array with objects, each with hour, weather icon and predicted temp
     - action: update vectors position on Y axis from the line chart, replace weather icons, update hours and move 0:00hs line if necessary
