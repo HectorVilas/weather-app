@@ -6,13 +6,15 @@ export default function weatherCurrent() {
   // city
   const cityDiv = document.createElement('div');
   const cityPara = document.createElement('p');
+  const citySearch = document.createElement('div');
 
   cityDiv.classList.add('city-div');
   cityPara.classList.add('city-para');
+  citySearch.classList.add('city-current-search');
 
   cityPara.innerText = 'City Name, Country Name';
 
-  cityDiv.append(cityPara);
+  cityDiv.append(cityPara, citySearch);
 
   // icon
   const icon = document.createElement('div');
