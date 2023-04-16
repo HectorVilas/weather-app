@@ -14,7 +14,15 @@
 .weather-hourly {
   position: relative;
   height: var(--weather-hourly-div-height);
-  transition: opacity 2s;
+  transition: opacity 2s,
+    background-color 100ms,
+    backdrop-filter 100ms,
+    box-shadow 200ms;
+}
+.weather-hourly:hover {
+  background-color: rgba(255, 255, 255, .1);
+  backdrop-filter: blur(15px);
+  box-shadow: inset 4px 4px 6px rgba(255, 255, 255, .25);
 }
 
 .hourly-chart {

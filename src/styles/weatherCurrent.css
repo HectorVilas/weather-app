@@ -19,8 +19,10 @@
     "icon humi wind"
     "code humi wind";
   gap: 5px;
-  background-color: rgba(255, 255, 255, .25);
+  background-color: rgba(255, 255, 255, .5);
   backdrop-filter: blur(10px);
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, .25),
+    inset 3px 3px 6px rgba(255, 255, 255, .25);
   border-radius: 10px;
   transition: opacity 2s;
 }
