@@ -35,7 +35,9 @@
 
 .city-div {
   grid-area: city;
+  position: relative;
   text-align: center;
+  cursor: pointer;
 }
 
 .city-para {
@@ -46,6 +48,24 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.city-current-search {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  translate: 0 -50%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  background: url(../media/images/icons/search-magnifier.svg) no-repeat top right;
+  background-size: 50%;
+  opacity: 0;
+  transition: 250ms;
+}
+
+.city-div:hover .city-current-search {
+  background-size: 80%;
+  opacity: 100%;
 }
 
 /* icon */
