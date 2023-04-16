@@ -50,7 +50,9 @@ export default async function updateCompleteWeather(chosenCity) {
   updateHourlyWeather(hourlyWeatherData, hourlyWeatherData.localHour);
   // hide search
   const domSearch = document.querySelector('.city-search');
+  const mainMenuBackground = document.querySelector('.main-menu-background');
   domSearch.classList.add('hidden');
+  mainMenuBackground.classList.add('invisible');
   // clear results after hiding
   domCitiesList('');
 }
