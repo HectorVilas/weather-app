@@ -7,6 +7,8 @@
 
 body {
   background-color: darkslateblue;
+  margin: 0;
+  padding: 0;
 }
 
 /* for general use */
