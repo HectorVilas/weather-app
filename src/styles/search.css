@@ -162,3 +162,15 @@
     transform: rotate(360deg);
   }
 }
+
+/* main menu background element */
+
+.main-menu-background {
+  position: absolute;
+  isolation: isolate;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(15px);
+  transition: opacity 500ms linear;
+}
