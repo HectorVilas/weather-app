@@ -48,10 +48,16 @@ export default async function updateCompleteWeather(chosenCity) {
   updateCurrentWeather(currentWeatherData);
   updateDailyWeather(dailyWeatherData);
   updateHourlyWeather(hourlyWeatherData, hourlyWeatherData.localHour);
-  // hide search
+  // hide search, remove properties and values
   const domSearch = document.querySelector('.city-search');
+  const searchInput = document.querySelector('.search-input');
+  const searchLoading = document.querySelector('.search-loading');
   const mainMenuBackground = document.querySelector('.main-menu-background');
   domSearch.classList.add('hidden');
+  searchInput.removeAttribute('disabled');
+  searchInput.classList.remove('loading');
+  searchInput.value = '';
+  searchLoading.classList.add('hidden');
   mainMenuBackground.classList.add('invisible');
   // clear results after hiding
   domCitiesList('');
