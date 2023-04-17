@@ -48,6 +48,12 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  text-align: left;
+}
+
+.city-para:hover {
+  text-decoration: underline blue;
+  text-decoration-thickness: 5px;
 }
 
 .city-current-search {
