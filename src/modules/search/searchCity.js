@@ -32,6 +32,8 @@ export default async function searchCity(search) {
       loadingIcon.classList.remove('hidden');
 
       updateCompleteWeather(city);
+
+      previousSearch = undefined;
     });
   });
 }
