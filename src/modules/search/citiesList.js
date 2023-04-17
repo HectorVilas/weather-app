@@ -24,7 +24,12 @@ export default async function domCitiesList(search) {
     const searchResult = document.createElement('button');
     const flag = document.createElement('p');
     const place = document.createElement('p');
-    const location = `${city.name}, ${city.admin3 ? `${city.admin3}, ` : ''}${city.admin2 ? `${city.admin2}, ` : ''}${city.admin1 ? `${city.admin1}, ` : ''}${city.country}`;
+    const location = `${
+      city.name}${
+      city.admin3 ? `, ${city.admin3}` : ''}${
+      city.admin2 ? `, ${city.admin2}` : ''}${
+      city.admin1 ? `, ${city.admin1}` : ''}${
+      city.country ? `, ${city.country}` : ''}`;
 
     searchResult.classList.add('search-result');
     searchResult.dataset.latitude = city.latitude;
