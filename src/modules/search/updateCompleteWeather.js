@@ -53,11 +53,13 @@ export default async function updateCompleteWeather(chosenCity) {
   const searchInput = document.querySelector('.search-input');
   const searchLoading = document.querySelector('.search-loading');
   const mainMenuBackground = document.querySelector('.main-menu-background');
+  const activeCard = document.querySelector('.daily-card.active');
   domSearch.classList.add('hidden');
   searchInput.removeAttribute('disabled');
   searchInput.classList.remove('loading');
   searchInput.value = '';
   searchLoading.classList.add('hidden');
+  activeCard?.classList.remove('active');
   mainMenuBackground.classList.add('invisible');
   // clear results after hiding
   domCitiesList('');
