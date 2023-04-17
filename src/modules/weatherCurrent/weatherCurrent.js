@@ -1,3 +1,4 @@
+import openLocationSearch from './openLocationSearch';
 import changeUnits from '../changeUnits';
 
 export default function weatherCurrent() {
@@ -13,6 +14,8 @@ export default function weatherCurrent() {
   citySearch.classList.add('city-current-search');
 
   cityPara.innerText = 'City Name, Country Name';
+
+  cityPara.addEventListener('click', openLocationSearch);
 
   cityDiv.append(cityPara, citySearch);
 
