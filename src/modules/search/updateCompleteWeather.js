@@ -1,6 +1,7 @@
 import updateCurrentWeather from '../weatherCurrent/updateCurrentWeather';
 import updateDailyWeather from '../weatherDailyHourly/weatherDaily/updateDailyWeather';
 import updateHourlyWeather from '../weatherDailyHourly/weatherHourly/updateHourlyWeather';
+import backgroundUpdate from '../background/backgroundUpdate';
 import domCitiesList from './citiesList';
 import { fetchWeather } from '../fetch';
 import getWeathercode from '../weathercode';
@@ -63,4 +64,6 @@ export default async function updateCompleteWeather(chosenCity) {
   mainMenuBackground.classList.add('invisible');
   // clear results after hiding
   domCitiesList('');
+  // getting background ready
+  backgroundUpdate();
 }
