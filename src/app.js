@@ -1,5 +1,6 @@
 import './styles/style.css';
 import './styles/background.css';
+import './styles/menuBackground.css';
 import './styles/search.css';
 import './styles/weatherCurrent.css';
 import './styles/weatherDailyHourly.css';
