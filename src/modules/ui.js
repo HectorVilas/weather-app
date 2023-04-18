@@ -1,5 +1,5 @@
 import search from './search/search';
-import mainMenuBackground from './search/mainMenuBackground';
+import menuBackground from './menuBackground/menuBackground';
 import weatherCurrent from './weatherCurrent/weatherCurrent';
 import weatherDailyHourly from './weatherDailyHourly/weatherDailyHourly';
 import updateHourlyWeather from './weatherDailyHourly/weatherHourly/updateHourlyWeather';
@@ -9,7 +9,7 @@ export default function loadUi() {
   const body = document.querySelector('body');
   body.append(
     createBackground(),
-    mainMenuBackground(),
+    menuBackground(),
     search(),
     weatherCurrent(),
     weatherDailyHourly(),
